@@ -1,5 +1,6 @@
 # CRM System Requirement 
 
+git config credential.helper store
 
 
 ## General Requirement
