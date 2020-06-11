@@ -1,0 +1,37 @@
+<div ng-hide="busy" class="row">
+    <div class="col7">
+        <br>
+        <table class="table bold">
+
+            <tr>
+                <td class="title">##word.devices_names_category##</td>
+                <td class="center ">{{device_name.category.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.devices_names_sub_category##</td>
+                <td class="center ">{{device_name.sub_category.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.devices_names_device_name##</td>
+                <td class="center indigo">{{device_name.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.notes##</td>
+                <td class="center blue">{{device_name.notes}}</td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="col2"></div>
+
+    <div class="col3 center">
+
+        <i-image view category="devices_names" ng-model="device_name.image_url"></i-image>
+        <i-files view ng-model="devices_name.files"></i-files>
+
+    </div>
+</div>
+<div x-import="devices_names/action_info.html"></div>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+
+<head x-import="head.html">
+
+</head>
+
+<body class="##session.lang##">
+
+    <nav x-import="navbar/index.html" class="navbar" data-ng-controller="navbar">
+
+    </nav>
+
+
+    <div x-import="menu/index.html"></div>
+
+
+    <div id="main-layout" class="container" x-permission="sub_categories">
+        <div class="row">
+            <div class="col" ng-controller="sub_categories">
+                <div x-import="sub_categories/add_modal.html"></div>
+                <div x-import="sub_categories/update_modal.html"></div>
+                <div x-import="sub_categories/delete_modal.html"></div>
+                <div x-import="sub_categories/view_modal.html"></div>
+                <div x-import="sub_categories/search.html"></div>
+
+                <div class="top-actions">
+                    <i-button type="add" ng-click="newSub_Category()" label="##word.sub_categories_new##"></i-button>
+                    <i-button type="search" onclick="site.showModal('#SearchModal')" label="##word.search_all##"></i-button>
+                    <a class="btn left bg-green" target="blank" href="/companies_categories"> ##word.system_companies_catagories_menus##</a>
+                    <a class="btn left bg-green" target="blank" href="/categories"> ##word.system_catagories_menus##</a>
+
+                </div>
+
+                <table class="table loaded" id="t1">
+                    <tr>
+                        <th class="not-print">##word.sub_categories_logo##</th>
+                        <th>##word.sub_categories_category##</th>
+                        <th>##word.sub_categories_sub_category##</th>
+                        <th class="not-print">##word.actions##</th>
+                    </tr>
+                    <tr ng-repeat="c in list">
+                        <td class="center not-print">
+                            <i-image view class="logo" category="sub_categories" ng-model="c.image_url"></i-image>
+                        </td>
+                        <td class="center bold">{{c.category.name}}</td>
+                        <td class="center bold indigo">{{c.name}}</td>
+                        <td class="center not-print">
+                            <i-button type="details" ng-click="details(c)" label="##word.details##"></i-button>
+                            <i-button type="update" ng-click="edit(c)" label="##word.update##"></i-button>
+                            <i-button type="delete" ng-click="remove(c)" label="##word.delete##"></i-button>
+
+                        </td>
+                    </tr>
+
+                </table>
+                <i-button type="export" onclick="export_to_xlsx('t1' , 'sub_categories.xlsx')" label="##word.export_to_excel##"></i-button>
+                <i-button type="print" label="##word.print##" onclick="site.print('#t1')"> </i-button>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div x-import="scripts.html"></div>
+
+    <script x-permission="sub_categories" x-import="sub_categories/index.js"></script>
+
+</body>
+
+</html>

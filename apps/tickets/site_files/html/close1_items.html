@@ -1,0 +1,77 @@
+<div class="row " fixed>
+
+    <div class="col6 padding">
+        <fieldset class=" ">
+            <legend>##word.ticket_item_sell##</legend>
+
+
+
+            <div ng-repeat="item in ticket.item_sell_list">
+                <div class="row">
+                    <div class="col8">
+                        <p class="bold red"> {{item.eng.name}} </p>
+                        <p class="bold">{{item.name}} - {{item.size}}</p>
+                        <p class="yellow bold">{{item.price}} ##word.le## </p>
+                        <p class=" bold">{{item.reccet_number}} </p>
+                    </div>
+                    <div class="col4">
+                        <i-button type="delete" ng-click="deleteCloseEngItemSell(item)"></i-button>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </fieldset>
+    </div>
+
+
+    <div class="col6 padding">
+        <fieldset class=" ">
+            <legend>##word.ticket_item_replace##</legend>
+
+
+
+            <div ng-repeat="item in ticket.item_replace_list">
+                <div class="row">
+                    <div class="col8">
+                        <p class="bold red"> {{item.eng.name}} </p>
+                        <p class="bold">{{item.name}} - {{item.size}}</p>
+                    </div>
+                    <div class="col4">
+                        <i-button type="delete" ng-click="deleteCloseEngItemReplace(item)"></i-button>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </fieldset>
+    </div>
+
+
+    <div class="col6 padding">
+        <fieldset class=" ">
+            <legend>##word.ticket_item_needed##</legend>
+
+
+
+            <div ng-repeat="item in ticket.item_needed_list">
+                <div class="row">
+                    <div class="col8">
+                        <p class="bold red"> {{item.eng.name}} </p>
+                        <p class="bold">{{item.name}}</p>
+                    </div>
+                    <div class="col4">
+                        <i-button type="delete" ng-click="deleteCloseEngItemNeeded(item)"></i-button>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </fieldset>
+    </div>

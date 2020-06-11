@@ -1,0 +1,26 @@
+<div id="engSelectModal" class="modal" fixed>
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>
+                ##word.ticket_eng##
+                <i ng-show="busy" class="fa fa-spinner white fa-pulse fa-fw"></i>
+            </h2>
+        </div>
+
+        <div class="modal-body">
+            <input class="hidden"  type="text" />
+            <i-list ng-model="eng" v="r" ng-search="_search.$eng_search" items="engList" ></i-list>
+        </div>
+
+        <h2 class="text-center">{{error}}</h2>
+
+        <div class="modal-footer center">
+            <i-button type="add" label="##word.select##" ng-click="assignEng()"></i-button>
+            <i-button type="close" label="##word.close##" onclick="site.hideModal('#engSelectModal')"></i-button>
+        </div>
+
+    </div>
+</div>

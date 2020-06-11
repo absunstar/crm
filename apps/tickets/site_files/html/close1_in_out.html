@@ -1,0 +1,53 @@
+<div class="row " fixed>
+
+    <div class="col6 padding">
+        <fieldset>
+            <legend> ##word.ticket_input## </legend>
+
+
+            <div ng-repeat="input in ticket.inputs">
+
+                <div class="row">
+                    <div class="col7">
+                        <p class="bold red"> {{input.eng.name}} </p>
+                        <p class="bold yellow">{{input.value}} ##word.le## </p>
+                        <p class="bold">{{input.name}}</p>
+                        <p>{{input.receet_number}}</p>
+                    </div>
+                    <div class="col5">
+                        <i-button type="delete" ng-click="deleteCloseEngInput(input)"></i-button>
+                    </div>
+                </div>
+
+
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="col6 padding">
+        <fieldset>
+            <legend> ##word.ticket_output## </legend>
+
+            <div ng-repeat="output in ticket.outputs">
+
+                <div class="row">
+                    <div class="col7">
+                        <p class="bold red"> {{input.eng.name}} </p>
+
+                        <p class="bold yellow">{{output.value}} ##word.le## </p>
+                        <p class="bold">{{output.name}}</p>
+                        <p> {{output.receet_number}} </p>
+                    </div>
+                    <div class="col5">
+                        <i-button type="delete" ng-click="deleteCloseEngOutput(output)"></i-button>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </fieldset>
+    </div>
+
+</div>

@@ -1,0 +1,15 @@
+[
+
+    {"name": "amounts_in","en": "Amount In", "ar": " الوارد"},
+    {"name": "amounts_out","en": "Amount Out", "ar": " الصادر"},
+    {"name": "amounts_name","en": "Amount Name", "ar": " مسميات الصادر والوارد"},
+    {"name": "safes","en": " Safe", "ar": " الخزينة"},
+    {"name": "amounts_report","en": " Accounting Report", "ar": " كشف حساب"},
+    {"name": "employee_offers","en": "Employee Offers", "ar": " مكافئات الموظفين"},
+    {"name": "employee_discounts","en": " Employee Discount", "ar": " خصومات الموظفين"},
+    {"name": "safes_payments","en": " Safes Payments", "ar": "معاملات الخزينة"},
+    {"name": "employees_report","en": "Employees Report", "ar": " تقارير الموظفين"},
+    {"name": "engineers_report","en": " Engineers Report", "ar": " تقارير الفنيين"},
+    {"name": "customers","en": "  Customers", "ar": " العملاء "}
+
+]

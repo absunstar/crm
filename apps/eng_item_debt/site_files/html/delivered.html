@@ -1,0 +1,30 @@
+<div class="row" fixed>
+    <div class="col9">
+            <input type="hidden">
+        <form class="form">
+
+            <div class="row">
+                <i-list class="col6" ng-model="eng_item_debt.store" items="stores" label="##word.eng_item_debt_store##"
+                    ng-search="_search.$serach_stores"></i-list>
+            </div>
+            <div class="row">
+                <i-textarea class="col6" ng-model="eng_item_debt.notes" label="##word.eng_item_debt_notes##"></i-textarea>
+            </div>
+        </form>
+    </div>
+
+    <div class="col3">
+        <div>
+
+
+            <i-image class="col12" ng-model="eng_item_debt.image_url"></i-image>
+            <i-files class="col12" ng-model="eng_item_debt.files"></i-files>
+        </div>
+    </div>
+
+
+
+
+
+
+</div>

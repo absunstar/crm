@@ -1,0 +1,68 @@
+<div ng-hide="busy" class="row">
+    <div class="col7">
+        <br>
+        <table class="table bold">
+            <tr>
+                <td class="title">##word.companies_employees_name##</td>
+                <td class="center indigo">{{company_employee.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.companies_employees_phones##</td>
+                <td class="center">
+                    <a ng-repeat="p in company_employee.phones" href="tel:{{p}}"> {{p}}
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.companies_employees_mobiles##</td>
+                <td class="center">
+                    <a ng-repeat="m in company_employee.mobiles" href="tel:{{p}}"> {{m}}
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.companies_employees_email##</td>
+                <td class="center">
+                    <a ng-show="company_employee.email" target="_blank" href="tel:{{company_employee.email}}">
+                        {{company_employee.email}}
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td class="title">##word.companies_employees_company##</td>
+                <td class="center">{{company_employee.company.name}}</td>
+
+            </tr>
+            <tr>
+                <td class="title">##word.companies_employees_department##</td>
+                <td class="center">{{company_employee.department.name}}</td>
+            </tr>
+            <tr>
+                <td class="title">##word.companies_employees_job##</td>
+                <td class="center">{{company_employee.job.name}}</td>
+            </tr>
+            <tr>
+                <td class="title">##word.companies_employees_notes##</td>
+                <td class="center blue">{{company_employee.notes}}</td>
+            </tr>
+            <tr>
+
+        </table>
+
+
+    </div>
+    <div class="col2"></div>
+
+    <div class="col3 center">
+        <i-image view category="companies_employees" ng-model="company_employee.image_url"></i-image>
+        <i-files view ng-model="company_employee.files"></i-files>
+
+    </div>
+</div>
+<div x-import="companies_employees/action_info.html"></div>

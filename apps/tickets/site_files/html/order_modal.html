@@ -1,0 +1,82 @@
+<div id="orderModal" fixed class="modal">
+    <div class="modal-content">
+       
+       <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2> ##word.ticket_show_order## </h2>
+        </div>
+        
+        <div class="modal-body">
+              <form >
+                    <input class="hidden"  type="text" />
+                <div class="row">
+                        <i-list class="col4" ng-search="_search.$region_name" ng-model="region" label="##word.ticket_region_name##" items="regions"></i-list>
+                        <i-list class="col4" ng-search="_search.$region_eng" ng-model="eng" label="##word.ticket_eng##" items="engList"></i-list>
+                        <i-date2 class="col4"  ng-model="date" label="##word.ticket_date##"></i-date2>
+                </div>
+               
+                <i-button label=" ##word.ticket_show_tickets##" ng-click="filterOrders()"></i-button>
+               
+                   
+              </form>
+
+              <div id="orderDiv" class="padding margin">
+                    <div x-import="tickets/crm_logo.html" class="hide"></div>
+                  <br>
+                  <div class="row">
+                      <div class="col5"> 
+                          <label>##word.ticket_region_name## </label>
+                          <b> {{region.name}} </b>
+                      </div>
+                    
+                      <div class="col5 text-left">
+                          <label>
+                                ##word.ticket_eng##
+                          </label>
+                          <b> {{eng.name}}  
+                          <br>
+                         
+                      </div>
+                  </div>
+                <table class="table">
+                    <tr>
+                        <th> م </th>
+                        <th> رقم البلاغ </th>
+                        <th> ت الاستلام </th>
+                        <th> الجهاز </th>
+                       
+                        <th> المنطقة </th>
+                        <th> العنوان </th>
+                        <th> الشركة </th>
+                        <th> المحصل </th>
+                        <th> ملاحظات </th>
+                    </tr>
+                    <tr ng-repeat="o in order_list">
+                        <td> {{o.index}} </td>
+                        <td> {{o.code}} </td>
+                        <td> {{o.date | dateX}} </td>
+                        <td> {{o.device_info.device.name}} </td>
+                        
+                        <td> {{o.customer.region.name}} </td>
+                        <td> {{o.customer.address}} </td>
+                        
+
+
+
+                        <td> {{o.device_info.company.name}} </td>
+                        <td>  </td>
+                        <td>  </td>
+                    </tr>
+                </table>
+              </div>
+        </div>
+
+        <div class="modal-footer center">
+            <i-button type="close" onclick="site.hideModal('#orderModal')" label="##word.close##"></i-button>
+            <i-button type="print" onclick="site.printHTML({select : '#orderDiv' , ignores : ['.btn'], preappends : ['#crm_logo']})" label=" ##word.print##">
+                  
+            </i-button>
+        </div>
+
+    </div>
+</div>

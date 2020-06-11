@@ -1,0 +1,47 @@
+<div id="SearchModal" class="modal">
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>
+                ##word.companies_categories_search## <i class="fa fa-search"></i>
+            </h2>
+        </div>
+        <div class="modal-body">
+                <input type="hidden">
+            <form class="form">
+                    <div class="row">
+                        <i-list ng-search="_search.$companies_devices" class="col3" items="companies" ng-change="loadCategories(search.company)"
+                            ng-model="search.company" label="##word.companies_name##"></i-list>
+
+                        <i-list ng-search="_search.$companies_devices_category" class="col3" items="companies_categories"
+                            ng-model="search.category" ng-value="category" ng-change="loadSub_Categories(search.category)" label="##word.companies_categories##"
+                            display="category.name"></i-list>
+                        <div class="row">
+                            <i-list ng-search="_search.$companies_devices_sub_category" class="col3" items="sub_categories"
+                                ng-model="search.sub_category" ng-change="loadDevices_Names(search.sub_category)" label="##word.companies_devices_sub_category##"></i-list>
+
+                            <i-list ng-search="_search.$companies_devices_sub_category" class="col3" items="devices_names"
+                                ng-model="search.device" label="##word.companies_devices_device##"></i-list>
+                        </div>
+                        <i-control ng-model="search.models.name" class="col3" label="##word.companies_devices_model##"
+                            type="text"></i-control>
+                        <i-control ng-model="search.models.alt" class="col3" label="##word.companies_devices_model_equal##"
+                            type="text"></i-control>
+
+                    </div>
+                <div class="row">
+                    <i-textarea class="col6" ng-model="search.notes" label="##word.notes##"></i-textarea>
+                </div>
+            </form>
+        </div>
+        <h2 class="error">{{error}}</h2>
+        <div class="modal-footer center">
+            <i-button type="search" ng-click="searchAll()" label="##word.search##"></i-button>
+
+            <i-button type="clear" ng-click="search = {}" label="##word.clear##"></i-button>
+            <i-button type="close" onclick="site.hideModal('#SearchModal')" label="##word.close##"></i-button>
+
+        </div>
+    </div>
+</div>

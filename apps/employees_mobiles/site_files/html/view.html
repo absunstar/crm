@@ -1,0 +1,53 @@
+<div ng-hide="busy" class="row" fixed>
+    <div class="col9">
+        <br>
+        <table class="table bold">
+            <tr>
+                <td class="title">##word.employees_mobiles_employee##</td>
+                <td class="center">{{employee_mobile.employee.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.employees_mobiles_number##</td>
+                <td class="center">{{employee_mobile.number.number}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.employees_mobiles_slide_name##</td>
+                <td class="center">{{employee_mobile.number.slide_name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.employees_mobiles_value##</td>
+                <td class="center">{{employee_mobile.number.value + ' جنيه '}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.employees_mobiles_discount##</td>
+                <td class="center">{{employee_mobile.discount + ' جنيه '}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.employees_mobiles_emp_discount##</td>
+                <td class="center">{{employee_mobile.emp_discount + ' جنيه '}}</td>
+            </tr>
+
+            <tr>
+                    <td class="title">##word.employees_mobiles_total##</td>
+                    <td class="center">{{employee_mobile.total + ' جنيه '}}</td>
+                </tr>
+
+            <tr>
+                <td class="title">##word.employees_mobiles_notes##</td>
+                <td class="center">{{employee_mobile.notes}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col3 center">
+
+        <i-image view ng-model="employee_mobile.image_url"></i-image>
+        <i-files view ng-model="employees_mobiles.files"></i-files>
+
+    </div>
+</div>
+<div x-import="employees_mobiles/action_info.html"></div>

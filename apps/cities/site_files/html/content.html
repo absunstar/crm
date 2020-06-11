@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col9">
+            <input type="hidden">
+        <form class="form">
+            <div class="row">
+                <i-list ng-search="_search.$gov_search" v="r" class="col3" items="goves" ng-model="city.gov" label="##word.cities_gov##"></i-list>
+                <i-control v="r" ng-model="city.name" class="col4" label="##word.cities_city##" type="text"></i-control>
+            </div>
+            <div class="row">
+                <i-textarea class="col7" ng-model="city.notes" label="##word.notes##"></i-textarea>
+            </div>
+        </form>
+
+    </div>
+    <div class="col3">
+
+        <i-image category="cities" ng-model="city.image_url"></i-image>
+        <i-files ng-model="city.files"></i-files>
+
+    </div>
+</div>

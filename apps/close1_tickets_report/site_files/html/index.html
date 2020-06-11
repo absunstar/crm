@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp" class="bg-white">
+
+<head x-import="head.html">
+    <style>
+        :root {
+        --legend-color: #000;
+        --legend-text-shadow: none;
+    }
+</style>
+</head>
+
+<body class="##session.lang## bg-white">
+
+    <nav x-import="navbar/index.html" class="navbar" data-ng-controller="navbar">
+
+    </nav>
+
+
+    <div class="container" ng-controller="close1_tickets_report">
+        <div class="row center">
+            <br>
+            <h1 class="center bold black"> تقرير البلاغات المقفله مبدائيا </h1>
+            <br>
+            <div x-import="close1_tickets_report/search_modal.html"></div>
+            <div class="top-actions">
+
+                <i-button type="search not-print" id="searchAllBtn" label="##word.search_all##" ng-click="showSearch()"></i-button>
+            </div>
+            <div class="row" id="print_id">
+
+                <div class="padding" x-import="tickets/crm_logo.html"></div>
+                <div class="row margin padding dashed">
+                    <div class="col6 padding">
+
+                        <table class="table" id="t1">
+
+                            <tr>
+                                <td class="bold">##word.engineers_report_Engineer_Name##</td>
+                                <td>
+                                    <p class="center">{{employee.name}}</p>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td class="bold"> تاريخ التقفيل </td>
+                                <td>
+                                    <p class="">
+                                        {{report.date| date : 'dd - MM - yyyy'}}
+                                    </p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="bold"> المستخدم </td>
+                                <td>
+                                    <p class="">
+                                        ##user.name##
+                                    </p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="bold"> المطلوب تحصيلة </td>
+
+                                <td>
+                                    <h2 class="center green">{{report.total}} ##word.le##</h2>
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+
+                    </div>
+                    <div class="col6 padding">
+
+
+                        <table class="table" id="t1">
+
+                            <tr>
+                                <td class="bold"> إجمالى الوارد </td>
+
+                                <td>
+                                    <p class="center green">{{report.total_input}} ##word.le## </p>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="bold"> إجمالى المنصرف </td>
+
+                                <td>
+                                    <p class="center red">{{report.total_output}} ##word.le## </p>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="bold"> إجمالى المبيعات </td>
+
+                                <td>
+                                    <p class="center green">{{report.total_sell}} ##word.le## </p>
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+
+                    </div>
+                </div>
+
+                <div class="row margin padding">
+                    <div class="row">
+                        <fieldset class="dashed">
+                            <legend> إجمالى البلاغات </legend>
+                            <table class="table" id="t1">
+
+                                <tr>
+                                    <td class="bold"> العدد </td>
+
+                                    <td>
+                                        <p class="center bold green">{{report.total_tickets}}</p>
+                                    </td>
+
+                                </tr>
+
+
+
+
+                                <tr ng-show="report.close_with_items > 0">
+                                    <td class="bold"> بقطع غيار</td>
+
+                                    <td>
+                                        <p class="center bold ">{{report.close_with_items}}</p>
+                                    </td>
+
+                                </tr>
+
+                                <tr ng-show="report.close_without_items > 0">
+                                    <td class="bold"> بدون قطع غيار</td>
+
+                                    <td>
+                                        <p class="center bold ">{{report.close_without_items}}</p>
+                                    </td>
+
+                                </tr>
+
+                                <tr ng-show="report.close_cancel > 0">
+                                    <td class="bold"> الملغى</td>
+
+                                    <td>
+                                        <p class="center bold ">{{report.close_cancel}}</p>
+                                    </td>
+                                </tr>
+
+                                <tr ng-show="report.close_need_items > 0">
+                                    <td class="bold"> مؤجل قطع غيار</td>
+
+                                    <td>
+                                        <p class="center bold ">{{report.close_need_items}}</p>
+                                    </td>
+                                </tr>
+
+                                <tr ng-show="report.close_need_client > 0">
+                                    <td class="bold"> مؤجل طرف العميل</td>
+
+                                    <td>
+                                        <p class="center bold ">{{report.close_need_client}}</p>
+                                    </td>
+                                </tr>
+
+                                <tr ng-show="report.total_cost_count > 0">
+                                    <td class="bold"> البلاغات المحتسبة</td>
+
+                                    <td>
+                                        <h2 class="center bold ">{{report.total_cost_count}}</h2>
+                                    </td>
+                                </tr>
+
+
+
+
+                            </table>
+                        </fieldset>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <h2 class="center"> البلاغات </h2>
+                    <table class="table dashed">
+                        <th>م</th>
+                        <th>رقم البلاغ</th>
+                        <th>بيانات العميل</th>
+                        <th>بيانات الجهاز</th>
+                        <th>المحصل</th>
+                        <th>التقفيل</th>
+                        <tr ng-repeat="t in report.list | orderBy:propertyName:reverse">
+
+                            <td class="center ">
+                                <p class=" bold "> {{$index + 1}} </p>
+                            </td>
+                            <td class="center ">
+                                <h2 class="bold blue"> {{t.code}} </h2>
+                            </td>
+                            <td>
+                                <p class="center "> {{t.customer.name}} {{t.customer.mobiles[0] || ''}} </p>
+                                <p class="center "> {{t.customer.gov.name}} {{t.customer.city.name}}
+                                    {{t.customer.town.name}} {{t.customer.address}}</p>
+                            </td>
+                            <td>
+                                <p class="center  "> {{t.device_info.company.name}} {{t.device_info.device.name ||
+                                    t.device_info.category.name || '' }} {{t.device_info.model.name || ''}}</p>
+                            </td>
+                            <td>
+                                <p class="center  bold"> {{t.$total}} </p>
+                            </td>
+                            <td>
+                                <p class="center  "> {{t.status.ar}} </p>
+                                <div ng-show="t.device_info.status == 0 || t.device_info.status == 1">
+                                    <b> حالة الضمان : </b>
+
+                                    <b class="green ng-hide" ng-show="t.device_info.status == 1"> داخل الضمان
+                                    </b>
+                                    <b class="red" ng-show="t.device_info.status == 0"> خارج الضمان </b>
+
+                                </div>
+                                <div ng-show="t.close_eng.fixes">
+                                    <p class=" blue ">{{t.close_eng.fixes}}</p>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    </table>
+
+                </div>
+
+                <div class="row">
+                    <div class="col4 padding">
+                            <h2 class="center black"> القطع المباعة </h2>
+                        <table class="table dashed">
+                            <th>م</th>
+                            <th>رقم البلاغ</th>
+                            <th>اسم القطعه</th>
+                            <th>السعر</th>
+
+                            <tr ng-repeat="t in report.sell_list | orderBy:propertyName:reverse">
+
+                                <td class="center ">
+                                    <p class=" bold "> {{$index + 1}} </p>
+                                </td>
+                                <td class="center ">
+                                    <h2 class="bold blue"> {{t.code}} </h2>
+                                </td>
+                                <td>
+                                    <p class="center "> {{t.name}} </p>
+
+                                </td>
+                                <td>
+                                    <p class="center "> {{t.price}} </p>
+
+                                </td>
+
+
+                            </tr>
+                        </table>
+                    </div>
+                  
+                    <div class="col4 padding">
+                            <h2 class="center black"> القطع المستبدله </h2>
+                        <table class="table dashed">
+                            <th>م</th>
+                            <th>رقم البلاغ</th>
+                            <th>اسم القطعه</th>
+
+                            <tr ng-repeat="t in report.replace_list | orderBy:propertyName:reverse">
+
+                                <td class="center ">
+                                    <p class=" bold "> {{$index + 1}} </p>
+                                </td>
+                                <td class="center ">
+                                    <h2 class="bold blue"> {{t.code}} </h2>
+                                </td>
+                                <td>
+                                    <p class="center "> {{t.name}} </p>
+
+                                </td>
+
+
+
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="col4 padding">
+                            <h2 class="center black"> القطع المطلوبة </h2>
+                        <table class="table dashed">
+                            <th>م</th>
+                            <th>رقم البلاغ</th>
+                            <th>اسم القطعه</th>
+
+                            <tr ng-repeat="t in report.needed_list | orderBy:propertyName:reverse">
+
+                                <td class="center ">
+                                    <p class=" bold "> {{$index + 1}} </p>
+                                </td>
+                                <td class="center ">
+                                    <h2 class="bold blue"> {{t.code}} </h2>
+                                </td>
+                                <td>
+                                    <p class="center "> {{t.name}} </p>
+
+                                </td>
+
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <i-button class="not-print" x-permission="export" type="export" label="##word.export_to_excel##"
+                    onclick="export_to_xlsx('t1' , 'Period_Engineer_Report.xlsx')"></i-button>
+                <i-button class="not-print" x-permission="print" type="print" label="##word.print##" onclick="site.print('#print_id')"></i-button>
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div x-import="scripts.html"></div>
+
+    <script x-import="close1_tickets_report/index.js"></script>
+
+
+</body>
+
+</html>

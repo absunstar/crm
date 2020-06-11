@@ -1,0 +1,387 @@
+<table class="table">
+
+    <tr class="not-print">
+        <th class="not-print desktop" ng-class="{'bg-black': t.done == true , 'bg-green' : t.done !== true && t.hours > 0 && t.hours < 24, 'bg-yellow' : t.done !== true && t.hours > 24 && t.hours < 48, 'bg-red' : t.done !== true && t.hours > 48}">##word.ticket_code##</th>
+        <th class="" ng-class="{'bg-black': t.done == true , 'bg-green' : t.done !== true && t.hours > 0 && t.hours < 24, 'bg-yellow' : t.done !== true && t.hours > 24 && t.hours < 48, 'bg-red' : t.done !== true && t.hours > 48}"></th>
+
+        <th class="not-print" ng-class="{'bg-black': t.done == true , 'bg-green' : t.done !== true && t.hours > 0 && t.hours < 24, 'bg-yellow' : t.done !== true && t.hours > 24 && t.hours < 48, 'bg-red' : t.done !== true && t.hours > 48}">##word.actions##</th>
+    </tr>
+
+    <tr>
+        <td class="center w1 desktop not-print">
+            <i-checkbox ng-hide="t.$hide === true" ng-model="t.$select" ng-value="false" label="##word.ticket_select##"></i-checkbox>
+            <b class="ticket-code w1">{{t.code}}</b>
+            <p class="bold">{{t.date | date : 'dd - MM - yyyy'}}
+                <small class="blue">{{t.date | date : 'hh:mm'}}</small>
+            </p>
+
+            <i-button type="bg-blue block" fa="eye" ng-click="details(t)" label="##word.ticket_view##"></i-button>
+
+            <div class="padding margin border">
+
+                <div class="row">
+
+                    <p class="bold ">##word.ticket_status##</p>
+                    <p class="">{{t.status.ar}}</p>
+
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div class="row" ng-show="t.close_eng.status">
+
+                    <p class="bold ">##word.ticket_close_eng_status##</p>
+                    <p class="">{{t.close_eng.status.ar}}</p>
+
+                </div>
+
+            </div>
+
+            <div class="row" ng-show="t.source.id == 3">
+                <i-button type="print block" label="##word.print_ticket_number##" ng-click="printReccet(t)"></i-button>
+
+            </div>
+
+            <div class="row" ng-hide="t.review_done==true">
+                <a x-permission="review" ng-show="t.close1_done==true" class="btn bg-red block" ng-click="showReview(t)">
+
+                    <span>##word.ticket_review##</span>
+                </a>
+            </div>
+
+            <div ng-show="t.repeats.length > 0" class="row border">
+                <p class="bold red" ng-repeat="t1 in t.repeats">{{t1.code}}</p>
+                <a class="btn" ng-click="showRepeats(t)"> ##word.ticket_show_repeats## </a>
+            </div>
+
+        </td>
+
+
+        <td class="right padding no-border full-width">
+
+            <div id="print_{{t.id}}" ng-class="{'print-content' : t.$select  , 'ticket-content' :  t.$select}">
+
+                <div x-import="tickets/crm_logo.html" class=""></div>
+
+                <!--  Ticket Info -->
+
+
+                <div class="row margin padding">
+                    <div class="row ">
+                        <div class="col6">
+                            <b>##word.ticket_customer_name##: </b>
+                            <b class="blue bold">{{t.customer.name}}</b>
+                        </div>
+
+                        <div class="col6">
+                            <div class="row" ng-show="t.customer.mobiles.length > 0 || t.customer.phones.length > 0">
+                                <b>##word.ticket_customer_phone##: </b>
+                                <a ng-repeat="m in t.customer.mobiles">
+                                    {{m}}
+                                    <i class="fa fa-phone"></i>
+                                </a>
+                                <a ng-repeat="p in t.customer.phones">
+                                    {{p}}
+                                    <i class="fa fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <b>##word.ticket_address##: </b>
+                        <b class="blue bold">
+                            {{t.customer.gov.name + ' - ' + t.customer.city.name + ' - '
+                            +t.customer.town.name +
+                            ' - ' +t.customer.region.name
+                            + ' - ' + t.customer.address}}
+                        </b>
+
+                    </div>
+
+                </div>
+                <hr>
+                <!--  Ticket Complain -->
+                <div class="row">
+                    <div ng-show="t.damage" class="col6">
+                        <b>##word.ticket_complain##: </b>
+                        <span class="red bold"> {{t.damage.name}} - </span> <span class="bold blue">{{t.complain}}</span>
+                    </div>
+                    <div ng-show="t.priotry" class="col6">
+                        <b>##word.ticket_priotry## : </b>
+                        <b class="red bold">{{t.priotry.ar}}</b>
+                    </div>
+
+                </div>
+
+
+                <!--  Ticket Device Info -->
+                <div class="row">
+
+                    <div class="row">
+                        <div class="col6">
+                            <b> ##word.ticket_device## : </b>
+
+                            <span class="bold blue">
+                                {{t.device_info.company.name}} -
+                                {{t.device_info.category.name}} -
+                                {{t.device_info.sub_category.name}} -
+                                {{t.device_info.device.name}} -
+                                {{t.device_info.model.name}} -
+                                <small>{{t.device_info.model.alt}}</small>
+                            </span>
+                        </div>
+                        <div class="col6">
+                            <div ng-show="t.device_info.status == 0 || t.device_info.status == 1">
+
+
+                                <b> ##word.ticket_device_status## : </b>
+
+                                <b class="green" ng-show="t.device_info.status == 1"> ##word.ticket_device_status1##
+                                </b>
+                                <b class="red" ng-show="t.device_info.status == 0"> ##word.ticket_device_status0## </b>
+
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                    <div class="row" ng-show="t.device_info.serial">
+                        <div class="col6">
+                            <b>##word.ticket_serial## : </b>
+                            <span class="bold blue">{{t.device_info.serial}} </span>
+                        </div>
+                        <div class="col6">
+                            <b>##word.ticket_device_product_date## : </b>
+                            <span class="bold blue">{{t.device_info.product_date}} </span>
+                        </div>
+                    </div>
+                    <div ng-show="t.company_codes.length >0" class="row">
+                        <b>##word.ticket_device_sabexist## : </b>
+                        <span ng-repeat="cod in t.company_codes">
+                            {{cod}}
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Fixes Report  -->
+                <div class="row">
+                    <div ng-show="t.close_eng.fixes" class="col6">
+                        <b>##word.ticket_device_fixes## : </b>
+                        <b class="bold blue">{{t.close_eng.fixes}}</b>
+                    </div>
+                    <div ng-show="t.close_eng.status" class="col6">
+                        <b>##word.ticket_status## : </b>
+                        <b class="bold blue">{{t.close_eng.status.ar}}</b>
+                    </div>
+
+
+                </div>
+                <!-- Ticket Sources Report  -->
+                <div class="row">
+                    <div class="row" ng-show="t.source">
+
+                        <b>##word.ticket_source## : </b>
+
+                        {{t.source.ar}}
+                        <b class="green" ng-show="t.source.id == 3"> <span ng-show="t.device_view"> - {{
+                                t.device_view}}</span> <span ng-show="t.device_options"> - {{t.device_options}} </span></b>
+                        <b class="blue" ng-show="t.source.id == 1"> - {{t.company_codes}}</b>
+
+                    </div>
+                    <div class="row" ng-show="t.source.id == 3">
+                        <span ng-show="t.done != true" class="red bold">##word.customer_warn_message##</span>
+                        <br>
+                        <span ng-show="t.done== true" class="red bold">##word.customer_warn_message2##</span>
+
+
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col4" ng-show="t.eng">
+                        <b>##word.ticket_eng## : </b>
+                        <b class="bold blue">{{t.eng.name}}</b>
+                    </div>
+                    <div class="col4 blue not-print" ng-show="t.eng.mobiles[0]">
+                        <b>##word.ticket_eng_number## : </b>
+                        <a>
+                            {{t.eng.mobiles[0]}}
+                            <i class="fa fa-phone"></i>
+
+                        </a>
+                    </div>
+                    <div class="col4" ng-show="t.close_eng.date">
+                        <b>##word.ticket_close_eng_date## : </b>
+
+
+                        <span class="bold">{{t.close_eng.date | date : 'dd - MM - yyyy'}}
+                            <small class="blue">{{t.close_eng.date| date : 'hh:mm'}}</small>
+                        </span>
+
+
+
+
+                    </div>
+
+
+                </div>
+                <div>
+                    <b>##word.ticket_delivered_by## : </b>
+                    <b class="bold blue">{{t.add_user_info.name || t.old_ticket.ReceivedUserName}}</b>
+
+                </div>
+
+
+
+
+                <!--  Ticket items changes Info -->
+                <div class="row not-print">
+                    <table class="table">
+
+                        <tr>
+                            <td ng-show="t.inputs.length > 0">
+                                <p class="bold">##word.ticket_input##</p>
+                                <div class="padding margin" ng-repeat="input in t.inputs">
+                                    <p class="bold red"> {{input.eng.name}} </p>
+                                    <p class="bold green">{{input.value}} ##word.le## </p>
+                                    <p class="bold">{{input.name}}</p>
+                                    <p>{{input.receet_number}}</p>
+                                </div>
+                            </td>
+                            <td ng-show="t.outputs.length > 0">
+                                <p class="bold">##word.ticket_output##</p>
+
+                                <div class="padding margin" ng-repeat="output in t.outputs">
+                                    <p class="bold red"> {{output.eng.name}} </p>
+                                    <p class="bold green">{{output.value}} ##word.le## </p>
+                                    <p class="bold">{{output.name}}</p>
+                                    <p>{{output.receet_number}}</p>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td ng-show="t.item_sell_list.length > 0">
+                                <p class="bold">##word.ticket_item_sell##</p>
+                                <div class="padding margin" ng-repeat="itemu in t.item_sell_list">
+                                    <b class="bold red">{{itemu.name}} - {{itemu.size}} </b>
+                                    <b class="green bold"> / {{itemu.price}} ##word.le## </b>
+                                    <b class="bold"> <span ng-show="itemu.reccet_number">/ </span>{{itemu.reccet_number}}</b>
+                                    <b class="blue bold"> / {{itemu.eng.name}}</b>
+                                </div>
+                            </td>
+
+                            <td ng-show="t.item_replace_list.length > 0">
+                                <p class="bold">##word.ticket_item_replace##</p>
+                                <div class="padding margin" ng-repeat="itm in t.item_replace_list">
+                                    <span class="red bold">{{itm.name}}</span>
+                                    <b class="blue bold"> / {{itm.eng.name}}</b>
+                                </div>
+                            </td>
+                            <td ng-show="t.item_needed_list.length > 0">
+                                <p class="bold">##word.ticket_item_needed##</p>
+                                <div class="padding margin" ng-repeat="itm in t.item_needed_list">
+                                    <span class="green bold">{{itm.name}}</span>
+                                    <b class="blue bold"> / {{itm.eng.name}}</b>
+                                </div>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+
+
+                <hr>
+
+                <div class="row">
+                    <table class="table">
+                        <tr>
+                            <td class="title2 bold">##word.ticket_company_codes##</td>
+                            <td colspan="3">
+                                <p class="blue bold" ng-repeat="cod in t.company_codes">{{cod}}</p>
+                            </td>
+                            <td>
+                                <p class="bold">##word.ticket_status##</p>
+                                <p class="blue bold">{{t.status.ar}}</p>
+                            </td>
+                            <td>
+                                <p class="bold">##word.ticket_status2##</p>
+                                <p class="blue bold">{{t.status2.ar}}</p>
+                            </td>
+                            <td>
+                                <p class="bold">##word.ticket_status3##</p>
+                                <p class="blue bold">{{t.status3.ar}}</p>
+                            </td>
+                            <td>
+                                <p class="bold">##word.ticket_service##</p>
+                                <p class="blue bold">{{t.service.ar}}</p>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+
+
+
+
+            </div>
+
+
+        </td>
+
+
+        <td class="center not-print w1">
+
+            <a x-permission="close2" ng-show="t.close1_done == true && t.done != true" class="btn bg-green block"
+                ng-click="showClose2(t)">
+                <i class="fa fa-user" aria-hidden="true"></i> ##word.ticket_close2##</a>
+
+            <a x-permission="close_eng" ng-hide="t.close_eng_done || !t.close_eng_assign" class="btn bg-brown white block"
+                ng-click="showcloseEng(t)">
+                <i class="fa fa-user" aria-hidden="true"></i> ##word.ticket_close_eng##</a>
+
+            <a x-permission="close1" ng-show="t.close_eng_done==true && t.done != true && t.close1_done != true" class="btn bg-orange white block"
+                ng-click="showClose1(t)">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span class="white" >##word.ticket_close1##</span>
+            </a>
+
+
+
+            <a ng-show="t.done != true" x-permission="review" class="btn white block" ng-click="showAssignEng(t.id , t.eng)">
+                {{t.eng_list.length}}
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span class="white" ng-hide="t.eng.id > 0">##word.ticket_assign##</span>
+                <span class="white" ng-show="t.eng.id > 0">##word.ticket_assign_again##</span>
+            </a>
+
+            <a x-permission="login" class="btn block" ng-click="showNotes(t)">
+                {{t.notes.length}}
+                <i class="fa fa-file" aria-hidden="true"></i> ##word.ticket_notes##</a>
+
+            <a x-permission="login" class="btn block" ng-click="showFiles(t)">
+                {{t.files.length}}
+                <i class="fa fa-file" aria-hidden="true"></i> ##word.ticket_files##</a>
+
+            <a x-permission="review" class="btn bg-orange block" ng-click="edit(t)">
+                <i class="fa fa-file" aria-hidden="true"></i> ##word.edit##</a>
+
+            <a x-permission="print" class="btn bg-yellow black block" ng-click="print(t)">
+                {{t.print_count}}
+                <i class="fa fa-print" aria-hidden="true"></i> ##word.print##</a>
+
+            <a ng-hide="t.$hide === true" x-permission="tickets" ng-click="newTicket(t)" class="btn bg-green block">
+                <i class="fa fa-plus" aria-hidden="true"></i> ##word.new_ticket##</a>
+
+            <a ng-hide="t.$hide === true" x-permission="review" ng-click="customerHistory(t)" class="btn bg-blue block">
+                <i class="fa fa-search" aria-hidden="true"></i> ##word.ticket_customer_history##</a>
+
+        </td>
+    </tr>
+
+</table>

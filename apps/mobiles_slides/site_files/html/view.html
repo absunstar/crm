@@ -1,0 +1,71 @@
+<div ng-hide="busy" class="row" fixed>
+    <div class="col8">
+        <br>
+        <table class="table bold">
+            <tr>
+                <td class="title">##word.mobiles_slides_name##</td>
+                <td class="center">{{mobile_slide.slide_name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.mobiles_slides_number##</td>
+                <td class="center">{{mobile_slide.number}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.mobiles_slides_value##</td>
+                <td class="center">{{mobile_slide.value}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.mobiles_slides_tax##</td>
+                <td class="center">{{mobile_slide.tax}}</td>
+            </tr>
+
+
+            <tr>
+                <td class="title">##word.mobiles_slides_vat##</td>
+                <td class="center">{{mobile_slide.vat}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.mobiles_slides_minutes_in##</td>
+                <td class="center">{{mobile_slide.minutes_in}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.mobiles_slides_minutes_out##</td>
+                <td class="center">{{mobile_slide.minutes_out}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.mobiles_slides_sms_in##</td>
+                <td class="center">{{mobile_slide.sms_in}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.mobiles_slides_sms_out##</td>
+                <td class="center">{{mobile_slide.sms_out}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.mobiles_slides_mobile_data##</td>
+                <td class="center">{{mobile_slide.mobile_data}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.mobiles_slides_description##</td>
+                <td class="center">{{mobile_slide.description}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col1"></div>
+    <div class="col3 center">
+
+        <i-image view ng-model="mobile_slide.image_url"></i-image>
+
+        <i-files view ng-model="mobile_slide.files"></i-files>
+
+    </div>
+</div>
+<div x-import="mobiles_slides/action_info.html"></div>

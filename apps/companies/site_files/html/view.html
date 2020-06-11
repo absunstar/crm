@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col8">
+        <br>
+        <table class="table bold">
+            <tr>
+                <td class="title">##word.companies_name##</td>
+                <td class="indigo center">{{company.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.companies_gov##</td>
+                <td class="indigo center">{{company.gov.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.companies_address##</td>
+                <td class="indigo center">{{company.address}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.companies_phones##</td>
+                <td class="center">
+                    <a class="blue" ng-repeat="p in company.phones" > {{p}}
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.companies_mobiles##</td>
+                <td class="center">
+                    <a class="blue" ng-repeat="m in company.mobiles" > {{m}}
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.companies_hotlines##</td>
+                <td class="center">
+                    <a class="blue" ng-repeat="h in company.hotlines" > {{h}}
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.companies_status##</td>
+                <td class="green center" ng-show="company.active == true"> ##word.companies_active_yes## </td>
+                <td class="blue center" ng-show="company.active == false"> ##word.companies_active_no## </td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.notes##</td>
+                <td class="blue center">{{company.notes}}</td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="col1"></div>
+    <div class="col3 ">
+        <i-image view category="companies" ng-model="company.image_url"></i-image>
+        <i-files view ng-model="company.files"></i-files>
+
+    </div>
+</div>
+<div x-import="companies/action_info.html"></div>

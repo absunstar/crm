@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col8">
+        <br>
+        <table class="table bold">
+            <tr>
+                <td class="title">##word.unemployees_name##</td>
+                <td class="center">{{unemployee.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.unemployees_gov##</td>
+                <td class="center">{{unemployee.gov.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.unemployees_city##</td>
+                <td class="center">{{unemployee.city.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.unemployees_town##</td>
+                <td class="center">{{unemployee.town.name}}</td>
+            </tr>
+
+           
+
+            <tr>
+                <td class="title">##word.unemployees_address##</td>
+                <td class="center">{{unemployee.address}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.unemployees_phones##</td>
+                <td class="center">
+                    <a ng-repeat="p in unemployee.phones" href="tel:{{p}}"> {{p}}
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.unemployees_mobiles##</td>
+                <td class="center">
+                    <a ng-repeat="m in unemployee.mobiles" href="tel:{{p}}"> {{m}}
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.unemployees_email##</td>
+                <td class="center">
+                    <a ng-show="unemployee.email" target="_blank" href="tel:{{unemployee.email}}"> {{unemployee.email}}
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.unemployees_nid##</td>
+                <td class="center">{{unemployee.nid}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.unemployees_notes##</td>
+                <td class="center">{{unemployee.notes}}</td>
+            </tr>
+
+        </table>
+
+
+    </div>
+    <div class="col1"></div>
+    <div class="col3 center">
+
+        <i-image view label="##word.unemployees_logo##" ng-model="unemployee.image_url"> </i-image>
+        <i-files view ng-model="unemployee.files"></i-files>
+
+
+    </div>
+</div>
+<div x-import="unemployees/action_info.html"></div>

@@ -1,0 +1,24 @@
+{
+  "name": "crm",
+  "version": "3.0.0",
+  "description": "CRM For Machine Fixed Company",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js --max_old_space_size=4096",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "crm"
+  ],
+  "author": "Amr Barakat",
+  "license": "ISC",
+  "dependencies": {
+    "isite": "*",
+    "request": "*",
+    "mssql": "^4.1.0",
+    "excel4node": "*"
+  },
+  "devDependencies": {
+    "excel-as-json": "^2.0.2"
+  }
+}

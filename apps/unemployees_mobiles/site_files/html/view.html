@@ -1,0 +1,48 @@
+<div ng-hide="busy" class="row">
+        <div class="col8">
+            <br>
+            <table class="table bold">
+                <tr>
+                    <td class="title">##word.unemployee_mobiles_name##</td>
+                    <td class="center">{{unemployee_mobile.name.name}}</td>
+                </tr>
+
+                <tr>
+                    <td class="title">##word.unemployee_mobiles_number##</td>
+                    <td class="center">{{unemployee_mobile.number.number}}</td>
+                </tr>
+
+                <tr>
+                    <td class="title">##word.unemployee_mobiles_slide_name##</td>
+                    <td class="center">{{unemployee_mobile.number.slide_name}}</td>
+                </tr>
+
+                <tr>
+                    <td class="title">##word.unemployee_mobiles_value##</td>
+                    <td class="center green">{{unemployee_mobile.number.value + '##word.le##'}}</td>
+                </tr>
+
+                <tr>
+                    <td class="title">##word.unemployee_mobiles_discount##</td>
+                    <td class="center green">{{unemployee_mobile.discount + '##word.le##'}}</td>
+                </tr>
+
+                <tr>
+                    <td class="title">##word.unemployee_mobiles_notes##</td>
+                    <td class="center">{{unemployee_mobile.notes}}</td>
+                </tr>
+
+            </table>
+
+        </div>
+        <div class="col1"></div>
+        <div class="col3 center">
+            
+
+            <i-image view label="##word.unemployees_mobiles_logo##" ng-model="unemployee_mobile.image_url"> </i-image>
+            <i-files view ng-model="unemployee_mobile.files"></i-files>
+    
+
+        </div>
+    </div>
+    <div x-import="unemployees_mobiles/action_info.html"></div>

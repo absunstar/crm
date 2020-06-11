@@ -1,0 +1,50 @@
+[
+    {
+        "name": "accounting_manager",
+        "ar": "مدير الحسابات",
+        "en": "Accounting Manager",
+        "permissions": [
+            "amounts_in",
+            "amounts_out",
+            "amounts_name",
+            "safes",
+            "amounts_report",
+            "employee_offers",
+            "employee_discounts",
+            "safes_payments",
+            "employees_report",
+            "employees_advances",
+            "employees_advances_fin",
+            "employees_debt",
+            "employees_insurances",
+            "employees_mobiles",
+            "engineers_report",
+            "in_out_names"
+        ]
+    },
+    {
+        "name": "safe_manager",
+        "ar": "مدير الخزينة",
+        "en": "Accounting Manager",
+        "permissions": [
+            "safes",
+            "amounts_report",
+            "safes_payments",
+            "employees_report",
+            "employees_advances",
+            "employees_advances_fin",
+            "employees_debt",
+            "employees_insurances",
+            "engineers_report"
+        ]
+    },
+    {
+        "name": "customer_eng",
+        "ar": " استقبال العملاء",
+        "en": "Customer Engineer",
+        "permissions": [
+            "customers"
+        ]
+    }
+    
+]

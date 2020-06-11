@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col8">
+        <input type="hidden">
+        <form class="form">
+
+
+            <i-list v="r" ng-search="_search.$unemployees_Name" items="unemployees" ng-model="unemployee_insurance.name" label="##word.unemployees_insurance_name##"></i-list>
+
+
+            <div class="row">
+
+                <i-control ng-model="unemployee_insurance.number" class="col4" type="text" label="##word.unemployees_insurance_number##"></i-control>
+
+
+
+                <i-list class="col4" ng-search="_search.$unemployees_Slide" display="name" display2="value" items="insurances_slides"
+                    ng-model="unemployee_insurance.slide" label="##word.unemployees_insurance_slide##"></i-list>
+
+                <i-control ng-model="unemployee_insurance.discount" class="col4" type="text" label="##word.unemployees_insurance_discount##"></i-control>
+
+            </div>
+
+            <div class="row">
+
+                <i-textarea ng-model="unemployee_insurance.notes" label="##word.unemployees_insurance_notes##"></i-textarea>
+
+            </div>
+        </form>
+    </div>
+    <div class="col1"></div>
+    <div class="col3">
+        <i-image label="##word.unemployees_insurance_logo##" ng-model="unemployee_insurance.image_url"></i-image>
+        <i-files ng-model="unemployee_insurance.files"></i-files>
+
+    </div>
+</div>

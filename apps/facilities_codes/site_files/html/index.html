@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+
+<head x-import="head.html">
+
+</head>
+
+<body>
+
+    <nav x-import="navbar/index.html" class="navbar" data-ng-controller="navbar">
+
+    </nav>
+ 
+
+<div x-import="menu/index.html"></div>
+
+
+    <div id="main-layout" class="container">
+        <div class="row10 center">
+            <div class="col10" ng-controller="facilities_codes">
+                <div x-import="facilities_codes/add_modal.html"></div>
+                <div x-import="facilities_codes/update_modal.html"></div>
+                <div x-import="facilities_codes/delete_modal.html"></div>
+                <div x-import="facilities_codes/view_modal.html"></div>
+                <div class="top-actions">
+                    
+                <i-button  type="add" label="##word.facilities_codes_new##" ng-click="newFacility_Code()"></i-button>
+
+                </div>
+
+                <table class="table bold center loaded" id="t1">
+                    <tr>
+                        <th class="not-print">##word.facilities_codes_logo##</th>
+                        <th>##word.facilities_codes_name##</th>
+                        <th>##word.facilities_codes_owner##</th>
+                        <th>##word.facilities_codes_code##</th>
+                        <th class="not-print" x-permission="owner">##word.actions##</th>
+                    </tr>
+                    <tr ng-repeat="c in list">
+                        <td class="not-print">
+                            <img class="logo" ng-src="{{c.image_url}}"> </td>
+                        <td>{{c.name}}</td>
+                        <td>{{c.owner}}</td>
+                        <td class="blue">{{c.code}}</td>
+                        <td class="not-print" x-permission="owner" class="center">
+                          
+                                <i-button  type="details" label="##word.details##" ng-click="details(c)"></i-button>
+                                <i-button  type="update" label="##word.update##" ng-click="edit(c)"></i-button>
+                                <i-button type="delete" label="##word.delete##" ng-click="remove(c)"></i-button>
+
+                            
+                        </td>
+                    </tr>
+
+                </table>
+                <i-button  type="export" label="##word.export_to_excel##" onclick="export_to_xlsx('t1' , 'facilities_codes.xlsx')"></i-button>
+                <i-button type="print" label="##word.print##" onclick="site.print('#t1')"></i-button>
+            </div>
+        </div>
+    </div>
+
+    <div x-import="scripts.html"></div>
+    
+    <script x-import="facilities_codes/index.js"></script>
+</body>
+
+</html>

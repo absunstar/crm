@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+
+<head x-import="head.html">
+
+</head>
+
+<body>
+
+    <nav x-import="navbar/index.html" class="navbar" data-ng-controller="navbar">
+
+    </nav>
+
+
+    <div x-import="menu/index.html"></div>
+
+
+    <div x-permission="customers" id="main-layout" class="container">
+        <div class="row10 ">
+            <div class="col10" ng-controller="customers">
+                <div x-import="customers/add_modal.html"></div>
+                <div x-import="customers/update_modal.html"></div>
+                <div x-import="customers/delete_modal.html"></div>
+                <div x-import="customers/view_modal.html"></div>
+                <div x-import="customers/search_all_modal.html"></div>
+
+                <div class="top-actions">
+
+                    <i-button type="add" label="##word.customers_new##" ng-click="newCustomer()"></i-button>
+                    <i-button type="search" label="##word.search_all##" onclick="site.showModal('#CustomersSearchModal')"></i-button>
+
+                </div>
+
+                <div ng-show="count > 0" class="row">
+                    ##word.customers_count## {{count}}
+                </div>
+
+                <table class="table bold center hover loaded" id="t1">
+                    <tr>
+                        <th class="not-print">##word.customers_logo##</th>
+                        <th>##word.customers_name##</th>
+                        <th class="w500">##word.customers_address##</th>
+
+                        <th class="not-print">##word.actions##</th>
+                    </tr>
+                    <tr ng-repeat="c in list">
+                        <td class="not-print">
+                            <i-image view class="logo" ng-model="c.image_url"></i-image>
+
+                        <td>{{c.name}}</td>
+                        <td class="w500">
+                            <p>
+                                {{c.gov.name + '-' + c.city.name + '-' + c.town.name + '-' + c.region.name + ' - ' +
+                                c.address}}
+                            </p>
+                            <p>
+                                <b class="blue" ng-repeat="p in c.phones"> {{p}} - </b>
+                                <b class="blue" ng-repeat="m in c.mobiles"> {{m}} - </b>
+
+                            </p>
+                        </td>
+
+
+
+                        <td class="not-print" class="center">
+
+                            <i-button type="details" label="##word.details##" ng-click="details(c)"></i-button>
+                            <i-button type="update" label="##word.update##" ng-click="edit(c)"></i-button>
+                            <i-button type="delete" label="##word.delete##" ng-click="remove(c)"></i-button>
+                        </td>
+                    </tr>
+
+                </table>
+                <i-button type="export" label="##word.export_to_excel##" onclick="export_to_xlsx('t1' , 'customers.xlsx')"></i-button>
+                <i-button type="print" label="##word.print##" onclick="site.print('#t1')"></i-button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div x-import="scripts.html"></div>
+
+    <script x-permission="customers" x-import="customers/index.js"></script>
+
+    <div ng-controller="test"></div>
+    <script>
+        app.controller('test', ($rootScope) => {
+            $rootScope.$emit("loadAllCustomers", {});
+        })
+    </script>
+
+</body>
+
+</html>

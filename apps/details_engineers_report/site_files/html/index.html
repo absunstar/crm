@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp" class="bg-white">
+
+<head x-import="head.html">
+    <style>
+        :root {
+        --legend-color: #000;
+        --legend-text-shadow: none;
+    }
+</style>
+</head>
+
+<body class="##session.lang## bg-white">
+
+    <nav x-import="navbar/index.html" class="navbar" data-ng-controller="navbar">
+
+    </nav>
+
+
+
+    <div id="main-layout" class="container">
+        <div class="row center">
+            <br>
+            <h1 class="center bold black"> التقرير التفصيلى للفنيين</h1>
+            <br>
+            <div class="row" ng-controller="month_engineers_report">
+                <div x-import="month_engineers_report/search_modal.html"></div>
+                <div class="top-actions">
+
+                    <i-button type="search" id="searchAllBtn" label="##word.search_all##" ng-click="showSearch()"></i-button>
+                    <i-button type="search" id="reloadBtn" label="بحث جديد" ng-click="reload()"></i-button>
+
+
+                </div>
+
+
+
+                <div class="row" id="t1">
+
+
+                    <div x-import="tickets/crm_logo.html"></div>
+                    <div class="row">
+                        <table class="table">
+                            <tr>
+                                <td class="bold">##word.engineers_report_Engineer_Name##</td>
+
+                                <td>
+                                    <p class="center bold green">{{employee.name}}</p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="bold">##word.engineers_report_date##</td>
+
+                                <td>
+                                    <p> ##word.employees_report_date_from## <span class="bold blue">
+                                            {{employee.dateFrom
+                                            | date : 'dd - MM - yyyy'}} </span> ##word.employees_report_date_to##<span
+                                            class="bold blue"> {{employee.dateTo | date : 'dd - MM - yyyy'}} </span>
+                                    </p>
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col padding">
+                            <h2 class="center bold"> ##word.engineers_report_result##<p> ( {{ticketList.length}} ) </p>
+                            </h2>
+                            <table class="table bold loaded">
+                                <tr>
+                                    <th class="pointer" ng-click="sortBy('code')">
+                                        ##word.engineers_report_ticket_code##</th>
+                                    <th class="pointer" ng-click="sortBy('date')">
+                                        ##word.engineers_report_ticket_date##</th>
+
+
+                                    <th class="pointer" ng-click="sortBy('customer.name')">
+                                        ##word.engineers_report_customer_name##</th>
+                                    <th class="pointer" ng-click="sortBy('customer.mobiles')">
+                                        تليفونات العميل</th>
+                                    <th class="pointer" ng-click="sortBy('device_info.company.name')">
+                                        ##word.engineers_report_company_name##</th>
+                                    <th class="pointer" ng-click="sortBy('device_info.category.name')">
+                                        ##word.engineers_report_category_name##</th>
+                                    <th class="pointer" ng-click="sortBy('customer.region.name')">
+                                        ##word.engineers_report_region_name##</th>
+                                    <th class="pointer" ng-click="sortBy('inputs.receet_number')">
+                                        ##word.engineers_report_receet_number##</th>
+                                    <th class="pointer" ng-click="sortBy('inputs.value')">
+                                        ##word.engineers_report_Inputs_value##</th>
+                                    <th class="pointer" ng-click="sortBy('status.ar')">
+                                        ##word.engineers_report_status##</th>
+                                    <th class="pointer" ng-click="sortBy('status')">
+                                        ##word.engineers_report_gurantee_status##</th>
+                                </tr>
+                                <tr ng-repeat="t in ticketList | orderBy:propertyName:reverse">
+                                    <td>
+                                        <p class="center blue"> {{t.code}} </p>
+                                    </td>
+                                    <td>
+                                        <p class="center"> {{t.date | date : 'dd - MM - yyyy'}} </p>
+                                    </td>
+
+
+                                    <td>
+                                        <p class="center"> {{t.customer.name}} </p>
+                                    </td>
+                                    <td>
+                                        <p>
+                                            <b class="blue" ng-repeat="p in t.customer.mobiles"> {{p}} - </b>
+                                            <b class="blue" ng-repeat="m in t.customer.phones"> {{m}} - </b>
+
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p class="center"> {{t.device_info.company.name}} </p>
+                                    </td>
+                                    <td>
+                                        <p class="center"> {{t.device_info.category.name}} </p>
+                                    </td>
+                                    <td>
+                                        <p class="center"> {{t.customer.region.name}} </p>
+                                    </td>
+                                    <td>
+                                        <p ng-repeat="p in t.inputs">
+                                            {{p.receet_number}}
+                                        </p>
+                                    </td>
+                                    <td>
+
+                                        <p class="center bold green"> {{t.$total}} </p>
+                                    </td>
+
+                                    <td>
+                                        <p class="center"> {{t.close_eng.status.ar}} </p>
+                                    </td>
+                                    <td>
+                                        <p class="center" ng-show="t.close_eng.device_info.status==1"> داخل الضمان </p>
+                                        <p class="center" ng-show="t.close_eng.device_info.status==0"> خارج الضمان </p>
+                                    </td>
+
+                                </tr>
+
+                            </table>
+                            <i-button type="export" label="##word.export_to_excel##" onclick="export_to_xlsx('t1' , 'Period_Engineer_Report.xlsx')"></i-button>
+                            <i-button type="print" label="##word.print##" onclick="site.print('#t1')"></i-button>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div x-import="scripts.html"></div>
+
+    <script x-import="month_engineers_report/index.js"></script>
+
+
+</body>
+
+</html>

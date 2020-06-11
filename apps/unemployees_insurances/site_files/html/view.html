@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col8">
+        <br>
+        <table class="table bold">
+            <tr>
+                <td class="title">##word.unemployees_insurance_name##</td>
+                <td class="center">{{unemployee_insurance.name.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.unemployees_insurance_number##</td>
+                <td class="center">{{unemployee_insurance.number}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.unemployees_insurance_slide##</td>
+                <td class="center">{{unemployee_insurance.slide.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.unemployees_insurance_discount##</td>
+                <td class="center">{{unemployee_insurance.discount}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.unemployees_insurance_notes##</td>
+                <td class="center">{{unemployee_insurance.notes}}</td>
+            </tr>
+
+        </table>
+
+
+    </div>
+    <div class="col1"></div>
+    <div class="col3 center">
+
+
+        <i-image view label="##word.unemployees_insurance_logo##" ng-model="unemployee_insurance.image_url"></i-image>
+        <i-files view ng-model="unemployee_insurance.files"></i-files>
+    </div>
+</div>
+<div x-import="unemployees_insurances/action_info.html"></div>

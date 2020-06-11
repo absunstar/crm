@@ -1,0 +1,29 @@
+<div ng-hide="busy" class="row">
+    <div class="col7">
+        <br>
+        <table class="table bold">
+            <tr>
+                <td class="title">##word.cities_gov##</td>
+                <td class="center">{{city.gov.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.cities_city##</td>
+                <td class="indigo center">{{city.name}}</td>
+            </tr>
+            <tr>
+                <td class="title">##word.notes##</td>
+                <td class="center blue">{{city.notes}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col2"></div>
+
+    <div class="col3 center">
+
+        <i-image view category="cities" ng-model="city.image_url"></i-image>
+        <i-files view ng-model="city.files"></i-files>
+
+    </div>
+</div>
+<div x-import="cities/action_info.html"></div>

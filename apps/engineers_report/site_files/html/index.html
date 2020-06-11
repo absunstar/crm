@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp" class="bg-white">
+
+<head x-import="head.html">
+    <style>
+        :root {
+        --legend-color: #000;
+        --legend-text-shadow: none;
+    }
+</style>
+</head>
+
+<body class="##session.lang## bg-white">
+
+    <nav x-import="navbar/index.html" class="navbar" data-ng-controller="navbar">
+
+    </nav>
+
+
+    <div id="main-layout" class="container">
+        <div class="row center">
+            <br>
+            <h1 class="center bold black"> تقرير مرتبات الفنيين </h1>
+            <br>
+            <div class="row" ng-controller="engineers_report">
+                <div x-import="engineers_report/search_modal.html"></div>
+                <div x-import="engineers_report/done.html"></div>
+                <div class="top-actions">
+
+                    <i-button type="search" label="##word.search_all##" ng-click="showSearch()"></i-button>
+                    <i-button ng-hide="engineer_report.done" type="add" label="##word.salary_approved##" ng-click="showApproved()">></i-button>
+
+                </div>
+
+
+                <div class="row" >
+
+                    <div id="engineerReport" class="row loaded">
+                        <div class="row ">
+                            <div class="row" id="t1">
+                                <fieldset class="dashed">
+                                    <legend>
+                                            ##word.engineers_report_accounting_system##
+                                    </legend>
+                                    <div x-import="tickets/crm_logo.html"></div>
+                                    <div class="row">
+                                            <fieldset>
+                                                <legend>
+                                                        ##word.engineers_report_Engineer_Details##
+                                                </legend>
+                                                <table class="table hover">
+                                                        <tr>
+                                                            <td class="bold">
+                    
+                                                                ##word.engineers_report_Engineer_Name##
+                                                            </td>
+                                                            <td>
+                                                                <p class="bold"> {{engineer_report.engineer.name}} </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="bold">
+                    
+                                                                ##word.engineers_report_Division##
+                                                            </td>
+                                                            <td>
+                                                                <p class="bold"> {{engineer_report.engineer.department.name}} </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="bold">
+                    
+                                                                ##word.engineers_report_job##
+                                                            </td>
+                                                            <td>
+                                                                <p> {{engineer_report.engineer.job.name}} </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="bold">
+                    
+                                                                ##word.engineers_report_salary##
+                                                            </td>
+                                                            <td>
+                                                                <p class="center bold green"> {{engineer_report.engineer.degree.salary}}
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="bold">
+                    
+                                                                ##word.engineers_report_salary_differance##
+                                                            </td>
+                                                            <td>
+                                                                <p class="center bold blue"> {{engineer_report.engineer.extra_salary}} </p>
+                                                            </td>
+                                                        </tr>
+                    
+                                                        <tr>
+                                                            <td class="bold">
+                    
+                                                                ##word.engineers_report_ticket_differance##
+                                                            </td>
+                                                            <td>
+                                                                <p class="center bold brown"> {{engineer_report.engineer.extra_ticket ||
+                                                                    0}} </p>
+                                                            </td>
+                                                        </tr>
+                    
+                                                     
+                    
+                                                    </table>
+                                            </fieldset>
+                                           
+                                        </div>
+                                    <table class="table hover" >
+                                            <tr>
+                                                <td class="bold"> ##word.engineers_report_accounting_period##</td>
+                                                <td>
+                                                    <p> ##word.engineers_report_date_from## <span class="bold blue">
+                                                            {{engineer_report.dateFrom | date : 'dd - MM - yyyy'}}
+                                                        </span> ##word.engineers_report_date_to##<span class="bold blue">
+                                                            {{engineer_report.dateTo | date : 'dd - MM - yyyy'}} </span> </p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bold"> ##word.engineers_report_total_tickets## </td>
+                                                <td>
+                                                    <p class="bold blue center">{{engineer_report.total_tickets}} </p>
+                                                </td>
+                                            </tr>
+        
+                                            <tr>
+                                                <td class="bold">##word.engineers_report_total_tickets_amount##</td>
+                                                <td>
+                                                    <p class="bold blue center">{{engineer_report.total_tickets_amount}} </p>
+                                                </td>
+                                            </tr>
+        
+                                            <tr>
+                                                <td class="bold"> ##word.engineers_report_ticket_slide##</td>
+                                                <td>
+                                                    <p class="bold blue">{{engineer_report.ticketSlide.name}} (
+                                                        {{engineer_report.ticketSlide.value}} جنيه للبلاغ ) </p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bold"> ##word.engineers_report_applied_ticket_silde##</td>
+                                                <td>
+                                                    <p class="bold blue">{{engineer_report.ticketSlide.name}} (
+                                                        {{engineer_report.ticketSlide.value2}} جنيه للبلاغ ) </p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bold"> حساب البلاغات </td>
+                                                <td>
+                                                    <p class="bold center"> {{engineer_report.total_tickets_cost}} </p>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                    <td class="bold">
+            
+                                                        ##word.engineers_report_total_offer##
+                                                    </td>
+                                                    <td>
+                                                        <p class="center bold green"> {{engineer_report.total_offers}} </p>
+                                                    </td>
+                                                </tr>
+            
+                                                <tr>
+                                                    <td class="bold">
+            
+                                                        ##word.engineers_report_total_discount##
+                                                    </td>
+                                                    <td>
+                                                        <p class="center bold red"> {{engineer_report.total_discounts}} </p>
+                                                    </td>
+                                                </tr>
+            
+                                                <tr>
+                                                    <td class="bold">
+            
+                                                        ##word.engineers_report_total_debt##
+                                                    </td>
+                                                    <td>
+                                                        <p class="center bold red"> {{engineer_report.total_debts}} </p>
+                                                    </td>
+               </tr>
+                                                <tr>
+                                                    <td class="bold">
+            
+                                                        ##word.employees_report_total_insurance##
+                                                    </td>
+                                                    <td>
+                                                        <p class="center bold red"> {{engineer_report.total_insurance || 0}} </p>
+                                                    </td>
+                                                </tr>
+            
+                                                <tr>
+                                                    <td class="bold">
+            
+                                                        ##word.employees_report_total_phone_discount##
+                                                    </td>
+                                                    <td>
+                                                        <p class="center bold red"> {{engineer_report.total_mobile_discount || 0}}
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bold">
+            
+                                                        ##word.employees_report_total_advances##
+                                                    </td>
+                                                    <td>
+                                                        <p class="center bold blue"> {{engineer_report.total_advances || 0}} </p>
+                                                    </td>
+                                                </tr>
+            
+                                            <tr>
+                                                <td class="bold"> ##word.engineers_report_salary_cal## </td>
+                                                <td>
+                                                    <p ng-show="engineer_report.ticketSlide.salary_calculate == true" class="bold green center">
+                                                        نعم </p>
+                                                    <p ng-show="engineer_report.ticketSlide.salary_calculate == false" class="bold red center">
+                                                        لا </p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bold"> ##word.engineers_report_total_salary##</td>
+                                                <td>
+                                                    <p class="bold green"> {{engineer_report.total_salary}} </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                </fieldset>
+                               
+
+                                <i-button x-permission="test" class="not-print"  type="export" label="##word.export_to_excel##" onclick="export_to_xlsx('t1' , 'engineers_report.xlsx')"></i-button>
+                                <i-button x-permission="test" class="not-print" type="print" label="##word.print##" onclick="site.print('#t1')"></i-button>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col6 padding">
+                            <fieldset>
+                                <legend>
+                                        ##word.engineers_report_offers##
+
+                                </legend>
+                                <table class="table loaded">
+                                        <tr>
+                                            <th class="pointer" ng-click="sortBy('date')"> ##word.engineers_report_date##</th>
+                                            <th class="pointer" ng-click="sortBy('value')"> ##word.engineers_report_value##</th>
+                                        </tr>
+                                        <tr ng-repeat="e in engineer_report.engineerOfferList | orderBy:propertyName:reverse">
+        
+                                            <td>
+                                                <p class="center"> {{e.date | date : 'dd - MM - yyyy'}} </p>
+                                            </td>
+        
+                                            <td>
+                                                <p class="center bold green"> {{e.value}} </p>
+                                            </td>
+                                        </tr>
+        
+                                    </table>
+                            </fieldset>
+                           
+                           
+                        </div>
+
+
+                        <div class="col6 padding">
+                            <fieldset>
+                                <legend>
+                                        ##word.engineers_report_discount##
+                                </legend>
+                                <table class="table loaded">
+                                        <tr>
+                                            <th class="pointer" ng-click="sortBy('date')"> ##word.engineers_report_date##</th>
+                                            <th class="pointer" ng-click="sortBy('value')"> ##word.engineers_report_value##</th>
+                                        </tr>
+                                        <tr ng-repeat="e in engineer_report.engineerDiscountList | orderBy:propertyName:reverse">
+        
+                                            <td>
+                                                <p class="center"> {{e.date | date : 'dd - MM - yyyy'}} </p>
+                                            </td>
+        
+                                            <td>
+                                                <p class="center bold red"> {{e.value}} </p>
+                                            </td>
+                                        </tr>
+        
+                                    </table>
+                            </fieldset>
+                          
+                        
+                        </div>
+                    </div>
+
+                   
+                    <br><br>
+                    <div class="row">
+                        <div class="col6 padding">
+                            <fieldset>
+                                <legend>
+                                        ##word.engineers_report_applied_tickets##
+                                </legend>
+                                <table class="table loaded">
+                                        <tr>
+                                            <th class="pointer" ng-click="sortBy('code')">
+                                                ##word.engineers_report_ticket_code##</th>
+                                            <th class="pointer" ng-click="sortBy('date')">
+                                                ##word.engineers_report_ticket_date##</th>
+                                            <th class="pointer" ng-click="sortBy('date')">
+                                                ##word.engineers_report_close1_date##</th>
+                                            <th class="pointer" ng-click="sortBy('status.name')">
+                                                ##word.engineers_report_ticket_state##</th>
+                                        </tr>
+                                        <tr ng-repeat="t in engineer_report.ticketList | orderBy:propertyName:reverse">
+                                            <td>
+                                                <p class="center bold blue"> {{t.code}} </p>
+                                            </td>
+                                            <td>
+                                                <p class="center"> {{t.date | date : 'dd - MM - yyyy'}} </p>
+                                            </td>
+                                            <td>
+                                                <p class="center"> {{t.close1_user_info.date | date : 'dd - MM - yyyy'}} </p>
+                                            </td>
+                                            <td>
+                                                <p class="center"> {{t.status.ar}} </p>
+                                            </td>
+                                        </tr>
+        
+                                    </table>
+                            </fieldset>
+                          
+                           
+                        </div>
+
+                        <div class="col6 padding">
+                            <fieldset>
+                                <legend>
+                                        ##word.engineers_report_distributed_tickets##
+                                </legend>
+                                <table class="table loaded">
+                                        <tr>
+                                            <th class="pointer" ng-click="sortBy('code')">
+                                                ##word.engineers_report_ticket_code##</th>
+                                            <th class="pointer" ng-click="sortBy('date')">
+                                                ##word.engineers_report_ticket_date##</th>
+                                            <th class="pointer" ng-click="sortBy('date')">
+                                                ##word.engineers_report_assign_date##</th>
+                                            <th class="pointer" ng-click="sortBy('status.name')">
+                                                ##word.engineers_report_ticket_state##</th>
+                                        </tr>
+                                        <tr ng-repeat="t in engineer_report.assginTicketList | orderBy:propertyName:reverse">
+                                            <td>
+                                                <p class="center bold blue"> {{t.code}} </p>
+                                            </td>
+                                            <td>
+                                                <p class="center"> {{t.date | date : 'dd - MM - yyyy'}} </p>
+                                            </td>
+                                            <td>
+                                                <p class="center"> {{t.assign_user_info.date | date : 'dd - MM - yyyy'}} </p>
+                                            </td>
+                                            <td>
+                                                <p class="center"> {{t.status.ar}} </p>
+                                            </td>
+                                        </tr>
+        
+                                    </table>
+                            </fieldset>
+                           
+                            
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div x-import="scripts.html"></div>
+
+    <script x-import="engineers_report/index.js"></script>
+
+
+</body>
+
+</html>

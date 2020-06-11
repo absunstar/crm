@@ -1,0 +1,33 @@
+<div class="row" fixed>
+    <i-control class="col4" label="##word.ticket_device_serial##" ng-model="ticket.device_info.serial"></i-control>
+    <i-control class="col3" label="##word.ticket_device_product_date##" ng-model="ticket.device_info.product_date"></i-control>
+
+
+
+    <div class="col3">
+        <div class="control">
+            <label> ##word.ticket_device_status##</label>
+            <div class="row">
+                <i-radio class="col5" label="##word.ticket_device_status0##" ng-model="ticket.device_info.status" ng-value="0"></i-radio>
+                <i-radio class="col5" label="##word.ticket_device_status1##" ng-model="ticket.device_info.status" ng-value="1"></i-radio>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<div class="row">
+
+    <div class="row">
+        <i-textarea label="##word.ticket_device_fixes##" ng-model="ticket.fixes"></i-textarea>
+    </div>
+    <i-list class="col6" label="##word.ticket_status##"ng-search="_search.$ticketStatusSearch"  ng-model="ticket.status" items="tickets_status" display="ar">
+    </i-list>
+
+</div>
+
+<br>
+
+<div class="col6" x-import="tickets/files.html"></div>

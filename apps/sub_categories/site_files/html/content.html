@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col4">
+            <input type="hidden">
+        <form class="form">
+            <div class="row">
+                <i-list ng-search="_search.$category_search" v="r" items="categories" ng-model="sub_category.category" label="##word.sub_categories_category##"></i-list>
+                <i-control v="r" ng-model="sub_category.name" type="text" label="##word.sub_categories_sub_category##"></i-control>
+                <i-textarea ng-model="sub_category.notes" label="##word.notes##"></i-textarea>
+            </div>
+        </form>
+    </div>
+    <div class="col5"></div>
+
+    <div class="col3">
+        <i-image category="sub_category" ng-model="sub_category.image_url"></i-image>
+
+        <i-files ng-model="sub_category.files"></i-files>
+
+    </div>
+</div>

@@ -1,0 +1,28 @@
+
+<div ng-hide="busy" class="row">
+    <div class="col7">
+        <br>
+        <table class="table bold">
+
+            <tr>
+                <td class="title">##word.regions_name##</td>
+                <td class="center indigo">{{region.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.notes##</td>
+                <td class="center blue">{{region.notes}}</td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="col2"></div>
+
+    <div class="col3 center">
+
+        <i-image view category="regions" ng-model="region.image_url"></i-image>
+        <i-files view ng-model="region.files"></i-files>
+
+    </div>
+</div>
+<div x-import="regions/action_info.html"></div>

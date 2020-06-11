@@ -1,0 +1,22 @@
+<div id="viewInsurance_SlideModal" class="modal">
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>
+                ##word.insurances_slides_details## <i class="fa fa-file"></i>
+            </h2>
+        </div>
+        <div class="modal-body">
+
+            <div x-import="insurances_slides/view.html"></div>
+
+        </div>
+        <h2>{{error}}</h2>
+        <div class="modal-footer center">
+
+            <i-button type="close" label="##word.close##" onclick="site.hideModal('#viewInsurance_SlideModal')"></i-button>
+
+        </div>
+    </div>
+</div>

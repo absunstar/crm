@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+
+<head x-import="head.html">
+    <link rel="stylesheet" href="/x-css/theme_dark.css">
+</head>
+
+<body>
+
+    <nav x-import="navbar/index.html" class="navbar" data-ng-controller="navbar">
+
+    </nav>
+
+
+    <div id="main-layout" class="container" data-ng-controller="import">
+        <fieldset>
+            <legend> Actions </legend>
+            <i-button ng-hide="busy" type="bg-red white" label="reset" ng-click="resetResult()"></i-button>
+            <i-button ng-hide="busy" label="Import Core" ng-click="importCore()"></i-button>
+            <i-button ng-hide="busy" label="Import Locations" ng-click="importLocations()"></i-button>
+            <i-button ng-hide="busy" label="Import Devices" ng-click="importDevices()"></i-button>
+            <i-button ng-hide="busy" label="Import Employees" ng-click="importEmployees()"></i-button>
+
+            <fieldset>
+                <legend> Customers </legend>
+                <i-button type="bg-red white" ng-hide="busy" label="Drop All Customers" ng-click="dropAllCustomers()"></i-button>
+                <i-button ng-hide="busy" label="Import Customers" ng-click="importCustomers()"></i-button>
+
+            </fieldset>
+
+            <fieldset>
+                <legend> Tickets </legend>
+
+                <i-button type="bg-red white" ng-hide="busy" label="Remove All Tickets" ng-click="removeAllTickets()"></i-button>
+                <i-button type="bg-green white" ng-hide="busy" label="Count All Tickets" ng-click="countAllTickets()"></i-button>
+                <br>    
+                <i-button  type="bg-red white" ng-hide="busy" label="Drop All Tickets" ng-click="dropAllTickets()"></i-button>
+                <div class="row">
+                    <i-control label="From ID" ng-model="ticket.from_id"></i-control>
+                    <i-control label="To ID" ng-model="ticket.to_id"></i-control>
+                    <i-control label="Count" ng-model="ticket.count"></i-control>
+                    <i-button ng-hide="busy" label="Import Tickets" ng-click="importTickets()"></i-button>
+                </div>
+            </fieldset>
+
+        </fieldset>
+
+        <fieldset>
+            <legend> Result </legend>
+            <table class="table">
+                <tr ng-show="result.error">
+                    <td> Error </td>
+                    <td> {{result.error}} </td>
+                </tr>
+                <tr ng-show="result.info">
+                    <td> Info </td>
+                    <td> {{result.info}} </td>
+                </tr>
+                <tr ng-show="result.time">
+                    <td> Time </td>
+                    <td> {{result.time | date : 'yyyy - mm - dd hh:mm:ss'}} </td>
+                </tr>
+                <tr ng-show="result.import_core">
+                    <td> Import Core </td>
+                    <td> {{result.import_core}} </td>
+                </tr>
+                <tr ng-show="result.regions_count">
+                    <td> SQL Regions Count </td>
+                    <td> {{result.regions_count}} </td>
+                </tr>
+                <tr ng-show="result.region_id">
+                    <td> Last Region ID </td>
+                    <td> {{result.region_id}} </td>
+                </tr>
+                <tr ng-show="result.cities_count">
+                    <td> SQL Cities Count </td>
+                    <td> {{result.cities_count}} </td>
+                </tr>
+                <tr ng-show="result.city_id">
+                    <td> Last City ID </td>
+                    <td> {{result.city_id}} </td>
+                </tr>
+                <tr ng-show="result.towns_count">
+                    <td> SQL Towns Count </td>
+                    <td> {{result.towns_count}} </td>
+                </tr>
+                <tr ng-show="result.town_id">
+                    <td> Last Town ID </td>
+                    <td> {{result.town_id}} </td>
+                </tr>
+
+                <tr ng-show="result.companies_count">
+                    <td> SQL Companies Count </td>
+                    <td> {{result.companies_count}} </td>
+                </tr>
+                <tr ng-show="result.company_id">
+                    <td> Last Company ID </td>
+                    <td> {{result.company_id}} </td>
+                </tr>
+
+                <tr ng-show="result.categories_count">
+                    <td> SQL Companies Count </td>
+                    <td> {{result.categories_count}} </td>
+                </tr>
+                <tr ng-show="result.category_id">
+                    <td> Last Category_id ID </td>
+                    <td> {{result.category_id}} </td>
+                </tr>
+
+
+
+                <tr ng-show="result.sub_categories_count">
+                    <td> SQL Sub Categories Count </td>
+                    <td> {{result.sub_categories_count}} </td>
+                </tr>
+                <tr ng-show="result.sub_category_id">
+                    <td> Last Sub Category ID </td>
+                    <td> {{result.sub_category_id}} </td>
+                </tr>
+
+
+                <tr ng-show="result.companies_sub_categories_count">
+                    <td> SQL Companies Sub Categories Count </td>
+                    <td> {{result.companies_sub_categories_count}} </td>
+                </tr>
+                <tr ng-show="result.company_sub_category_id">
+                    <td> Last Company Sub Category ID </td>
+                    <td> {{result.company_sub_category_id}} </td>
+                </tr>
+
+
+                <tr ng-show="result.devices_names_count">
+                    <td> SQL Devices Names Count </td>
+                    <td> {{result.devices_names_count}} </td>
+                </tr>
+                <tr ng-show="result.device_name_id">
+                    <td> Last Device Name ID </td>
+                    <td> {{result.device_name_id}} </td>
+                </tr>
+
+
+                <tr ng-show="result.models_count">
+                    <td> SQL Models Count </td>
+                    <td> {{result.models_count}} </td>
+                </tr>
+                <tr ng-show="result.model_id">
+                    <td> Last Model ID </td>
+                    <td> {{result.model_id}} </td>
+                </tr>
+
+                <tr ng-show="result.damages_count">
+                    <td> SQL Damages Count </td>
+                    <td> {{result.damages_count}} </td>
+                </tr>
+                <tr ng-show="result.damage_id">
+                    <td> Last Damage ID </td>
+                    <td> {{result.damage_id}} </td>
+                </tr>
+
+
+
+                <tr ng-show="result.employees_count">
+                    <td> SQL Employees Count </td>
+                    <td> {{result.employees_count}} </td>
+                </tr>
+                <tr ng-show="result.employee_id">
+                    <td> Last Employee ID </td>
+                    <td> {{result.employee_id}} </td>
+                </tr>
+
+                <tr ng-show="result.customers_count">
+                    <td> SQL Customers Count </td>
+                    <td> {{result.customers_count}} </td>
+                </tr>
+                <tr ng-show="result.customer_id">
+                    <td> Last Customer ID </td>
+                    <td> {{result.customer_id}} </td>
+                </tr>
+
+                <tr ng-show="result.tickets_count">
+                    <td> SQL Tickets Count </td>
+                    <td> {{result.tickets_count}} </td>
+                </tr>
+                <tr ng-show="result.ticket_id">
+                    <td> Last Ticket ID </td>
+                    <td> {{result.ticket_id}} </td>
+                </tr>
+
+            </table>
+
+        </fieldset>
+
+    </div>
+
+    <div x-import="scripts.html"></div>
+
+    <script x-import="import/index.js"></script>
+</body>
+
+</html>

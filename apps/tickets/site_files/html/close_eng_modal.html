@@ -1,0 +1,35 @@
+
+<div id="closeEngModal" fixed class="modal" fixed>
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>
+                ##word.ticket_close_eng##
+                <i ng-show="busy" class="fa fa-spinner white fa-pulse fa-fw"></i>
+            </h2>
+        </div>
+        <div class="modal-body">
+
+            <form class="form">
+            <input class="hidden"  type="text" />
+             <div x-import="tickets/close_eng.html"></div>
+                <br>
+             
+                <div class="row center">
+                        
+                    <i-checkbox ng-model="ticket.close_eng_done" label="##word.ticket_close_eng_approve##" ></i-checkbox>
+                </div>
+
+            </form>
+
+        </div>
+        <h2 class="center bold">{{error}}</h2>
+        
+        <div class="modal-footer center">
+                <i-button type="update" ng-click="updateCloseEng()" ng-hide="busy" label="##word.save##"></i-button>
+                <i-button type="close" onclick="site.hideModal('#closeEngModal')" label="##word.close##"></i-button>
+        
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div id="viewStore_InModal" class="modal">
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>
+                ##word.stores_in_details## <i class="fa fa-file"></i>
+            </h2>
+        </div>
+        <div class="modal-body">
+
+            <div x-import="stores_in/view.html"></div>
+
+
+        </div>
+        <h2 class="center">{{error}}</h2>
+        <div class="modal-footer center">
+            <i-button type="close" label="##word.close##" onclick="site.hideModal('#viewStore_InModal')"></i-button>
+            <i-button type="print" label="##word.print##" onclick="site.print('#v1')"></i-button>
+        </div>
+    </div>
+</div>

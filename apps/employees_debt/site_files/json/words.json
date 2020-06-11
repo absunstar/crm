@@ -1,0 +1,51 @@
+[
+    { "name": "employees_debt","en": "Amount In", "ar": "الوارد"},
+    { "name": "employees_debt_add","en": "Add Indebtednes", "ar": "اضافة مديونية"},
+    { "name": "employees_debt_new","en": "New Indebtednes", "ar": "تسجيل مديونية جديدة"},
+    { "name": "employees_debt_details","en": "Indebtednes  Details", "ar": "تفاصيل المديونية"},
+    { "name": "employees_debt_edit","en": "Edit Indebtednes", "ar": "تعديل مديونية"},
+    { "name": "employees_debt_delete","en": "Delete Indebtednes", "ar": "حذف المديونية"},
+    { "name": "employees_debt_logo","en": "Logo", "ar": "الشعار"},
+    { "name": "employees_debt_value","en": "Value", "ar": "قيمة المديونية"},
+    { "name": "employees_debt_date","en": "Date", "ar": "التاريخ"},
+    { "name": "employees_debt_from","en": "From", "ar": "من"},
+    { "name": "employees_debt_to","en": "To", "ar": "الي"},
+    { "name": "employees_debt_source","en": "Source", "ar": "نوع الوارد"},
+    { "name": "employees_debt_description","en": "Description", "ar": "البيان "},
+    { "name": "employees_debt_safe","en": "Safe", "ar": "الخزينة"},
+    { "name": "employees_debt_number","en": "Enter Number", "ar": "رقم الايصال"},
+    { "name": "employees_debt_ticket","en": "Ticket Number", "ar": "رقم البلاغ"},
+    { "name": "employees_debt_mode","en": "Mode Done", "ar": "حالة التسليم"},
+    { "name": "employees_debt_description1","en": "Details", "ar": "التفاصيل "},
+
+    { "name": "employees_debt_done","en": "Done", "ar": "تم التسليم"},
+    { "name": "employees_debt_notdone","en": "Not Done", "ar": "لم يتم التسليم"},
+
+
+    { "name": "le","en": "Pound", "ar": "جنيه"},
+
+    { "name": "done","en": "Done", "ar": "تم التسليم"},
+    { "name": "not_done","en": "Not Done", "ar": "ملاحظات "},
+
+    
+    { "name": "employees_debt_Company_name","en": "Company Name", "ar": "اسم الشركة "},
+    
+    { "name": "employees_debt_empty_search","en": "Empty Fields", "ar": "تفريغ الحقول "},
+
+    { "name": "employees_debt_search","en": "Search", "ar": "البحث "},
+
+    { "name": "employees_debt_companies","en": "From Company", "ar": "وارد من شركة"},
+
+    { "name": "employees_debt_date_from","en": "Date From", "ar": "من تاريخ"},
+
+    { "name": "employees_debt_date_to","en": "Date To ", "ar": "الى تاريخ"},
+
+    { "name": "employees_debt_employeess","en": "From employees", "ar": " اسم الموظف"},
+
+
+    
+    { "name": "employees_debt_img","en": "Image", "ar": "الشعار"},
+
+    { "name": "employees_debt_customers","en": "Customer Name", "ar": "اسم العميل"}
+   
+]

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+
+<head x-import="head.html">
+
+</head>
+
+<body>
+
+    <nav x-import="navbar/index.html" class="navbar" data-ng-controller="navbar"></nav>
+
+    <div x-import="menu/index.html"></div>
+
+    <div id="main-layout" x-permission="safes" class="container">
+        <div class="row center">
+            <div class="row" ng-controller="safes">
+                <div x-import="safes/add_modal.html"></div>
+                <div x-import="safes/update_modal.html"></div>
+                <div x-import="safes/delete_modal.html"></div>
+                <div x-import="safes/view_modal.html"></div>
+                <div x-import="safes/search_all_modal.html"></div>
+                <div class="row">
+                    <h1 class="white bold">##word.safes##</h1>
+                </div>
+                <div class="top-actions">
+
+                    <i-button type="add" label="##word.safes_new##" ng-click="newSafe()"></i-button>
+                    <i-button type="search" label="##word.search_all##" onclick="site.showModal('#SafesSearchModal')"></i-button>
+
+
+
+                </div>
+
+                <table class="table  loaded" id="t1">
+                    <tr>
+                        <th class="not-print center">##word.safes_logo##</th>
+                        <th class="center bold">##word.safes_name##</th>
+                        <th class="center bold">##word.safes_employee##</th>
+
+                        <th class="center bold">##word.safes_balance##</th>
+                        <th class="center not-print bold">##word.actions##</th>
+                    </tr>
+                    <tr ng-repeat="c in list">
+                        <td class="not-print">
+                            <i-image view class="logo" ng-model="c.image_url"></i-image>
+
+                        </td>
+                        <td class="center bold blue">{{c.name}}</td>
+
+                        <td class="center bold blue">{{c.employee.name}}</td>
+
+                        <td class="green bold center">{{c.balance + '##word.le##'}}</td>
+                        <td class="center not-print">
+                            <i-button type="details" label="##word.details##" ng-click="details(c)"></i-button>
+                            <i-button x-permission="test" type="update" label="##word.update##" ng-click="edit(c)"></i-button>
+                            <i-button x-permission="test" type="delete" label="##word.delete##" ng-click="remove(c)"></i-button>
+
+                        </td>
+
+                    </tr>
+
+                </table>
+                <i-button type="export" label="##word.export_to_excel##" onclick="export_to_xlsx('t1' , 'safes.xlsx')"></i-button>
+                <i-button type="print" label="##word.print##" onclick="site.print('#t1')"></i-button>
+            </div>
+        </div>
+    </div>
+
+
+    <div x-import="scripts.html"></div>
+
+    <script x-permission="safes" x-import="safes/index.js"></script>
+
+</body>
+
+</html>

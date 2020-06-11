@@ -1,0 +1,71 @@
+<div class="row " fixed>
+
+    <div class="col6 padding">
+        <fieldset>
+            <legend> ##word.ticket_input## </legend>
+
+            <div>
+
+                <form>
+                    <i-control type="number" ng-model="input.value" label="##word.ticket_input_value##"></i-control>
+                    <i-control type="text" ng-model="input.name" label="##word.ticket_input_name##"></i-control>
+                    <i-control type="text" ng-model="input.receet_number" label="##word.ticket_input_receet##"></i-control>
+                    <i-button type="add" ng-click="addToCloseEngInput()" label="##word.ticket_input_add##"></i-button>
+
+                </form>
+
+            </div>
+            <div ng-repeat="input in ticket.close_eng.inputs">
+
+                <div class="row">
+                    <div class="col7">
+                        <p class="bold yellow">{{input.value}} ##word.le##  </p>
+                        <p class="bold">{{input.name}}</p>
+                        <p>{{input.receet_number}}</p>
+                    </div>
+                    <div class="col5">
+                        <i-button type="delete" ng-click="deleteCloseEngInput(input)"></i-button>
+                    </div>
+                </div>
+
+
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="col6 padding">
+        <fieldset>
+            <legend> ##word.ticket_output## </legend>
+
+            <div>
+
+                <form>
+                    <i-control label="##word.ticket_output_value##" type="number" ng-model="output.value"></i-control>
+                    <i-control label="##word.ticket_output_name##" type="text" ng-model="output.name"></i-control>
+                    <i-control label="##word.ticket_output_receet##" type="text" ng-model="output.receet_number"></i-control>
+                    <i-button type="add" ng-click="addToCloseEngOutput()" label="##word.ticket_output_add##"></i-button>
+
+                </form>
+
+            </div>
+            <div ng-repeat="output in ticket.close_eng.outputs">
+
+                <div class="row">
+                    <div class="col7">
+                            <p class="bold yellow">{{output.value}} ##word.le## </p>
+                            <p class="bold">{{output.name}}</p>
+                            <p> {{output.receet_number}} </p>
+                    </div>
+                    <div class="col5">
+                        <i-button type="delete" ng-click="deleteCloseEngOutput(output)"></i-button>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </fieldset>
+    </div>
+
+</div>

@@ -1,0 +1,107 @@
+<div class="row " fixed>
+
+    <div class="col6 padding">
+        <fieldset class=" ">
+            <legend>##word.ticket_item_sell##</legend>
+
+            <div class="row">
+                <div class="col8">
+                    <i-list space=" --- " display2="size" ng-model="itemSell" ng-search="_search.$item_sell_search" label="##word.ticket_item_sell_name##"
+                        items="engItemList"></i-list>
+                    <i-control ng-model="itemSell.reccet_number" label="##word.ticket_item_sell_reccet##"></i-control>
+
+                </div>
+                <div class="col4">
+                    <i-button type="add" ng-click="addToCloseEngItemSell()" label="##word.ticket_item_sell_add##"></i-button>
+
+                </div>
+            </div>
+
+
+            <div ng-repeat="item in ticket.close_eng.item_sell_list">
+                <div class="row">
+                    <div class="col8">
+                        <p class="bold">{{item.name}} - {{item.size}}</p>
+                        <p class="yellow bold">{{item.price}} ##word.le## </p>
+                        <p class=" bold">{{item.reccet_number}} </p>
+                    </div>
+                    <div class="col4">
+                        <i-button type="delete" ng-click="deleteCloseEngItemSell(item)"></i-button>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </fieldset>
+    </div>
+
+
+    <div class="col6 padding">
+        <fieldset class=" ">
+            <legend>##word.ticket_item_replace##</legend>
+
+            <div class="row">
+                <div class="col8">
+                    <i-list space=" --- " display2="size" ng-model="itemReplace" ng-search="_search.$item_replace_search" label="##word.ticket_item_replace_name##"
+                        items="engItemList"></i-list>
+
+                </div>
+                <div class="col4">
+                    <i-button type="add" ng-click="addToCloseEngItemReplace()" label="##word.ticket_item_replace_add##"></i-button>
+
+                </div>
+            </div>
+
+
+            <div ng-repeat="item in ticket.close_eng.item_replace_list">
+                <div class="row">
+                    <div class="col8">
+                        <p class="bold">{{item.name}} - {{item.size}}</p>
+                    </div>
+                    <div class="col4">
+                        <i-button type="delete" ng-click="deleteCloseEngItemReplace(item)"></i-button>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </fieldset>
+    </div>
+
+
+    <div class="col6 padding">
+        <fieldset class=" ">
+            <legend>##word.ticket_item_needed##</legend>
+
+            <div class="row">
+                <div class="col8">
+                    <i-control ng-model="itemNeeded.name" label="##word.ticket_item_needed_name##"></i-control>
+
+                </div>
+                <div class="col4">
+                    <i-button type="add" ng-click="addToCloseEngItemNeeded()" label="##word.ticket_item_needed_add##"></i-button>
+
+                </div>
+            </div>
+
+
+            <div ng-repeat="item in ticket.close_eng.item_needed_list">
+                <div class="row">
+                    <div class="col8">
+                        <p class="bold">{{item.name}}</p>
+                    </div>
+                    <div class="col4">
+                        <i-button type="delete" ng-click="deleteCloseEngItemNeeded(item)"></i-button>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </fieldset>
+    </div>

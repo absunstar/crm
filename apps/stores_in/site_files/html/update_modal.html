@@ -1,0 +1,71 @@
+
+
+<div id="updateStore_InModal" class="modal">
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>
+                <i class="fa fa-plus"></i> ##word.stores_in_edit##
+                <i ng-show="busy" class="fa fa-spinner white fa-pulse fa-3x fa-fw"></i>
+            </h2>
+        </div>
+        <div class="modal-body">
+            
+                <div ng-hide="busy" class="row" id="v1">
+                        <div class="col12">
+                            <br>
+                            <table class="table">
+                                <tr>
+                                    <td class="title">##word.stores_in_items##</td>
+                                    <td>
+                                        <table class="table hover">
+                                            <tr>
+                                                <th>##word.serial##</th>
+                                                <th>##word.stores_in_item_name##</th>
+                                                <th>##word.stores_in_item_size##</th>
+                                                <th>##word.stores_in_item_count##</th>
+                                                <th class="not-print">##word.stores_in_item_cost##</th>
+                                                <th class="not-print">##word.stores_in_item_price##</th>
+                                                <th>##word.stores_in_item_total##</th>
+                                                <th>##word.stores_in_ticket_code##</th>
+                    
+                                            </tr>
+                                            <tr ng-repeat="itm in store_in.items">
+                                                <td>{{$index + 1}}</td>
+                                                <td>{{itm.name}}</td>
+                                                <td>{{itm.size}}</td>
+                                                <td>{{itm.count}}</td>
+                                                <td class="not-print">{{itm.cost}}</td>
+                                                <td class="not-print">{{itm.price}}</td>
+                                                <td>{{itm.total}}</td>
+                                                <td>                                                <i-control ng-model="itm.ticket_code"></i-control>
+                                                </td>
+                    
+                                                
+                    
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                    
+                              
+                          
+                    
+                            </table>
+                        </div>
+                         
+                    
+                    </div>
+                    
+
+        </div>
+        <h2 class="error">{{error}}</h2>
+        <div class="modal-footer center">
+            <a class="btn bg-green" ng-hide="busy" id="update_store_in_btn" ng-click="update(store_in)">
+                <i class="fa fa-save" aria-hidden="true"></i> ##word.update##</a>
+            <a class="btn bg-blue" onclick="site.hideModal('#updateStore_InModal')">
+                <i class="fa fa-times" aria-hidden="true"></i> ##word.close##</a>
+        </div>
+    </div>
+</div>

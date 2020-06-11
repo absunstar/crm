@@ -1,0 +1,48 @@
+<div class="row">
+    <div ng-hide="busy" class="row">
+        <div class="col7">
+            <br>
+            <table class="table center bold">
+                <tr>
+                    <td class="title">##word.tickets_slides_name##</td>
+                    <td>{{ticket_slide.name}}</td>
+                </tr>
+
+                <tr>
+                    <td class="title">##word.tickets_slides_from##</td>
+                    <td>{{ticket_slide.from}}</td>
+                </tr>
+
+                <tr>
+                    <td class="title">##word.tickets_slides_to##</td>
+                    <td>{{ticket_slide.to}}</td>
+                </tr>
+
+                <tr>
+                    <td class="title">##word.tickets_slides_value##</td>
+                    <td class="blue">{{ticket_slide.value +' '+'##word.le##'}}</td>
+                </tr>
+
+                <tr>
+                    <td class="title">##word.tickets_slides_salary_calculate##</td>
+                    <td class="green" ng-show="ticket_slide.salary_calculate == true">
+                        ##word.tickets_slides_salary_yes## </td>
+                    <td class="red" ng-show="ticket_slide.salary_calculate == false"> ##word.tickets_slides_salary_no##
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="title">##word.notes##</td>
+                    <td class="center bold blue">{{ticket_slide.notes}}</td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="col2"></div>
+        <div class="col3 center">
+            <i-image view category="ticket_slide_logo" ng-model="ticket_slide.image_url"></i-image>
+
+        </div>
+    </div>
+</div>
+<div x-import="tickets_slides/action_info.html"></div>

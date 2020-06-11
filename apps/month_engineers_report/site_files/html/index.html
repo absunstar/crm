@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp" class="bg-white">
+
+<head x-import="head.html">
+    <style>
+        :root {
+        --legend-color: #000;
+        --legend-text-shadow: none;
+    }
+</style>
+</head>
+
+<body class="##session.lang## bg-white">
+
+
+    <nav x-import="navbar/index.html" class="navbar" data-ng-controller="navbar">
+
+    </nav>
+
+
+    <div id="main-layout" class="container">
+        <div class="row center">
+            <br>
+            <h1 class="center bold black"> التقرير الشهرى للفنيين</h1>
+            <br>
+            <div class="row" ng-controller="month_engineers_report">
+                <div x-import="month_engineers_report/search_modal.html"></div>
+                <div class="top-actions">
+
+                    <i-button type="search" id="searchAllBtn" label="##word.search_all##" ng-click="showSearch()"></i-button>
+                    <i-button type="search" id="reloadBtn" label="بحث جديد" ng-click="reload()"></i-button>
+                </div>
+
+                <br><br>
+
+                <br><br>
+                <div class="row" id="t1">
+                <div x-import="tickets/crm_logo.html"></div>
+                <div class="row">
+                    <table class="table">
+                        <tr>
+                            <td class="bold">##word.engineers_report_Engineer_Name##</td>
+
+                            <td>
+                                <p class="center bold green">{{employee.name}}</p>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="bold">##word.engineers_report_date##</td>
+
+                            <td>
+                                <p> ##word.employees_report_date_from## <span class="bold blue">
+                                        {{employee.dateFrom
+                                        | date : 'dd - MM - yyyy'}} </span> ##word.employees_report_date_to##<span
+                                        class="bold blue"> {{employee.dateTo | date : 'dd - MM - yyyy'}} </span>
+                                </p>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col padding">
+
+                        <table class="table loaded hover center bold">
+                            <tr>
+                                <th> م </th>
+                                <th class="pointer" ng-click="sortBy('date')"> ##word.engineers_report_ticket_date##</th>
+
+                                <th class="pointer" ng-click="sortBy('code')"> ##word.engineers_report_ticket_code##</th>
+                                <th class="pointer" ng-click="sortBy('customer.mobiles')">##word.userName##</th>
+                                <th class="pointer" ng-click="sortBy('value')"> قيم المعاملة</th>
+                                <th class="pointer" ng-click="sortBy('value')"> قطع الغيار</th>
+                                <th class="pointer" ng-click="sortBy('value')"> ملاحظات اضافية</th>
+
+                                <th class="pointer" ng-click="sortBy('customer.mobiles')">بيانات الجهاز
+                                </th>
+
+
+                                <th class="pointer" ng-click="sortBy('customer.mobiles')">##word.customer_info##</th>
+
+                            </tr>
+                            <tr ng-repeat="t in ticketList | orderBy:propertyName:reverse">
+                                <td> {{$index + 1}} </td>
+                                <td>
+                                    <p class="center"> {{t.date | date : 'dd - MM - yyyy'}} </p>
+                                </td>
+                                <td ng-show="t.code.length>0">
+                                    <p class="center bold blue"> {{t.code}} </p>
+                                </td>
+                                <td>
+                                    <p class="center"> {{t.close_eng.user_info.name}} </p>
+                                </td>
+
+                                <td>
+
+                                    <table class="table">
+                                        <tr ng-show="t.$total_input > 0">
+                                            <td> الوارد </td>
+                                            <td class="center bold green"> {{t.$total_input}} </td>
+                                        </tr>
+                                        <tr ng-show="t.$total_output > 0">
+                                            <td> المنصرف </td>
+                                            <td class="center bold red"> {{t.$total_output}} </td>
+                                        </tr>
+                                        <tr ng-show="t.$total_sell > 0">
+                                            <td> القطعة المباعة </td>
+                                            <td class="center bold green"> {{t.$total_sell}} </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td> اﻻجمالى </td>
+                                            <td class="center bold green"> {{t.$total}} </td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td>
+                                    <table class="table">
+                                        <tr ng-show="t.item_needed_list.length > 0">
+                                            <td> القطع المطلوبة </td>
+                                            <td>
+                                                {{t.item_needed_list.length}}
+                                                <p ng-repeat="p in t.item_needed_list" class="green">
+                                                    ({{p.name}})
+                                                </p>
+                                            </td>
+                                        </tr>
+
+                                        <tr ng-show="t.item_sell_list.length > 0">
+                                            <td> القطع المباعة </td>
+                                            <td>
+                                                {{t.item_sell_list.length}}
+                                                <p ng-repeat="n in t.item_sell_list" class="green">
+                                                    ({{n.name + ' - ' + n.price + " ##word.le##" }})
+                                                </p>
+                                            </td>
+                                        </tr>
+
+                                        <tr ng-show="t.item_replace_list.length > 0">
+                                            <td> القطع المستبدلة </td>
+                                            <td>
+                                                {{t.item_replace_list.length}}
+                                                <p ng-repeat="r in t.item_replace_list" class="green">
+                                                    ({{r.name}})
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table class="table">
+
+                                        <tr>
+                                            <td> الضمان </td>
+                                            <td>
+                                                <p class="center bold green" ng-show="t.close_eng.device_info.status==1">
+                                                    داخل الضمان
+                                                </p>
+                                                <p class="center bold green" ng-show="t.close_eng.device_info.status==0">
+                                                    خارج الضمان
+                                                </p>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td> حالة البلاغ </td>
+                                            <td class="center bold green">
+                                                {{t.close_eng.status.ar}}
+
+                                            </td>
+                                        </tr>
+
+                                        <tr ng-show="t.device_info.serial.length > 0">
+                                            <td> السيريال </td>
+                                            <td class="center bold green"> {{t.device_info.serial}} </td>
+                                        </tr>
+
+                                        <tr ng-show="t.company_codes.length > 0">
+                                            <td> رقم الساب </td>
+                                            <td>
+                                                <p ng-repeat="s in t.company_codes" class="center bold green"> {{s}}
+                                                </p>
+                                            </td>
+                                        </tr>
+
+                                        <tr ng-show="t.notes.length > 0">
+                                            <td> ملاحظات </td>
+                                            <td>
+                                                <p ng-repeat="a in t.notes" class="center bold green">
+                                                    ({{a}})
+                                                </p>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+
+                                </td>
+
+
+
+                                <td>
+
+
+                                    <table class="table">
+                                        <tr>
+                                            <td> الشركة </td>
+                                            <td class="center bold green"> {{t.device_info.company.name}} </td>
+                                        </tr>
+                                        <tr>
+                                            <td> الفئة </td>
+                                            <td class="center bold green"> {{t.device_info.category.name}} </td>
+                                        </tr>
+                                        <tr>
+                                            <td> الموديل </td>
+                                            <td class="center bold green"> {{t.device_info.model.name}} -
+                                                {{t.device_info.model.alt}} </td>
+                                        </tr>
+
+
+                                    </table>
+
+                                </td>
+
+
+                                <td>
+                                    <p>
+                                        {{t.customer.name + '-' + t.customer.city.name + '-' + t.customer.gov.name+ '-'
+                                        + t.customer.region.name+ ' - ' +
+                                        t.customer.town.name}}
+                                    </p>
+                                    <p>
+                                        <b class="blue" ng-repeat="p in t.customer.mobiles"> {{p}} - </b>
+                                        <b class="blue" ng-repeat="m in t.customer.phones"> {{m}} - </b>
+
+                                    </p>
+                                </td>
+
+                            </tr>
+
+                        </table>
+                        <i-button x-permission="test" class="not-print" type="export" label="##word.export_to_excel##" onclick="export_to_xlsx('t1' , 'Period_Engineer_Report.xlsx')"></i-button>
+                        <i-button class="not-print" type="print" label="##word.print##" onclick="site.print('#t1')"></i-button>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div x-import="scripts.html"></div>
+
+    <script x-import="month_engineers_report/index.js"></script>
+
+
+</body>
+
+</html>

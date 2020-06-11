@@ -1,0 +1,23 @@
+<div id="addUnEmployeeModal" class="modal">
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>
+                ##word.unemployees_add## <i class="fa fa-plus"></i>
+            </h2>
+        </div>
+
+        <div class="modal-body">
+            <div x-import="unemployees/content.html"></div>
+
+        </div>
+        <h2 class="error">{{error}}</h2>
+        <div class="modal-footer center">
+            <i-button type="add" label="##word.add##" ng-click="add()"></i-button>
+            <i-button type="close" label="##word.close##" onclick="site.hideModal('#addUnEmployeeModal')"></i-button>
+        </div>
+    </div>
+
+
+</div>

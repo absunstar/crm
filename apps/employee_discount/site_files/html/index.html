@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+
+<head x-import="head.html">
+
+</head>
+
+<body>
+
+    <nav x-import="navbar/index.html" class="navbar" data-ng-controller="navbar">
+
+    </nav>
+
+
+    <div x-import="menu/index.html"></div>
+
+
+    <div x-permission="employee_discounts" id="main-layout" class="container">
+        <div class="row">
+            <div class="row" ng-controller="employee_discount">
+                <div x-import="employee_discount/add_modal.html"></div>
+                <div x-import="employee_discount/update_modal.html"></div>
+                <div x-import="employee_discount/delete_modal.html"></div>
+                <div x-import="employee_discount/view_modal.html"></div>
+                <div x-import="employee_discount/search_all_modal.html"></div>
+
+
+                <div class="top-actions">
+
+                    <i-button type="add" label="##word.employee_discount_new##" ng-click="newemployee_discount()"></i-button>
+                    <i-button type="search" label="##word.search_all##" onclick="site.showModal('#Employee_Discount_SearchModal')"></i-button>
+
+
+                </div>
+
+                <table class="table bold loaded" id="t1">
+                    <tr>
+                        <th class="not-print">##word.employee_discount_logo##</th>
+                        <th>##word.employee_discount_date##</th>
+                        <th>##word.employee_discount_employees##</th>
+                        <th>##word.employee_discount_value##</th>
+
+                        <th class="not-print">##word.actions##</th>
+                    </tr>
+                    <tr ng-repeat="c in list">
+                        <td class="not-print">
+                            <i-image view class="logo" ng-model="c.image_url"></i-image>
+                        </td>
+                        <td>
+                            <p class="center"> {{c.date | date : 'dd - MM - yyyy'}} </p>
+                        </td>
+                        <td>
+                            <p class="center"> {{c.eng.name}} </p>
+
+                        </td>
+
+                        <td>
+                            <p class="center  green"> {{c.value + ' ##word.le## '}} </p>
+                        </td>
+
+
+                        <td class="not-print center">
+                            <i-button type="details" label="##word.details##" ng-click="details(c)"></i-button>
+                            <i-button type="delete" label="##word.delete##" ng-click="remove(c)"></i-button>
+
+                        </td>
+                    </tr>
+
+                </table>
+                <i-button type="export" label="##word.export_to_excel##" onclick="export_to_xlsx('t1' , 'employee_discount.xlsx')"></i-button>
+                <i-button type="print" label="##word.print##" onclick="site.print('#t1')"></i-button>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div x-import="scripts.html"></div>
+
+    <script x-permission="employee_discounts" x-import="employee_discount/index.js"></script>
+
+
+</body>
+
+</html>

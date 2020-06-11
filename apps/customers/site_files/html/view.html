@@ -1,0 +1,75 @@
+<div ng-hide="busy" class="row">
+    <div class="col9">
+        <br>
+        <table class="table bold">
+            <tr>
+                <td class="title">##word.customers_name##</td>
+                <td class="center">{{customer.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.customers_gov##</td>
+                <td class="center">{{customer.gov.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.customers_city##</td>
+                <td class="center">{{customer.city.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.customers_town##</td>
+                <td class="center">{{customer.town.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.customers_region##</td>
+                <td class="center">{{customer.region.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.customers_address##</td>
+                <td class="center">{{customer.address}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.customers_phones##</td>
+                <td class="center">
+                    <a ng-repeat="p in customer.phones" href="tel:{{p}}"> {{p}}
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.customers_mobiles##</td>
+                <td class="center">
+                    <a ng-repeat="m in customer.mobiles" href="tel:{{m}}"> {{m}}
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.customers_email##</td>
+                <td class="center">
+                    <a ng-show="customer.email" target="_blank" href="tel:{{customer.email}}"> {{customer.email}}
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.customers_notes##</td>
+                <td class="center">{{customer.notes}}</td>
+            </tr>
+
+        </table>
+
+    </div>
+    <div class="col3">
+        <i-image view ng-model="customer.image_url"></i-image>
+        <i-files view ng-model="customer.files"></i-files>
+    </div>
+</div>
+<div x-import="customers/action_info.html"></div>

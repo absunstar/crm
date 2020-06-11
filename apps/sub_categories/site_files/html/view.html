@@ -1,0 +1,33 @@
+
+<div ng-hide="busy" class="row">
+    <div class="col7">
+        <br>
+        <table class="table">
+
+            <tr>
+                <td class="title">##word.sub_categories_category##</td>
+                <td class="center bold">{{sub_category.category.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.sub_categories_sub_category##</td>
+                <td class="center bold indigo">{{sub_category.name}}</td>
+            </tr>
+
+            <tr>
+                    <td class="title">##word.notes##</td>
+                    <td class="center bold blue">{{sub_category.notes}}</td>
+                </tr>
+        </table>
+    </div>
+    <div class="col2"></div>
+
+    <div class="col3 center">
+
+        <i-image view category="sub_categories" ng-model="sub_category.image_url"></i-image>
+        <i-files view ng-model="sub_category.files"></i-files>
+
+    </div>
+</div>
+<div x-import="sub_categories/action_info.html"></div>
+

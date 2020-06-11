@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+
+<head x-import="head.html">
+
+</head>
+
+<body>
+
+    <nav x-import="navbar/index.html" class="navbar" data-ng-controller="navbar">
+
+    </nav>
+
+
+    <div x-import="menu/index.html"></div>
+
+
+    <div x-permission="stores" id="main-layout" class="container">
+        <div class="row ">
+            <div class="row" ng-controller="stores_transfer">
+                <div x-import="stores_transfer/add_modal.html"></div>
+                <div x-import="stores_transfer/update_modal.html"></div>
+                <div x-import="stores_transfer/delete_modal.html"></div>
+                <div x-import="stores_transfer/view_modal.html"></div>
+                <div x-import="stores_transfer/search_all_modal.html"></div>
+                <div class="row">
+                    <h1 class="white bold text-center"> ##word.stores_transfer## </h1>
+                </div>
+                <div class="top-actions">
+
+                    <i-button type="add" label="##word.stores_transfer_neew##" ng-click="newstores_transfer()" > </i-button>
+                    <i-button type="search" label="##word.search_all##" onclick="site.showModal('#StoresOutSearchModal')"  > </i-button>
+
+                    
+                    <h3 class="white bold"> ##word.stores_transfer_result_count## : {{count}}</h3>
+                </div>
+
+                <table class="table loaded center hover" id="t2">
+                    <tr>
+                        <th>##word.stores_transfer_date##</th>
+                        <th>##word.stores_transfer_id##</th>
+                        <th>##word.stores_transfer_Company_name##</th>
+
+
+                        <th>##word.stores_transfer_store_from##</th>
+
+                        <th>##word.stores_transfer_store_to##</th>
+                        <th>
+                                ##word.stores_transfertypes##
+                        </th>
+
+                        <th  class="not-print">##word.actions##</th>
+                    </tr>
+                    <tr ng-repeat="c in list">
+
+                        <td>
+                            <br>
+                            <p class="text-center"> {{c.date | date : 'yyyy - MM - dd'}} </p>
+                        </td>
+                        <td>
+                                <br>
+                            <p class="bold brown text-center"> {{c.number}} </p>
+                        </td>
+                        <td>
+                            <br>
+                             <p class="bold text-center"> {{c.company.name}} </p>
+                        </td>
+                        <td>
+                                <br>
+                            <p class="bold text-center"> {{c.store.name}} </p>
+                        </td>
+                        <td>
+                            <br>
+                        <p class="bold text-center"> {{c.store_to.name}} </p>
+                    </td>
+                       
+                        <td>
+                            <br>
+                                {{c.type.ar}}
+                        </td>
+                        <td  class="center not-print">
+                            <i-button type="details" label="##word.details##"  ng-click="details(c)" > </i-button>
+
+
+                            <i-button type="delete" label="##word.delete##" ng-click="remove(c)"> </i-button>
+
+                            
+                        </td>
+
+                    </tr>
+
+                </table>
+                <i-button type="print" label="##word.print##" onclick="site.print('#t2')"> </i-button>
+
+            
+                    
+            </div>
+        </div>
+    </div>
+
+    <div x-import="scripts.html"></div>
+    <script x-permission="stores" x-import="stores_transfer/index.js"></script>
+
+</body>
+
+</html>

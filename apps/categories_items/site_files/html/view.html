@@ -1,0 +1,62 @@
+<div ng-hide="busy" class="row" id="v1">
+    <div class="col9">
+        <br>
+        <table class="table hover">
+
+
+            <tr>
+                <td class="title bold">##word.categories_items_name##</td>
+                <td >{{category_item.name}}</td>
+            </tr>
+            <tr>
+                <td class="title bold">##word.stores_in_categry##</td>
+                <td>{{category_item.category.name}}</td>
+            </tr>
+      
+            
+
+
+            <tr>
+                <td class="title bold">##word.categories_items_sizes##</td>
+                <td>
+                    <table class="table center">
+                        <tr>
+                            <th >##word.categories_items_sizes##</th>
+                            <th>##word.categories_items_cost##</th>
+                            <th >##word.categories_items_price##</th>
+                            <th>##word.categories_items_balance##</th>
+                            <th>##word.categories_start_balance##</th>
+
+                            <th>##word.categories_items_Company_name##</th>
+                            <th>##word.categories_items_store_name##</th>
+                        </tr>
+                        <tr  ng-repeat="it in category_item.sizes">
+                            <td class="center bold">{{it.size}}</td>
+                            <td class="center blue">{{it.cost}}</td>
+                            <td class="center blue">{{it.price}}</td>
+                            <td class="center blue">{{it.current_count}}</td>
+                            <td class="center blue">{{it.start_count}}</td>
+                            <td class="center">{{it.company.name}}</td>
+                            <td class="center">{{it.store.name}}</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+        </table>
+
+        <br>
+        
+    </div>
+
+    <div class="col3 center not-print">
+        <br>
+        <i-image view category="stores_images" ng-model="category_item.image_url"></i-image>
+        <br>
+        
+        <i-files  view ng-model="category_item.files"></i-files>
+
+ 
+    </div>
+</div>
+<div x-import="categories_items/action_info.html"></div>

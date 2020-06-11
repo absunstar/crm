@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+
+<head x-import="head.html">
+
+</head>
+
+<body>
+
+    <nav x-import="navbar/index.html" class="navbar" data-ng-controller="navbar">
+
+    </nav>
+
+
+    <div x-import="menu/index.html"></div>
+
+
+
+    <div id="main-layout" class="container">
+        <div class="row center">
+            <div class="row" ng-controller="month_general_employees_reports">
+                <div x-import="month_general_employees_reports/search_modal.html"></div>
+                <div class="top-actions">
+
+                    <i-button type="search" ng-hide="show_search" label="##word.search_all##"  ng-click="showSearch()"></i-button>
+                    <i-button type="add" ng-show="show_search" label="new search" ng-click="reload();hide_btn()"></i-button>
+                  
+                </div>
+
+                <div id="employeeReport" class="row">
+                    <div class="col4 padding">
+                        <div class="row">
+                            <table class="table" id="t1" >
+                                <tr >
+                                    <td class="bold"> ##word.employees_report_applied_tickets_num##</td>
+
+                                    <td>
+                                        <p class="center bold green">{{add_count}}</p>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="bold">##word.employees_report_distributed_tickets_num##</td>
+
+                                    <td>
+                                        <p class="bold red center">{{assign_count}} </p>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="bold"> ##word.employees_report_close1_tickets_num##</td>
+
+                                    <td>
+                                        <p class="bold brown center">{{close1_count}} </p>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="bold"> ##word.employees_report_bact_to_eng_tickets_num##</td>
+
+                                    <td>
+                                        <p class="bold blue center">{{BackEng_count}} </p>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="bold">##word.employees_report_close2_tickets_num##</td>
+
+                                    <td>
+                                        <p class="bold black center">{{Close2_count}} </p>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="bold">##word.employees_report_review_tickets_num##</td>
+
+                                    <td>
+                                        <p class="bold orange center">{{Review_count}} </p>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <i-button type="export" label="##word.export_to_excel##" onclick="export_to_xlsx('t1' , 'employees_report.xlsx')"></i-button>
+                            <i-button type="print" label="##word.print##" onclick="site.print('#t1')"></i-button>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <br><br>
+                <div class="row">
+                    <div>
+                        <h2 class="center bold "> ##word.employees_report_ticket_details##<p>  </p>
+                        </h2>
+                        <table class="table loaded" id="t1">
+                            <tr>
+                                <th>##word.employees_report_ticket_name## </th>
+                                <th> ##word.employees_report_delivered_tickets## </th>
+                                <th> ##word.employees_report_distributed_tickets## </th>
+                                <th> ##word.employees_report_close1_tickets## </th>
+                                <th> ##word.employees_report_bact_to_eng_tickets## </th>
+                                <th>##word.employees_report_close2_tickets##</th>
+                                <th>##word.employees_report_review_tickets##</th>
+                            </tr>
+                            <tr ng-repeat="t in list">
+                                <td>
+                                    <p class="center blue bold"> {{t.name}} </p>
+                                </td>
+                                <td>
+                                    <p class="center bold green"> {{t.added_tickets_count}} </p>
+                                </td>
+                                <td>
+                                    <p class="center bold red"> {{t.assign_tickets_count}} </p>
+                                </td>
+                                <td>
+                                    <p class="center bold brown"> {{t.close1_tickets_count}} </p>
+                                </td>
+                                <td>
+                                    <p class="center bold blue"> {{t.back_eng_tickets_count}} </p>
+                                </td>
+                                <td>
+                                    <p class="center bold black"> {{t.close2_tickets_count}} </p>
+                                </td>
+
+                                <td>
+                                    <p class="center bold orange"> {{t.review_tickets_count}} </p>
+                                </td>
+                                
+                                
+                            </tr>
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div x-import="scripts.html"></div>
+
+        <script x-import="month_general_employees_reports/index.js"></script>
+
+
+</body>
+
+</html>

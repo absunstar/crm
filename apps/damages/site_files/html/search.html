@@ -1,0 +1,35 @@
+<div id="SearchModal" class="modal">
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>
+                ##word.damages_search## <i class="fa fa-search"></i>
+            </h2>
+        </div>
+        <div class="modal-body">
+                <input type="hidden">
+            <form class="form">
+                <div class="row">
+                    <i-list ng-search="_search.$catrgory_search" class="col3" items="categories" ng-model="search.category"
+                        ng-change="loadSub_Categories(damage.category)" label="##word.damages_category##"></i-list>
+                    <i-list ng-search="_search.$sub_catrgory_search" class="col3" items="sub_categories" ng-model="search.sub_category"
+                        label="##word.damages_sub_category##"></i-list>
+                    <i-control ng-model="search.damage" class="col3" type="text" label="##word.damages_type##"></i-control>
+                </div>
+                <div class="row">
+                    <i-textarea ng-model="search.notes" class="col6" label="##word.notes##"></i-textarea>
+                </div>
+
+            </form>
+
+        </div>
+        <h2 class="error">{{error}}</h2>
+        <div class="modal-footer center">
+            <i-button type="search" ng-click="searchAll()" label="##word.search##"></i-button>
+            <i-button type="clear" ng-click="search = {}" label="##word.clear##"></i-button>
+            <i-button type="close" onclick="site.hideModal('#SearchModal')" label="##word.close##"></i-button>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,195 @@
+<div id="SearchModal" class="modal">
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>
+                ##word.ticket_search_all## <i class="fa fa-search"></i>
+                <i ng-show="busy" class="fa fa-spinner white fa-pulse fa-fw"></i>
+            </h2>
+        </div>
+        <div class="modal-body">
+            <form>
+
+                <div class="row ">
+
+                    <div class="col8">
+
+                        <div class="row ">
+                            <i-control class="col8" label="##word.ticket_customer_name##" type="text" ng-model="search.customer.name"></i-control>
+                            <i-control class="col4" label="##word.ticket_device_serial##" type="text" ng-model="search.device_info.serial"></i-control>
+                        </div>
+
+                        <div class="row">
+
+                            <i-list class="col6" ng-search="_search.$search_ticket_eng" label="##word.ticket_eng##" ng-model="search.eng"
+                                items="engList"></i-list>
+                            <i-control class="col3" label="##word.receipt_number##" ng-model="search.receipt_number"
+                                type="text"></i-control>
+                            <i-list class="col3" ng-search="_search.$ticketPrintSearch"  ng-model="search.print_status" items="print_status" label="##word.ticket_print_status##"></i-list>
+
+
+                        </div>
+
+                        <fieldset>
+                            <legend>##word.ticket_devices##</legend>
+
+                            <div class="row margin padding">
+                                <i-list class="col3" ng-search="_search.$search_device_info_company" label="##word.ticket_company##"
+                                    ng-model="search.device_info.company" ng-change="loadCategories(search.device_info.company)"
+                                    items="company_list"></i-list>
+
+                                <i-list class="col2" ng-search="_search.$search_device_info_company" label="##word.ticket_category##"
+                                    ng-model="search.device_info.category" ng-change="loadSubCategories(search.device_info.category)"
+                                    items="category_list"></i-list>
+                                <i-list class="col2" ng-search="_search.$search_device_info_company" label="##word.ticket_sub_category##"
+                                    ng-model="search.device_info.sub_category" ng-change="loadDevices(search.device_info.sub_category);loadDamages(search.device_info.sub_category)"
+                                    items="sub_category_list"></i-list>
+
+                                <i-list class="col2" ng-search="_search.$search_device_info_company" label="##word.ticket_device##"
+                                    ng-model="search.device_info.device" ng-change="loadModels(search.device_info.device)"
+                                    items="device_list"></i-list>
+                                <i-list class="col3" ng-search="_search.$search_device_info_company" label="##word.ticket_model##"
+                                    ng-model="search.device_info.model" items="models"></i-list>
+
+                            </div>
+
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>##word.ticket_mode##</legend>
+                            <div class="row ">
+                                <i-list ng-search="_search.$search_ticket_status" class="col4" label="##word.ticket_status##"
+                                    ng-model="search.status" items="tickets_status" display="ar"></i-list>
+                                <i-list ng-search="_search.$search_ticket_status2" class="col4" label="##word.ticket_status2##"
+                                    ng-model="search.status2" items="tickets_status2" display="ar"></i-list>
+                                <i-list ng-search="_search.$search_ticket_status3" class="col4" label="##word.ticket_status3##"
+                                    ng-model="search.status3" items="tickets_status3" display="ar"></i-list>
+
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>##word.ticket_general##</legend>
+                            <div class="row padding text-center">
+
+                                <i-list ng-search="_search.$search_priorty" class="col3" label="##word.ticket_priotry##"
+                                    ng-model="search.priotry" items="tickets_priorities" display="ar"></i-list>
+
+                                <i-control label="##word.ticket_lated##" class="col3" type="number" ng-model="search.lated"></i-control>
+
+                                <i-control class="col3" label="##word.ticket_item_needed_name##" ng-model="search.item_needed_name"></i-control>
+
+                                <i-list ng-search="_search.$search_review_status" class="col3" label="##word.ticket_review_status##"
+                                    ng-model="search.review_status" items="reviewStatus" display="ar"></i-list>
+
+
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>##word.ticket_addresses##</legend>
+                            <div class="row padding">
+                                <i-list ng-search="_search.$search_customer_gov" class="col3" ng-model="search.customer.gov"
+                                    label="##word.customers_gov##" items="goves" ng-change="loadCities(search.customer.gov)"></i-list>
+                                <i-list ng-search="_search.$search_customer_city" class="col3" ng-model="search.customer.city"
+                                    label="##word.customers_city##" items="cities" ng-change="loadTowns(search.customer.city)"></i-list>
+                                <i-list ng-search="_search.$search_customer_town" class="col3" ng-model="search.customer.town"
+                                    label="##word.customers_town##" items="towns" ng-change="loadRegions(search.customer.town)"></i-list>
+                                <i-list ng-search="_search.$search_customer_region" class="col3" ng-model="search.customer.region"
+                                    label="##word.customers_region##" items="regions"></i-list>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>##word.ticket_dates##</legend>
+
+                            <div class="row">
+                                <i-list ng-search="_search.$search_date_type" class="col3" label="##word.ticket_date_type##"
+                                    ng-model="search.date_type" items="dateTypes" display="ar"></i-list>
+                                <i-date2 class="col3" label="##word.ticket_any_date##" ng-model="search.date"></i-date2>
+                                <i-date2 class="col3" label="##word.ticket_from_date##" ng-model="search.from_date"></i-date2>
+                                <i-date2 class="col3" label="##word.ticket_to_date##" ng-model="search.to_date"></i-date2>
+
+                            </div>
+
+                        </fieldset>
+
+                        <br>
+
+                        <fieldset>
+                            <legend>##word.ticket_users##</legend>
+                            <div class="row">
+                                <i-list class="col4" label="##word.ticket_user_type##" ng-model="search.user_type"
+                                    items="userTypes" ng-search="_search.$ticketUserTypeSearch" display="ar"></i-list>
+
+                                <i-list class="col4" ng-search="_search.$eng_search" label="##word.ticket_user##" ng-model="search.user" items="userList"
+                                    display="email"></i-list>
+
+                                    <i-control class="col4" label="أسم المستخدم القديم" ng-model="search.user_name"
+                                    ></i-control>
+
+                                <!-- <div class="col4">
+                                <div class="control">
+                                    <label>##word.ticket_user##</label>
+                                    <select ng-model="search.user">
+                                        <option ng-selected="search.user.id == user1.id" ng-repeat="user1 in userList" ng-value="user1">{{user1.email + ' - ' +user1.profile.name}}</option>
+                                    </select>
+                                </div>
+                            </div> -->
+
+
+
+
+                            </div>
+
+                        </fieldset>
+
+                        <div class="row">
+                            <i-checkbox label="##word.ticket_show_repeats_only##" ng-model="search.repeats_only"></i-checkbox>
+                        </div>
+
+                    </div>
+                    <div class="col4">
+
+                        <div class="row  ">
+                            <i-textarea label="##word.ticket_customer_mobiles##" class="col10" ng-model="search.customer.mobile"></i-textarea>
+                        </div>
+
+                        <div class="row ">
+                            <i-textarea label="##word.ticket_company_codes##" class="col10" ng-model="search.company_code"></i-textarea>
+                        </div>
+
+                        <div class="row ">
+                            <i-textarea label="##word.ticket_code##" class="col10" ng-model="search.code"></i-textarea>
+                        </div>
+
+                        <div class="row ">
+                            <i-textarea label="##word.ticket_notes##" class="col10" ng-model="search.notes"></i-textarea>
+
+                        </div>
+                        <div class="row">
+                            <i-control class="col10" type="number"  label="##word.search_max_limit##" ng-model="search.limit"></i-control>
+
+                        </div>
+                        <div class="row">
+                                <i-list   class="col10" ng-search="_search.$ticketDeviceStatusSearch" label="##word.ticket_device_status##" ng-model="search.device_info.status"
+                                items="device_status"></i-list>
+                              
+                            </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+        <h2>{{error}}</h2>
+        <div class="modal-footer center">
+            <i-button type="search" label="##word.search_all##" ng-click="searchAll();search = {}"></i-button>
+            <i-button type="clear" label="##word.clear##" ng-click="search = {}"></i-button>
+            <i-button type="close" label=" ##word.close##" onclick="site.hideModal('#SearchModal')"></i-button>
+        </div>
+    </div>
+</div>

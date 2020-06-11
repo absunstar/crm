@@ -1,0 +1,91 @@
+<table class="table border" fixed ng-repeat="r in ticket.eng_list">
+    <tr>
+        <td class="bg-blue white"> {{r.eng.name}}</td>
+        <td>
+                <table class="table">
+                        <tr>
+                            <td class="bold"> ##word.ticket_device_serial## </td>
+                            <td> {{r.close_eng.device_info.serial}}</td>
+                            <td class="bold"> ##word.ticket_device_product_date## </td>
+                            <td> {{r.close_eng.device_info.product_date}}</td>
+                            <td class="bold"> ##word.ticket_device_status## </td>
+                            <td>
+                                <p ng-show="r.close_eng.device_info.status == 0"> ##word.ticket_device_status0## </p>
+                                <p ng-show="r.close_eng.device_info.status == 1"> ##word.ticket_device_status1## </p>
+                            </td>
+                           
+                        </tr>
+                        <tr>
+                            <td class="title2 bold">##word.ticket_device_fixes##</td>
+                            <td colspan="5">{{r.close_eng.fixes}}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="title2 bold">##word.ticket_input##</td>
+                            <td colspan="2">
+                                <p ng-repeat="input in r.close_eng.inputs">
+                                    <b class="green"> {{input.value}} ##word.le## </b>
+                                    <span>{{input.name}}</span>
+                                    <i class="blue">{{input.receet_number}}</i>
+                                </p>
+                            </td>
+                            <td class="title2 bold">##word.ticket_output##</td>
+                            <td colspan="2">
+                                <p ng-repeat="output in r.close_eng.outputs">
+                                    <b class="green">{{output.value}} ##word.le## </b>
+                                    <span>{{output.name}}</span>
+                                </p>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="title2 bold"> ##word.ticket_item_sell## </td>
+                            <td>
+                                <p ng-repeat="itm in r.close_eng.item_sell_list">
+                                    <span>{{itm.name}}</span>
+                                </p>
+                            </td>
+                            <td class="title2 bold"> ##word.ticket_item_replace## </td>
+                            <td>
+                                <p ng-repeat="itm in r.close_eng.item_replace_list">
+                                    <span class="red">{{itm.name}}</span>
+                                </p>
+                            </td>
+                            <td class="title2 bold"> ##word.ticket_item_needed## </td>
+                            <td>
+                                <p ng-repeat="itm in r.close_eng.item_needed_list">
+                                    <span class="green">{{itm.name}}</span>
+                                </p>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="bold bg-blue white">##word.ticket_status##</td>
+                            <td> {{r.close_eng.status.ar}} </td>
+                           
+                        </tr>
+                        <tr>
+                            <td class="bold bg-blue white">##word.ticket_close_eng_date##</td>
+
+                           <td>
+                            <p class="bold">{{r.close_eng_user_info.date | date : 'dd - MM - yyyy'}}
+                                <small class="blue">{{r.close_eng_user_info.date| date : 'hh:mm'}}</small>
+                            </p>
+                           </td>
+                           <td>
+                            <p class="bold">##word.cost_count_tickets##</p>
+                            <p class="bold blue center">{{r.cost_count}}</p>
+                        </td>
+                        <td>
+                            <p class="bold"> حالة التقفيل الفنى </p>
+                            <p class="bold green center" ng-show="r.done" > تم التقفيل </p>
+                            <p class="bold red center" ng-hide="r.done" > لم يتم التقفيل </p>
+                        </td>
+                            
+                        </tr>
+                    </table>
+        </td>
+    </tr>
+</table>

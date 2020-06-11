@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col6">
+        <form class="form">
+            <i-control v="r" ng-model="employee_degree.name" type="text" label="##word.employees_degrees_name##"></i-control>
+            <i-control v="r" ng-model="employee_degree.salary" type="number" label="##word.employees_degrees_salary##"></i-control>
+            <i-textarea ng-model="employee_degree.notes" label="##word.notes##"></i-textarea>
+        </form>
+    </div>
+
+    <div class="col3"></div>
+    <div class="col3">
+        <i-image category="employees_degrees" ng-model="employee_degree.image_url"></i-image>
+
+        <i-files ng-model="employee_degree.files"></i-files>
+
+    </div>
+</div>

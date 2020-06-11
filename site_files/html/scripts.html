@@ -1,0 +1,34 @@
+<script src="/x-js/jquery.js"></script>
+<script src="/x-js/angular.min.js"></script>
+<script src="/x-js/site.min.js"></script>
+
+<script>
+  var app = app || angular.module("myApp", []);
+  setTimeout(() => {
+        document.querySelectorAll('.loaded').forEach(el => {
+            el.style.visibility = 'visible';
+        });
+    }, 2000);
+</script>
+
+<script src="/x-js/directive.min.js"></script>
+<script x-import="app.js"></script>
+<script x-import="navbar.js"></script>
+
+<script x-import="ui-print/index.js"></script>
+
+<div x-permission="!login" x-import="security/login_modal.html"></div>
+<div x-permission="!login" x-import="security/register_modal.html"></div>
+<div x-permission="login" x-import="security/logout_modal.html"></div>
+
+<script>
+  $(document).on("keydown", "input,select", function (e) {
+    if (e.which == 13 || e.keyCode == 13) {
+      e.preventDefault();
+      var $canfocus = $("input,select");
+      var index = $canfocus.index(document.activeElement) + 1;
+      if (index >= $canfocus.length) index = 0;
+      $canfocus.eq(index).focus();
+    }
+  });
+</script>

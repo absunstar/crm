@@ -1,0 +1,31 @@
+<div class="row" fixed>
+
+    <div class="col9">
+        <input type="hidden">
+        <form class="form">
+            <div class="row">
+                <i-list ng-search="_search.$emp_mobile_search" class="col6" label="##word.employees_mobiles_employee##" ng-model="employee_mobile.employee"
+                   v="r" items="employees"></i-list>
+            </div>
+            <div class="row">
+                <i-list ng-search="_search.$emp_mobile_num_search" class="col6" label="##word.employees_mobiles_number##"
+                   v="r" ng-model="employee_mobile.number" display="number" display2="value" ng-change="employee_mobile.number.value"
+                    items="mobiles_slides"></i-list>
+                <h3 class="col3 white bold " ng-show="employee_mobile.number.slide_name">({{employee_mobile.number.slide_name}})</h3>
+
+            </div>
+            <div class="row ">
+                <i-control class="col2" label="##word.employees_mobiles_discount##"  ng-model="employee_mobile.discount"  ></i-control>
+                <i-control class="col2" label="##word.employees_mobiles_emp_discount##"  ng-model="employee_mobile.emp_discount" ></i-control>
+                <i-control class="col2" label="##word.employees_mobiles_total##"  ng-model="employee_mobile.total" ng-value="calc()"></i-control>
+
+            </div>
+            <i-textarea class="col6" ng-model="employee_mobile.notes" label="##word.employees_mobiles_notes##"></i-textarea>
+        </form>
+    </div>
+
+    <div class="col3 ">
+        <i-image category="employees_mobiles" ng-model="employee_mobile.image_url"></i-image>
+        <i-files ng-model="employees_mobiles.files"></i-files>
+    </div>
+</div>

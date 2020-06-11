@@ -1,0 +1,59 @@
+<div ng-hide="busy" class="row">
+    <div class="col8">
+        <br>
+        <table class="table  bold">
+            <tr>
+                <td class="title">##word.employees_debt_date##</td>
+                <td class="green center">{{employees_debt.date | date : 'dd - MM - yyyy'}}</td>
+            </tr>
+            <tr>
+                <td class="title">##word.employees_debt_employeess##</td>
+                <td class="center">{{employees_debt.eng.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.employees_debt_number##</td>
+                <td class="blue center">{{employees_debt.number}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.employees_debt_ticket##</td>
+                <td class="blue center">{{employees_debt.ticket_code}}</td>
+            </tr>
+
+
+            <tr>
+                <td class="title">##word.employees_debt_value##</td>
+                <td class="blue center">{{employees_debt.value}}</td>
+            </tr>
+
+
+            <tr>
+                <td class="title">##word.employees_debt_safe##</td>
+                <td class="red center">{{employees_debt.safe.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.employees_debt_description##</td>
+                <td class="center">{{employees_debt.description}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.employees_debt_description1##</td>
+                <td class="center">{{employees_debt.description1}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.not_done##</td>
+                <td class="center">{{employees_debt.description2}}</td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="col1"></div>
+    <div class="col3">
+        <i-image view ng-model="employees_debt.image_url"></i-image>
+        <i-files view ng-model="employees_debt.files"></i-files>
+    </div>
+</div>
+<div x-import="employees_debt/action_info.html"></div>

@@ -1,0 +1,67 @@
+<div class="row ">
+    <div class="col8">
+            <input type="hidden">
+        <form class="form">
+            <div class="row">
+                <i-list ng-search="_search.$companies_devices" v="r" class="col4" items="companies" ng-change="loadCategories(company_device.company)"
+                    ng-model="company_device.company" label="##word.companies_devices_company##"></i-list>
+
+                <i-list ng-search="_search.$companies_devices_category" v="r" class="col4" items="companies_categories" ng-model="company_device.category"
+                    ng-change="loadSub_Categories(company_device.category)" label="##word.companies_devices_category##"
+                    ng-value="category" display="category.name"></i-list>
+
+            </div>
+
+            <div class="row">
+                <i-list ng-search="_search.$company_devices_sub_category" class="col4" items="sub_categories" ng-model="company_device.sub_category"
+                    ng-change="loadDevices_Names(company_device.sub_category)" label="##word.companies_devices_sub_category##"
+                    display="name"></i-list>
+
+                <i-list ng-search="_search.$companies_devices_device" v="r" class="col4" items="devices_names" ng-model="company_device.device"
+                    label="##word.companies_devices_device##"></i-list>
+            </div>
+            <br>
+            <div class="row">
+
+                <table class="table box-shadow">
+                    <tr>
+                        <th colspan="3" class="pointer" ng-click="modelEditorAdd = !modelEditorAdd">##word.companies_devices_model##
+                            <i class="fa fa-edit"></i>
+                        </th>
+
+                    </tr>
+                    <tr ng-show="modelEditorAdd">
+                        <td colspan="3">
+                            <form>
+                                <div class="control">
+                                    <i-control type="text" class="col5" ng-model="model.name" label="##word.companies_devices_model##"></i-control>
+                                    <i-control type="text" class="col5" ng-model="model.alt" label="##word.companies_devices_model_equal##"></i-control>
+                                </div>
+                            </form>
+                            <div class="col1"></div>
+                            <i-button type="add" ng-click="addModel()" label="##word.companies_devices_add_model##"></i-button>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="model in company_device.models">
+                        <td>
+                            <b>{{model.name}}</b> -
+                            <span>{{model.alt}}</span>
+                        </td>
+                        <td ng-show="modelEditorAdd">
+                            <i-button type="delete" ng-click="deleteModel(model)"></i-button>
+                        </td>
+                    </tr>
+                </table>
+                <div class="row">
+                    <i-textarea ng-model="company_device.notes" label="##word.notes##"></i-textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col1"></div>
+    <div class="col3">
+        <i-image category="companies_devices_img" ng-model="company_device.image_url"></i-image>
+        <i-files ng-model="company_device.files"></i-files>
+
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col4">
+        <div class="row">
+            <div class="form">
+                <i-control v="r" ng-model="region.name" type="text" label="##word.regions_name##"></i-control>
+                <i-textarea ng-model="region.notes" label="##word.notes##"></i-textarea>
+
+            </div>
+        </div>
+    </div>
+    <div class="col5"></div>
+    <div class="col3">
+        <i-image category="regions" ng-model="region.image_url"></i-image>
+        <i-files ng-model="region.files"></i-files>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+
+<div ng-hide="busy" class="row">
+    <div class="col7">
+        <br>
+        <table class="table bold">
+
+            <tr>
+                <td class="title">##word.categories_name##</td>
+                <td class="center indigo">{{category.name}}</td>
+            </tr>
+            <tr>
+                <td class="title">##word.notes##</td>
+                <td class="center blue">{{category.notes}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col2"></div>
+    <div class="col3 center">
+
+        <i-image view category="categories" ng-model="category.image_url"></i-image>
+        <i-files view ng-model="category.files"></i-files>
+
+    </div>
+</div>
+<div x-import="categories/action_info.html"></div>

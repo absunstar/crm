@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col8">
+        <br>
+        <table class="table bold">
+            <tr>
+                <td class="title">##word.damages_category##</td>
+                <td class="center">{{damage.category.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.damages_sub_category##</td>
+                <td class="center">{{damage.sub_category.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.damages_name##</td>
+                <td class="center indigo">{{damage.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.notes##</td>
+                <td class="center blue">{{damage.notes}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col1"></div>
+    <div class="col3 ">
+
+        <i-image view category="damages" ng-model="damage.image_url"></i-image>
+        <i-files view ng-model="damage.files"></i-files>
+
+    </div>
+</div>
+<div x-import="damages/action_info.html"></div>

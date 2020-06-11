@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+
+<head x-import="head.html">
+
+</head>
+
+<body class="##session.lang##">
+
+    <nav x-import="navbar/index.html" class="navbar" data-ng-controller="navbar">
+
+    </nav>
+
+
+    <div x-import="menu/index.html"></div>
+
+
+    <div id="main-layout" class="container" x-permission="employees">
+        <div class="row">
+            <div ng-controller="employees">
+                <div x-import="employees/add_modal.html"></div>
+                <div x-import="employees/update_modal.html"></div>
+                <div x-import="employees/delete_modal.html"></div>
+                <div x-import="employees/view_modal.html"></div>
+                <div x-import="employees/search.html"></div>
+
+                <div class="top-actions">
+                    <i-button type="add" ng-click="newEmployee()" label="##word.employees_new##"></i-button>
+                    <i-button type="search" onclick="site.showModal('#SearchModal')" label="##word.search_all##"></i-button>
+                    <a class="btn left bg-green" target="blank" href="/employees_degrees"> ##word.system_employee_degrees_menus##</a>
+                    <a class="btn left bg-green" target="blank" href="/jobs"> ##word.system_employee_jobs_menus##</a>
+                    <a class="btn left bg-green" target="blank" href="/departments"> ##word.system_employee_department_menus##</a>
+
+                </div>
+
+                <table class="table loaded" id="t1">
+                    <tr>
+                        <th class="not-print">##word.employees_logo##</th>
+                        <th>##word.employees_any_details##</th>
+                        <th>##word.employees_phones##</th>
+                        <th>##word.employees_mobiles##</th>
+                        <th>##word.employees_department##</th>
+                        <th>##word.employees_job##</th>
+                        <th>##word.employees_status##</th>
+                        <th class="not-print">##word.actions##</th>
+                    </tr>
+                    <tr ng-repeat="c in list | filter: search.name">
+                        <td class="center not-print">
+                            <i-image view class="logo" category="employees" ng-model="c.image_url"></i-image>
+                        <td class="center bold indigo">{{c.name}}</td>
+                        <td class="center bold">
+                            <label class="blue" ng-repeat="p in c.phones" > {{p}}
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                            </label>
+                        </td>
+                        <td class="center bold" >
+                            <label class="blue"  ng-repeat="m in c.mobiles" > {{m}}
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                            </label>
+                        </td>
+                        <td class="center bold indigo">{{c.department.name}}</td>
+                        <td class="center bold indigo">{{c.job.name}}</td>
+                        <td class="center bold">
+                            <p class="green" ng-show="c.active == true">##word.companies_active_yes##</p>
+                            <p class="red" ng-show="c.active == false">##word.companies_active_no##</p>
+                        </td>
+                        <td class="center not-print">
+                            <i-button type="details" ng-click="details(c)" label="##word.details##"></i-button>
+                            <i-button type="update" ng-click="edit(c)" label="##word.update##"></i-button>
+                            <i-button type="delete" ng-click="remove(c)" label="##word.delete##"></i-button>
+
+                        </td>
+                    </tr>
+
+                </table>
+                <i-button type="export" onclick="export_to_xlsx('t1' , 'employees.xlsx')" label="##word.export_to_excel##"></i-button>
+                <i-button type="print" label="##word.print##" onclick="site.print('#t1')"> </i-button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <div x-import="scripts.html"></div>
+
+    <script x-permission="employees" x-import="employees/index.js"></script>
+
+</body>
+
+</html>

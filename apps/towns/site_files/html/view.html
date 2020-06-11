@@ -1,0 +1,38 @@
+<div ng-hide="busy" class="row">
+    <div class="col7">
+        <br>
+        <table class="table bold">
+            <tr>
+                <td class="title">##word.towns_gov##</td>
+                <td class="center indigo">{{town.gov.name}}</td>
+            </tr>
+            <tr>
+                <td class="title">##word.towns_city##</td>
+                <td class="center">{{town.city.name}}</td>
+            </tr>
+            <tr>
+                <td class="title">##word.towns_region##</td>
+                <td class="center">{{town.region.name}}</td>
+            </tr>
+            <tr>
+                <td class="title">##word.towns_name##</td>
+                <td class="center">{{town.name}}</td>
+            </tr>
+
+            <tr>
+                <td class="title">##word.notes##</td>
+                <td class="center blue">{{town.notes}}</td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="col2"></div>
+    <div class="col3">
+
+        <i-image view category="towns" ng-model="town.image_url"></i-image>
+        <i-files view ng-model="town.files"></i-files>
+
+    </div>
+
+</div>
+<div x-import="towns/action_info.html"></div>
