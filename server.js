@@ -4,7 +4,6 @@ const site = isite({
   port : 9091,
   name: "crm",
   dir: __dirname + "/site_files",
-  saving_time: .2,
   help : true,
   cache: {
     enabled: true
