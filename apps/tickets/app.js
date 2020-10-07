@@ -41,7 +41,7 @@ module.exports = function init(site) {
   site.get({
     name: "tickets",
     path: __dirname + "/site_files/html/index.html",
-    parser: "html js"
+    parser: "html js css"
   })
 
 
