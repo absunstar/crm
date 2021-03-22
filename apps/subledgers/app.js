@@ -17,7 +17,7 @@ module.exports = function init(site) {
 
   const $subledgers = site.connectCollection("subledgers")
   site.words.addList(__dirname + '/site_files/json/words.json')
-  site.get({
+  site.onGET({
     name: "subledgers",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -25,7 +25,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/subledgers/add", (req, res) => {
+  site.onPOST("/api/subledgers/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -43,7 +43,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/subledgers/update", (req, res) => {
+  site.onPOST("/api/subledgers/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -74,7 +74,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/subledgers/delete", (req, res) => {
+  site.onPOST("/api/subledgers/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -95,7 +95,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/subledgers/view", (req, res) => {
+  site.onPOST("/api/subledgers/view", (req, res) => {
     let response = {}
     response.done = false
     $subledgers.findOne({
@@ -113,7 +113,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/subledgers/all", (req, res) => {
+  site.onPOST("/api/subledgers/all", (req, res) => {
 
     let response = {}
     response.done = false
@@ -131,7 +131,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/subledgers/upload/image", (req, res) => {
+  site.onPOST("/api/subledgers/upload/image", (req, res) => {
     let response = {
       done: true
     }
@@ -147,7 +147,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.get("/subledgers/image/:name", (req, res) => {
+  site.onGET("/subledgers/image/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/crm/subledgers/images/" + req.params.name)
   })
 }

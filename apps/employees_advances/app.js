@@ -18,7 +18,7 @@ module.exports = function init(site) {
       })
 
   
-  site.get({
+  site.onGET({
     name: "employees_advances",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -26,7 +26,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/employees_advances/add", (req, res) => {
+  site.onPOST("/api/employees_advances/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -65,7 +65,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/employees_advances/update", (req, res) => {
+  site.onPOST("/api/employees_advances/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -94,7 +94,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/employees_advances/delete", (req, res) => {
+  site.onPOST("/api/employees_advances/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -130,7 +130,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/employees_advances/view", (req, res) => {
+  site.onPOST("/api/employees_advances/view", (req, res) => {
     let response = {}
     response.done = false
     $employees_advances.findOne({
@@ -148,7 +148,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/employees_advances/all", (req, res) => {
+  site.onPOST("/api/employees_advances/all", (req, res) => {
     let response = {}
     response.done = false
 
@@ -235,7 +235,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/employees_advances/upload/image", (req, res) => {
+  site.onPOST("/api/employees_advances/upload/image", (req, res) => {
     let response = {
       done: true
     }
@@ -251,7 +251,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.get("/employees_advances/image/:name", (req, res) => {
+  site.onGET("/employees_advances/image/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/erp/employees_advances/images/" + req.params.name)
   })
 }

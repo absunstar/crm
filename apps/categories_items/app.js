@@ -303,13 +303,13 @@ module.exports = function init(site) {
 
     })
   })
-  site.get({
+  site.onGET({
     name: "categories_items",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
     compress: true
   })
-  site.post("/api/categories_items/add", (req, res) => {
+  site.onPOST("/api/categories_items/add", (req, res) => {
     let response = {}
     response.done = false
     if (!req.session.user) {
@@ -354,7 +354,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.post("/api/categories_items/update", (req, res) => {
+  site.onPOST("/api/categories_items/update", (req, res) => {
     let response = {}
     response.done = false
 
@@ -392,7 +392,7 @@ module.exports = function init(site) {
       res.json(response)
     }
   })
-  site.post("/api/categories_items/delete", (req, res) => {
+  site.onPOST("/api/categories_items/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -434,7 +434,7 @@ module.exports = function init(site) {
       res.json(response)
     }
   })
-  site.post("/api/categories_items/view", (req, res) => {
+  site.onPOST("/api/categories_items/view", (req, res) => {
     let response = {}
     response.done = false
     $categories_items.findOne({
@@ -451,7 +451,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.post("/api/categories_items/all", (req, res) => {
+  site.onPOST("/api/categories_items/all", (req, res) => {
 
     let response = {}
     let where = req.body.where

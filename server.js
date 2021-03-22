@@ -18,14 +18,10 @@ const site = isite({
     db: 'crm',
     limit: 100,
   },
-  require: {
+  requires: {
     features: [],
     permissions: [],
-  },
-  default: {
-    features: [],
-    permissions: [],
-  },
+  }
 });
 
 site.var('full-url', 'http://crm.egytag.com');

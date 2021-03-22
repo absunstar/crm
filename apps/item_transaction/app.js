@@ -160,14 +160,14 @@ module.exports = function init(site) {
    
   })
 
-  site.get({
+  site.onGET({
     name: "item_transaction",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
     compress: false
   })
 
-  site.post("/api/item_transaction/delete", (req, res) => {
+  site.onPOST("/api/item_transaction/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -187,7 +187,7 @@ module.exports = function init(site) {
       res.json(response)
     }
   })
-  site.post("/api/item_transaction/view", (req, res) => {
+  site.onPOST("/api/item_transaction/view", (req, res) => {
     let response = {}
     response.done = false
     $item_transaction.findOne({
@@ -206,7 +206,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/item_transaction/all", (req, res) => {
+  site.onPOST("/api/item_transaction/all", (req, res) => {
 
     let response = {}
     let where = req.body.where || {}

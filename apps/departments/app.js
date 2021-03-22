@@ -3,7 +3,7 @@ module.exports = function init(site) {
   const $departments = site.connectCollection("departments")
   site.words.addList(__dirname + '/site_files/json/words.json')
 
-  site.get({
+  site.onGET({
     name: "departments",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -11,7 +11,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/departments/add", (req, res) => {
+  site.onPOST("/api/departments/add", (req, res) => {
     let response = {}
     response.done = false
 
@@ -36,7 +36,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/departments/update", (req, res) => {
+  site.onPOST("/api/departments/update", (req, res) => {
     let response = {}
     response.done = false
 
@@ -72,7 +72,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/departments/delete", (req, res) => {
+  site.onPOST("/api/departments/delete", (req, res) => {
     let response = {}
     response.done = false
 
@@ -98,7 +98,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/departments/view", (req, res) => {
+  site.onPOST("/api/departments/view", (req, res) => {
     let response = {}
     response.done = false
     $departments.find({
@@ -116,7 +116,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/departments/all", (req, res) => {
+  site.onPOST("/api/departments/all", (req, res) => {
     let response = {}
     response.done = false
 

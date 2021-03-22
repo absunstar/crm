@@ -8,7 +8,7 @@ module.exports = function init(site) {
  
 
 
-  site.get({
+  site.onGET({
     name: "mobiles_slides",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -16,7 +16,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/mobiles_slides/add", (req, res) => {
+  site.onPOST("/api/mobiles_slides/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -35,7 +35,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/mobiles_slides/update", (req, res) => {
+  site.onPOST("/api/mobiles_slides/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -65,7 +65,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/mobiles_slides/delete", (req, res) => {
+  site.onPOST("/api/mobiles_slides/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -84,7 +84,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/mobiles_slides/view", (req, res) => {
+  site.onPOST("/api/mobiles_slides/view", (req, res) => {
     let response = {}
     response.done = false
     $mobiles_slides.findOne({
@@ -102,7 +102,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/mobiles_slides/all", (req, res) => {
+  site.onPOST("/api/mobiles_slides/all", (req, res) => {
     let response = {}
     response.done = false
     let where = req.body.where || {}
@@ -137,7 +137,7 @@ module.exports = function init(site) {
 
 
 
-  site.post("/api/mobiles_slides/upload/image", (req, res) => {
+  site.onPOST("/api/mobiles_slides/upload/image", (req, res) => {
     let response = {
       done: true
     }
@@ -153,7 +153,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.get("/mobiles_slides/image/:name", (req, res) => {
+  site.onGET("/mobiles_slides/image/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/crm/mobiles_slides/images/" + req.params.name)
   })
 }

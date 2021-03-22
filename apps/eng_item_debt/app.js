@@ -21,14 +21,14 @@ module.exports = function init(site) {
 
         }) 
   })
-  site.get({
+  site.onGET({
     name: "eng_item_debt",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
     compress: false
   })
 
-  site.post("/api/export/excel", (req, res) => {
+  site.onPOST("/api/export/excel", (req, res) => {
 
     let response = {}
     response.done = false
@@ -189,7 +189,7 @@ module.exports = function init(site) {
   })
 
 
-  site.get("/api/export/excel/download" , (req, res) => {
+  site.onGET("/api/export/excel/download" , (req, res) => {
     let response = {}
     response.done = false
 
@@ -202,7 +202,7 @@ module.exports = function init(site) {
     
   })
   
-  site.post("/api/eng_item_debt/add", (req, res) => {
+  site.onPOST("/api/eng_item_debt/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -265,7 +265,7 @@ module.exports = function init(site) {
     })
 
   })
-  site.post("/api/eng_item_debt/update", (req, res) => {
+  site.onPOST("/api/eng_item_debt/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -319,7 +319,7 @@ module.exports = function init(site) {
       res.json(response)
     }
   })
-  site.post("/api/eng_item_debt/delete", (req, res) => {
+  site.onPOST("/api/eng_item_debt/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -348,7 +348,7 @@ module.exports = function init(site) {
       res.json(response)
     }
   })
-  site.post("/api/eng_item_debt/view", (req, res) => {
+  site.onPOST("/api/eng_item_debt/view", (req, res) => {
     let response = {}
     response.done = false
     $eng_item_debt.findOne({
@@ -365,7 +365,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.post("/api/eng_item_debt/all", (req, res) => {
+  site.onPOST("/api/eng_item_debt/all", (req, res) => {
     let response = {}
     response.done = false
     let expo = false;

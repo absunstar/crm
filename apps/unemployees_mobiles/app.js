@@ -17,7 +17,7 @@ module.exports = function init(site) {
     
 
 
-  site.get({
+  site.onGET({
     name: "unemployees_mobiles",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -25,7 +25,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/unemployees_mobiles/add", (req, res) => {
+  site.onPOST("/api/unemployees_mobiles/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -44,7 +44,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/unemployees_mobiles/update", (req, res) => {
+  site.onPOST("/api/unemployees_mobiles/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -74,7 +74,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/unemployees_mobiles/delete", (req, res) => {
+  site.onPOST("/api/unemployees_mobiles/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -93,7 +93,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/unemployees_mobiles/view", (req, res) => {
+  site.onPOST("/api/unemployees_mobiles/view", (req, res) => {
     let response = {}
     response.done = false
     $unemployees_mobiles.findOne({
@@ -111,7 +111,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/unemployees_mobiles/all", (req, res) => {
+  site.onPOST("/api/unemployees_mobiles/all", (req, res) => {
     let response = {}
     response.done = false
     $unemployees_mobiles.findMany({
@@ -130,7 +130,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/unemployees_mobiles/upload/image", (req, res) => {
+  site.onPOST("/api/unemployees_mobiles/upload/image", (req, res) => {
     let response = {
       done: true
     }
@@ -146,11 +146,11 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.get("/unemployees_mobiles/image/:name", (req, res) => {
+  site.onGET("/unemployees_mobiles/image/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/crm/unemployees_mobiles/images/" + req.params.name)
   })
 
-  site.post("/api/unemployees_mobiles/upload/file", (req, res) => {
+  site.onPOST("/api/unemployees_mobiles/upload/file", (req, res) => {
     let response = {
       done: true
     }
@@ -168,7 +168,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.get("/unemployees_mobiles/file/:name", (req, res) => {
+  site.onGET("/unemployees_mobiles/file/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/crm/unemployees_mobiles/files/" + req.params.name)
   })
 }

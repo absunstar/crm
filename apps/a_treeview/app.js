@@ -2,7 +2,7 @@ module.exports = function init(site) {
 
   const $treeview = site.connectCollection("treeview")
 
-  site.get({
+  site.onGET({
     name: "treeview",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -10,7 +10,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/treeview/add", (req, res) => {
+  site.onPOST("/api/treeview/add", (req, res) => {
     let response = {}
     response.done = false
  
@@ -32,7 +32,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/treeview/update", (req, res) => {
+  site.onPOST("/api/treeview/update", (req, res) => {
     let response = {}
     response.done = false
 
@@ -66,7 +66,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/treeview/delete", (req, res) => {
+  site.onPOST("/api/treeview/delete", (req, res) => {
     let response = {}
     response.done = false
 
@@ -93,7 +93,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/treeview/view", (req, res) => {
+  site.onPOST("/api/treeview/view", (req, res) => {
     let response = {}
     response.done = false
     $treeview.find({
@@ -111,7 +111,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/treeview/all", (req, res) => {
+  site.onPOST("/api/treeview/all", (req, res) => {
     let response = {}
     response.done = false
    

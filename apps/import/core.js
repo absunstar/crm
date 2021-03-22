@@ -17,7 +17,7 @@ module.exports = function (site) {
     //     $tickets_slides.export({} , __dirname + '/db/tickets_slides.json')
     // } , 1000 * 10)
 
-    site.post('/api/import/core', (req, res) => {
+    site.onPOST('/api/import/core', (req, res) => {
 
         setTimeout(() => {
             res.json({
@@ -44,7 +44,7 @@ module.exports = function (site) {
 
     })
 
-    site.get('exportCore' , (req , res)=>{
+    site.onGET('exportCore' , (req , res)=>{
 
 
         if(!site.security.isUserHasPermission(req, res , 'exportCore')){

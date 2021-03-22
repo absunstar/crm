@@ -5,7 +5,7 @@ module.exports = function init(site) {
   
   site.words.addList(__dirname + '/site_files/json/words.json')
 
-  site.get({
+  site.onGET({
     name: "employees_insurances",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -13,7 +13,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/employees_insurances/add", (req, res) => {
+  site.onPOST("/api/employees_insurances/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -32,7 +32,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/employees_insurances/update", (req, res) => {
+  site.onPOST("/api/employees_insurances/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -63,7 +63,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/employees_insurances/delete", (req, res) => {
+  site.onPOST("/api/employees_insurances/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -84,7 +84,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/employees_insurances/view", (req, res) => {
+  site.onPOST("/api/employees_insurances/view", (req, res) => {
     let response = {}
     response.done = false
     $employees_insurances.findOne({
@@ -102,7 +102,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/employees_insurances/all", (req, res) => {
+  site.onPOST("/api/employees_insurances/all", (req, res) => {
 
     let response = {}
     response.done = false
@@ -130,7 +130,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/employees_insurances/upload/image", (req, res) => {
+  site.onPOST("/api/employees_insurances/upload/image", (req, res) => {
     let response = {
       done: true
     }
@@ -146,7 +146,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.get("/employees_insurances/image/:name", (req, res) => {
+  site.onGET("/employees_insurances/image/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/crm/employees_insurances/images/" + req.params.name)
   })
 }

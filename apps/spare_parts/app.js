@@ -15,7 +15,7 @@ module.exports = function init(site) {
 
   const $spare_parts = site.connectCollection("spare_parts")
   site.words.addList(__dirname + '/site_files/json/words.json')
-  site.get({
+  site.onGET({
     name: "spare_parts",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -23,7 +23,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/spare_parts/add", (req, res) => {
+  site.onPOST("/api/spare_parts/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -41,7 +41,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/spare_parts/update", (req, res) => {
+  site.onPOST("/api/spare_parts/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -71,7 +71,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/spare_parts/delete", (req, res) => {
+  site.onPOST("/api/spare_parts/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -90,7 +90,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/spare_parts/view", (req, res) => {
+  site.onPOST("/api/spare_parts/view", (req, res) => {
     let response = {}
     response.done = false
     $spare_parts.findOne({
@@ -108,7 +108,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/spare_parts/all", (req, res) => {
+  site.onPOST("/api/spare_parts/all", (req, res) => {
     let response = {}
     response.done = false
     $spare_parts.findMany({
@@ -125,7 +125,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/spare_parts/upload/image", (req, res) => {
+  site.onPOST("/api/spare_parts/upload/image", (req, res) => {
     let response = {
       done: true
     }
@@ -141,7 +141,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.get("/spare_parts/image/:name", (req, res) => {
+  site.onGET("/spare_parts/image/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/crm/spare_parts/" + req.params.name)
   })
 }

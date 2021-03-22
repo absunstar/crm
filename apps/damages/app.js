@@ -4,14 +4,14 @@ module.exports = function init(site) {
 
   site.words.addList(__dirname + '/site_files/json/words.json')
 
-  site.get({
+  site.onGET({
     name: "damages",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
     compress: true
   })
 
-  site.post("/api/damages/add", (req, res) => {
+  site.onPOST("/api/damages/add", (req, res) => {
     let response = {}
     response.done = false
 
@@ -37,7 +37,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/damages/update", (req, res) => {
+  site.onPOST("/api/damages/update", (req, res) => {
     let response = {}
     response.done = false
 
@@ -74,7 +74,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/damages/delete", (req, res) => {
+  site.onPOST("/api/damages/delete", (req, res) => {
     let response = {}
     response.done = false
 
@@ -101,7 +101,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/damages/view", (req, res) => {
+  site.onPOST("/api/damages/view", (req, res) => {
     let response = {}
     response.done = false
     $damages.find({
@@ -119,7 +119,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/damages/all", (req, res) => {
+  site.onPOST("/api/damages/all", (req, res) => {
     let response = {}
     response.done = false
 

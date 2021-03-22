@@ -1,7 +1,7 @@
 module.exports = function init(site) {
   const $amounts_in = site.connectCollection("amounts_in")
 
-  site.get({
+  site.onGET({
     name: "amounts_in",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -9,7 +9,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/amounts_in/add", (req, res) => {
+  site.onPOST("/api/amounts_in/add", (req, res) => {
     let response = {}
     response.done = false
 
@@ -49,7 +49,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/amounts_in/update", (req, res) => {
+  site.onPOST("/api/amounts_in/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -81,7 +81,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/amounts_in/delete", (req, res) => {
+  site.onPOST("/api/amounts_in/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -116,7 +116,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/amounts_in/view", (req, res) => {
+  site.onPOST("/api/amounts_in/view", (req, res) => {
     let response = {}
     response.done = false
     $amounts_in.findOne({
@@ -134,7 +134,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/amounts_in/all", (req, res) => {
+  site.onPOST("/api/amounts_in/all", (req, res) => {
     let response = {}
     response.done = false
 

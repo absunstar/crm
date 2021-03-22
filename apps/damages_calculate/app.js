@@ -32,14 +32,14 @@ module.exports = function init(site) {
     })
   })
 
-  site.get({
+  site.onGET({
     name: "damages_calculate",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
     compress: true
   })
 
-  site.post("/api/damages_calculate/add", (req, res) => {
+  site.onPOST("/api/damages_calculate/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -61,7 +61,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/damages_calculate/update", (req, res) => {
+  site.onPOST("/api/damages_calculate/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -93,7 +93,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/damages_calculate/delete", (req, res) => {
+  site.onPOST("/api/damages_calculate/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -112,7 +112,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/damages_calculate/view", (req, res) => {
+  site.onPOST("/api/damages_calculate/view", (req, res) => {
     let response = {}
     response.done = false
     $damages_calculate.findOne({
@@ -130,7 +130,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/damages_calculate/all", (req, res) => {
+  site.onPOST("/api/damages_calculate/all", (req, res) => {
     let response = {}
     response.done = false
     $damages_calculate.findMany({
@@ -147,7 +147,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/damages_calculate/upload/image", (req, res) => {
+  site.onPOST("/api/damages_calculate/upload/image", (req, res) => {
     let response = {
       done: true
     }
@@ -163,7 +163,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.get("/damages_calculate/image/:name", (req, res) => {
+  site.onGET("/damages_calculate/image/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/crm/damages_calculate/images/" + req.params.name)
   })
 }

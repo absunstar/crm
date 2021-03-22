@@ -1,7 +1,7 @@
 module.exports = function (site) {
 
 
-    site.post('/api/import/employees', (req, res) => {
+    site.onPOST('/api/import/employees', (req, res) => {
 
         setTimeout(() => {
             res.json({

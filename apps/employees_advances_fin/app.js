@@ -21,7 +21,7 @@ module.exports = function init(site) {
 
   })
 
-  site.get({
+  site.onGET({
     name: "employees_advances_fin",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -29,7 +29,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/employees_advances_fin/add", (req, res) => {
+  site.onPOST("/api/employees_advances_fin/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -52,7 +52,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/employees_advances_fin/update", (req, res) => {
+  site.onPOST("/api/employees_advances_fin/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -81,7 +81,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/employees_advances_fin/delete", (req, res) => {
+  site.onPOST("/api/employees_advances_fin/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -115,7 +115,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/employees_advances_fin/view", (req, res) => {
+  site.onPOST("/api/employees_advances_fin/view", (req, res) => {
     let response = {}
     response.done = false
     $employees_advances_fin.findOne({
@@ -133,7 +133,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/employees_advances_fin/approved", (req, res) => {
+  site.onPOST("/api/employees_advances_fin/approved", (req, res) => {
 
     let response = {}
     response.done = false
@@ -179,7 +179,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/employees_advances_fin/all", (req, res) => {
+  site.onPOST("/api/employees_advances_fin/all", (req, res) => {
     let response = {}
     response.done = false
 
@@ -269,7 +269,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/employees_advances_fin/upload/image", (req, res) => {
+  site.onPOST("/api/employees_advances_fin/upload/image", (req, res) => {
     let response = {
       done: true
     }
@@ -285,7 +285,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.get("/employees_advances_fin/image/:name", (req, res) => {
+  site.onGET("/employees_advances_fin/image/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/erp/employees_advances_fin/images/" + req.params.name)
   })
 }

@@ -215,13 +215,13 @@ module.exports = function init(site) {
 
   site.words.addList(__dirname + '/site_files/json/words.json')
 
-  site.get({
+  site.onGET({
     name: '/items_cards',
     path: __dirname + '/site_files/html/index.html',
     parser: 'html'
   })
 
-  site.post("/api/items_cards/latest", (req, res) => {
+  site.onPOST("/api/items_cards/latest", (req, res) => {
     let response = {}
     response.done = false
     $items_cards.findMany({
@@ -241,7 +241,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/items_cards/all", (req, res) => {
+  site.onPOST("/api/items_cards/all", (req, res) => {
     let response = {}
     response.done = false
     $items_cards.findMany({
@@ -261,7 +261,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/items_cards/search", (req, res) => {
+  site.onPOST("/api/items_cards/search", (req, res) => {
     let response = {}
     response.done = false
     let data = req.body

@@ -50,13 +50,13 @@ module.exports = function init(site) {
   }
 
 
-  site.get({
+  site.onGET({
     name: '/notifications',
     path: __dirname + '/site_files/html/index.html',
     parser: 'html'
   })
 
-  site.post("/api/notifications/add", (req, res) => {
+  site.onPOST("/api/notifications/add", (req, res) => {
     let response = {}
     response.done = false
 
@@ -98,12 +98,12 @@ module.exports = function init(site) {
 
   })
 
-  site.post({
+  site.onPOST({
     name: '/api/system/all',
     path: __dirname + '/site_files/json/system.json'
   })
 
-  site.post("/api/notifications/latest", (req, res) => {
+  site.onPOST("/api/notifications/latest", (req, res) => {
     let response = {}
     response.done = false
     $notifications.findMany({
@@ -124,7 +124,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/notifications/all", (req, res) => {
+  site.onPOST("/api/notifications/all", (req, res) => {
     let response = {}
     response.done = false
 

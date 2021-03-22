@@ -2,14 +2,14 @@ module.exports = function init(site) {
 
   const $regions = site.connectCollection("regions")
 
-  site.get({
+  site.onGET({
     name: "regions",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
     compress: true
   })
 
-  site.post("/api/regions/add", (req, res) => {
+  site.onPOST("/api/regions/add", (req, res) => {
     let response = {}
     response.done = false
 
@@ -34,7 +34,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/regions/update", (req, res) => {
+  site.onPOST("/api/regions/update", (req, res) => {
     let response = {}
     response.done = false
 
@@ -69,7 +69,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/regions/delete", (req, res) => {
+  site.onPOST("/api/regions/delete", (req, res) => {
     let response = {}
     response.done = false
 
@@ -95,7 +95,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/regions/view", (req, res) => {
+  site.onPOST("/api/regions/view", (req, res) => {
     let response = {}
     response.done = false
     $regions.find({
@@ -113,7 +113,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/regions/all", (req, res) => {
+  site.onPOST("/api/regions/all", (req, res) => {
     let response = {}
     response.done = false
 

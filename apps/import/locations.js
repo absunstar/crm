@@ -10,7 +10,7 @@ module.exports = function (site) {
     const $cities = site.connectCollection('cities')
     const $towns = site.connectCollection('towns')
 
-    site.post('/api/import/locations', (req, res) => {
+    site.onPOST('/api/import/locations', (req, res) => {
 
         setTimeout(() => {
             res.json({

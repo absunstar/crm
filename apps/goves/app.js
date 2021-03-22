@@ -2,7 +2,7 @@ module.exports = function init(site) {
 
   const $goves = site.connectCollection("goves")
 
-  site.get({
+  site.onGET({
     name: "goves",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -10,7 +10,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/goves/add", (req, res) => {
+  site.onPOST("/api/goves/add", (req, res) => {
     let response = {}
     response.done = false
 
@@ -33,7 +33,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/goves/update", (req, res) => {
+  site.onPOST("/api/goves/update", (req, res) => {
     let response = {}
     response.done = false
 
@@ -65,7 +65,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/goves/delete", (req, res) => {
+  site.onPOST("/api/goves/delete", (req, res) => {
     let response = {}
     response.done = false
 
@@ -91,7 +91,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/goves/view", (req, res) => {
+  site.onPOST("/api/goves/view", (req, res) => {
     let response = {}
     response.done = false
     $goves.find({
@@ -109,7 +109,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/goves/all", (req, res) => {
+  site.onPOST("/api/goves/all", (req, res) => {
     let response = {}
     response.done = false
 

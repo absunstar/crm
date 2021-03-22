@@ -2,17 +2,17 @@ module.exports = function (site) {
     
     site.import_result = {}
 
-    site.post('/api/import/result' , (req , res)=>{
+    site.onPOST('/api/import/result' , (req , res)=>{
         site.import_result['time'] = new Date()
         res.json(site.import_result)
     })
 
-    site.post('/api/import/result/reset' , (req , res)=>{
+    site.onPOST('/api/import/result/reset' , (req , res)=>{
         site.import_result = {}
         res.json(site.import_result)
     })
 
-    site.get({name : 'import' , path : __dirname + '/site_files/html/index.html' , parser:'html css js'})
+    site.onGET({name : 'import' , path : __dirname + '/site_files/html/index.html' , parser:'html css js'})
 
     site.sql_config = {
         user: 'amr',

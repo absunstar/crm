@@ -2,14 +2,14 @@ module.exports = function init(site) {
 
   const $companies_categories = site.connectCollection("companies_categories")
 
-  site.get({
+  site.onGET({
     name: "companies_categories",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
     compress: true
   })
 
-  site.post("/api/companies_categories/add", (req, res) => {
+  site.onPOST("/api/companies_categories/add", (req, res) => {
     let response = {}
     response.done = false
 
@@ -37,7 +37,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/companies_categories/update", (req, res) => {
+  site.onPOST("/api/companies_categories/update", (req, res) => {
     let response = {}
     response.done = false
 
@@ -75,7 +75,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/companies_categories/delete", (req, res) => {
+  site.onPOST("/api/companies_categories/delete", (req, res) => {
     let response = {}
     response.done = false
 
@@ -102,7 +102,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/companies_categories/view", (req, res) => {
+  site.onPOST("/api/companies_categories/view", (req, res) => {
     let response = {}
     response.done = false
     $companies_categories.find({
@@ -120,7 +120,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/companies_categories/all", (req, res) => {
+  site.onPOST("/api/companies_categories/all", (req, res) => {
     let response = {}
     response.done = false
 

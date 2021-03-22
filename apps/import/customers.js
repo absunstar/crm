@@ -3,7 +3,7 @@ module.exports = function (site) {
     const $customers = site.connectCollection('customers')
 
 
-    site.post('/api/import/customers', (req, res) => {
+    site.onPOST('/api/import/customers', (req, res) => {
 
         let default_gov = {
             id: 1,
@@ -138,7 +138,7 @@ module.exports = function (site) {
         })
     })
 
-    site.post('/api/drop/customers', (req, res) => {
+    site.onPOST('/api/drop/customers', (req, res) => {
 
         $customers.drop(() => {
             site.import_result['info'] = 'Droped Collection Customers'

@@ -42,7 +42,7 @@ module.exports = function init(site) {
 
 
 
-  site.get({
+  site.onGET({
     name: "safes_payments",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -50,7 +50,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/safes_payments/all", (req, res) => {
+  site.onPOST("/api/safes_payments/all", (req, res) => {
     let response = {}
     response.done = false
     

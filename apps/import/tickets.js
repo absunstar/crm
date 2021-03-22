@@ -581,7 +581,7 @@ module.exports = function (site) {
         })
     }
 
-    site.post('/api/import/tickets', (req, res) => {
+    site.onPOST('/api/import/tickets', (req, res) => {
 
         setTimeout(() => {
             res.json({
@@ -613,7 +613,7 @@ module.exports = function (site) {
 
     })
 
-    site.post('/api/drop/tickets', (req, res) => {
+    site.onPOST('/api/drop/tickets', (req, res) => {
 
         $tickets.drop(() => {
             site.import_result['info'] = 'Droped Collection Tickets'
@@ -627,7 +627,7 @@ module.exports = function (site) {
 
     })
 
-    site.post('/api/remove/tickets', (req, res) => {
+    site.onPOST('/api/remove/tickets', (req, res) => {
         removeTickets()
         setTimeout(() => {
             res.json({
@@ -637,7 +637,7 @@ module.exports = function (site) {
     })
 
     
-    site.post('/api/count/tickets', (req, res) => {
+    site.onPOST('/api/count/tickets', (req, res) => {
         countTickets()
         setTimeout(() => {
             res.json({

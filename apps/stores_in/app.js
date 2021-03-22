@@ -135,18 +135,18 @@ module.exports = function init(site) {
     $stores_in.add(obj)
 
   })
-  site.post({
+  site.onPOST({
     name: '/api/stores_in/types/all',
     path: __dirname + '/site_files/json/types.json'
   })
 
-  site.get({
+  site.onGET({
     name: "stores_in",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
     compress: false
   })
-  site.post("/api/stores_in/add", (req, res) => {
+  site.onPOST("/api/stores_in/add", (req, res) => {
     let response = {}
     response.done = false
     if (!req.session.user) {
@@ -232,7 +232,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.post("/api/stores_in/update", (req, res) => {
+  site.onPOST("/api/stores_in/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -278,7 +278,7 @@ module.exports = function init(site) {
       res.json(response)
     }
   })
-  site.post("/api/stores_in/delete", (req, res) => {
+  site.onPOST("/api/stores_in/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -333,7 +333,7 @@ module.exports = function init(site) {
       res.json(response)
     }
   })
-  site.post("/api/stores_in/view", (req, res) => {
+  site.onPOST("/api/stores_in/view", (req, res) => {
     let response = {}
     response.done = false
     $stores_in.findOne({
@@ -350,7 +350,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.post("/api/stores_in/all", (req, res) => {
+  site.onPOST("/api/stores_in/all", (req, res) => {
     let response = {}
     response.done = false
     let where = req.body.where

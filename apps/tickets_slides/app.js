@@ -6,7 +6,7 @@ module.exports = function init(site) {
   const $tickets_slides = site.connectCollection("tickets_slides")
 
 
-  site.get({
+  site.onGET({
     name: "tickets_slides",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -14,7 +14,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/tickets_slides/add", (req, res) => {
+  site.onPOST("/api/tickets_slides/add", (req, res) => {
     let response = {}
     response.done = false
 
@@ -41,7 +41,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/tickets_slides/update", (req, res) => {
+  site.onPOST("/api/tickets_slides/update", (req, res) => {
     let response = {}
     response.done = false
 
@@ -80,7 +80,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/tickets_slides/delete", (req, res) => {
+  site.onPOST("/api/tickets_slides/delete", (req, res) => {
     let response = {}
     response.done = false
 
@@ -107,7 +107,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/tickets_slides/view", (req, res) => {
+  site.onPOST("/api/tickets_slides/view", (req, res) => {
     let response = {}
     response.done = false
     $tickets_slides.find({
@@ -125,7 +125,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/tickets_slides/all", (req, res) => {
+  site.onPOST("/api/tickets_slides/all", (req, res) => {
     let response = {}
     response.done = false
 

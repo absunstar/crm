@@ -2,7 +2,7 @@ module.exports = function(site){
 
     site.printList = []
 
-    site.post('/api/print' , (req , res)=>{
+    site.onPOST('/api/print' , (req , res)=>{
 
         let id = new Date().getTime()
 
@@ -17,7 +17,7 @@ module.exports = function(site){
         })
     })
 
-    site.get('/view/print/:id' , (req , res)=>{
+    site.onGET('/view/print/:id' , (req , res)=>{
         let content = ''
 
         site.printList.forEach(item => {

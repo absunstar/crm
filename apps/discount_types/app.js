@@ -19,7 +19,7 @@ module.exports = function init(site) {
   })
 
 
-  site.get({
+  site.onGET({
     name: "discount_types",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -27,7 +27,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/discount_types/add", (req, res) => {
+  site.onPOST("/api/discount_types/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -47,7 +47,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/discount_types/update", (req, res) => {
+  site.onPOST("/api/discount_types/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -80,7 +80,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/discount_types/delete", (req, res) => {
+  site.onPOST("/api/discount_types/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -101,7 +101,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/discount_types/view", (req, res) => {
+  site.onPOST("/api/discount_types/view", (req, res) => {
     let response = {}
     response.done = false
     $discount_types.findOne({
@@ -119,7 +119,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/discount_types/all", (req, res) => {
+  site.onPOST("/api/discount_types/all", (req, res) => {
 
     let response = {}
     response.done = false

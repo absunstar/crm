@@ -4,7 +4,7 @@ module.exports = function init(site) {
 
   $towns.deleteDuplicate({name: 1})
 
-  site.get({
+  site.onGET({
     name: "towns",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -12,7 +12,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/towns/add", (req, res) => {
+  site.onPOST("/api/towns/add", (req, res) => {
     let response = {}
     response.done = false
 
@@ -37,7 +37,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/towns/update", (req, res) => {
+  site.onPOST("/api/towns/update", (req, res) => {
     let response = {}
     response.done = false
 
@@ -73,7 +73,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/towns/delete", (req, res) => {
+  site.onPOST("/api/towns/delete", (req, res) => {
     let response = {}
     response.done = false
 
@@ -99,7 +99,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/towns/view", (req, res) => {
+  site.onPOST("/api/towns/view", (req, res) => {
     let response = {}
     response.done = false
     $towns.find({
@@ -117,7 +117,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/towns/all", (req, res) => {
+  site.onPOST("/api/towns/all", (req, res) => {
     let response = {}
     response.done = false
 

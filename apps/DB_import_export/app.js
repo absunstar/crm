@@ -43,7 +43,7 @@ module.exports = function init(site) {
 
 
 
-  site.get({
+  site.onGET({
     name: "DB_import_export",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -53,7 +53,7 @@ module.exports = function init(site) {
 
  
 
-  site.post("/api/amounts_in/import_file_amount_in", (req, res) => {
+  site.onPOST("/api/amounts_in/import_file_amount_in", (req, res) => {
     let response = {}
     response.done = false
 
@@ -65,7 +65,7 @@ module.exports = function init(site) {
 
     $amounts_in.import(__dirname + "/site_files/db/amount_in",(err , docs)=>{})
   })
-  site.get("/api/amounts_in/export_file_amount_in", (req, res) => {
+  site.onGET("/api/amounts_in/export_file_amount_in", (req, res) => {
     let response = {}
     response.done = false
 
@@ -82,7 +82,7 @@ module.exports = function init(site) {
   
 })
 
-  site.post("/api/amounts_out/import_file_amount_out", (req, res) => {
+  site.onPOST("/api/amounts_out/import_file_amount_out", (req, res) => {
     let response = {}
     response.done = false
 
@@ -94,7 +94,7 @@ module.exports = function init(site) {
 
     $amounts_out.import(__dirname + "/site_files/db/amount_out",(err , docs)=>{})
   })
-  site.get("/api/amounts_out/export_file_amount_out", (req, res) => {
+  site.onGET("/api/amounts_out/export_file_amount_out", (req, res) => {
     let response = {}
     response.done = false
 
@@ -108,7 +108,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/safes/import_file_safes", (req, res) => {
+  site.onPOST("/api/safes/import_file_safes", (req, res) => {
     let response = {}
     response.done = false
 
@@ -120,7 +120,7 @@ module.exports = function init(site) {
 
     $safes.import(__dirname + "/site_files/db/safes",(err , docs)=>{})
   })
-  site.get("/api/safes/export_file_safes", (req, res) => {
+  site.onGET("/api/safes/export_file_safes", (req, res) => {
     let response = {}
     response.done = false
 
@@ -133,7 +133,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/in_out_names/import_file_in_out_names", (req, res) => {
+  site.onPOST("/api/in_out_names/import_file_in_out_names", (req, res) => {
     let response = {}
     response.done = false
 
@@ -145,7 +145,7 @@ module.exports = function init(site) {
 
     $in_out_names.import(__dirname + "/site_files/db/in_out_names",(err , docs)=>{})
   })
-  site.get("/api/in_out_names/export_file_in_out_names", (req, res) => {
+  site.onGET("/api/in_out_names/export_file_in_out_names", (req, res) => {
     let response = {}
     response.done = false
 
@@ -159,7 +159,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/employee_offer/import_file_employee_offer", (req, res) => {
+  site.onPOST("/api/employee_offer/import_file_employee_offer", (req, res) => {
     let response = {}
     response.done = false
 
@@ -171,7 +171,7 @@ module.exports = function init(site) {
 
     $employee_offer.import(__dirname + "/site_files/db/employee_offer",(err , docs)=>{})
   })
-  site.get("/api/employee_offer/export_file_employee_offer", (req, res) => {
+  site.onGET("/api/employee_offer/export_file_employee_offer", (req, res) => {
     let response = {}
     response.done = false
 
@@ -185,7 +185,7 @@ module.exports = function init(site) {
      })
   })
   
-  site.post("/api/employee_discount/import_file_employee_discount", (req, res) => {
+  site.onPOST("/api/employee_discount/import_file_employee_discount", (req, res) => {
     let response = {}
     response.done = false
 
@@ -197,7 +197,7 @@ module.exports = function init(site) {
 
     $employee_discount.import(__dirname + "/site_files/db/employee_discount",(err , docs)=>{})
   })
-  site.get("/api/employee_discount/export_file_employee_discount", (req, res) => {
+  site.onGET("/api/employee_discount/export_file_employee_discount", (req, res) => {
     let response = {}
     response.done = false
 
@@ -210,7 +210,7 @@ module.exports = function init(site) {
       res.download(__dirname + "/site_files/db/employee_discount")
      })
   })
-  site.post("/api/employees_debt/import_file_employees_debt", (req, res) => {
+  site.onPOST("/api/employees_debt/import_file_employees_debt", (req, res) => {
     let response = {}
     response.done = false
 
@@ -222,7 +222,7 @@ module.exports = function init(site) {
 
     $employees_debt.import(__dirname + "/site_files/db/employees_debt",(err , docs)=>{})
   })
-  site.get("/api/employees_debt/export_file_employees_debt", (req, res) => {
+  site.onGET("/api/employees_debt/export_file_employees_debt", (req, res) => {
     let response = {}
     response.done = false
 
@@ -234,7 +234,7 @@ module.exports = function init(site) {
       res.download(__dirname + "/site_files/db/employees_debt")
      })
   })
-  site.post("/api/employees_advances/import_file_employees_advances", (req, res) => {
+  site.onPOST("/api/employees_advances/import_file_employees_advances", (req, res) => {
     let response = {}
     response.done = false
 
@@ -246,7 +246,7 @@ module.exports = function init(site) {
 
     $employees_advances.import(__dirname + "/site_files/db/employees_advances",(err , docs)=>{})
   })
-  site.get("/api/employees_advances/export_file_employees_advances", (req, res) => {
+  site.onGET("/api/employees_advances/export_file_employees_advances", (req, res) => {
     let response = {}
     response.done = false
 
@@ -259,7 +259,7 @@ module.exports = function init(site) {
       res.download(__dirname + "/site_files/db/employees_advances")
      })
   })
-  site.post("/api/employees_insurances/import_file_employees_insurances", (req, res) => {
+  site.onPOST("/api/employees_insurances/import_file_employees_insurances", (req, res) => {
     let response = {}
     response.done = false
 
@@ -271,7 +271,7 @@ module.exports = function init(site) {
 
     $employees_insurances.import(__dirname + "/site_files/db/employees_insurances",(err , docs)=>{})
   })
-  site.get("/api/employees_insurances/export_file_employees_insurances", (req, res) => {
+  site.onGET("/api/employees_insurances/export_file_employees_insurances", (req, res) => {
     let response = {}
     response.done = false
 
@@ -283,7 +283,7 @@ module.exports = function init(site) {
       res.download(__dirname + "/site_files/db/employees_insurances")
      })
   })
-  site.post("/api/insurances_slides/import_file_insurances_slides", (req, res) => {
+  site.onPOST("/api/insurances_slides/import_file_insurances_slides", (req, res) => {
     let response = {}
     response.done = false
 
@@ -295,7 +295,7 @@ module.exports = function init(site) {
 
     $insurances_slides.import(__dirname + "/site_files/db/insurances_slides",(err , docs)=>{})
   })
-  site.get("/api/insurances_slides/export_file_insurances_slides", (req, res) => {
+  site.onGET("/api/insurances_slides/export_file_insurances_slides", (req, res) => {
     let response = {}
     response.done = false
 
@@ -309,7 +309,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/employees_mobiles/import_file_employees_mobiles", (req, res) => {
+  site.onPOST("/api/employees_mobiles/import_file_employees_mobiles", (req, res) => {
     let response = {}
     response.done = false
 
@@ -321,7 +321,7 @@ module.exports = function init(site) {
 
     $employees_mobiles.import(__dirname + "/site_files/db/employees_mobiles",(err , docs)=>{})
   })
-  site.get("/api/employees_mobiles/export_file_employees_mobiles", (req, res) => {
+  site.onGET("/api/employees_mobiles/export_file_employees_mobiles", (req, res) => {
     let response = {}
     response.done = false
 
@@ -336,7 +336,7 @@ module.exports = function init(site) {
 
   })
 
-  site.post("/api/mobiles_slides/import_file_mobiles_slides", (req, res) => {
+  site.onPOST("/api/mobiles_slides/import_file_mobiles_slides", (req, res) => {
     let response = {}
     response.done = false
 
@@ -348,7 +348,7 @@ module.exports = function init(site) {
 
     $mobiles_slides.import(__dirname + "/site_files/db/mobiles_slides",(err , docs)=>{})
   })
-  site.get("/api/mobiles_slides/export_file_mobiles_slides", (req, res) => {
+  site.onGET("/api/mobiles_slides/export_file_mobiles_slides", (req, res) => {
     let response = {}
     response.done = false
 
@@ -362,7 +362,7 @@ module.exports = function init(site) {
 
   })
 
-  site.post("/api/customers/import_file_customers", (req, res) => {
+  site.onPOST("/api/customers/import_file_customers", (req, res) => {
     let response = {}
     response.done = false
 
@@ -374,7 +374,7 @@ module.exports = function init(site) {
 
     $customers.import(__dirname + "/site_files/db/customers",(err , docs)=>{})
   })
-  site.get("/api/customers/export_file_customers", (req, res) => {
+  site.onGET("/api/customers/export_file_customers", (req, res) => {
     let response = {}
     response.done = false
 
@@ -388,7 +388,7 @@ module.exports = function init(site) {
 
   })
 
-  site.post("/api/stores/import_file_stores", (req, res) => {
+  site.onPOST("/api/stores/import_file_stores", (req, res) => {
     let response = {}
     response.done = false
 
@@ -400,7 +400,7 @@ module.exports = function init(site) {
 
     $stores.import(__dirname + "/site_files/db/stores",(err , docs)=>{})
   })
-  site.get("/api/stores/export_file_stores", (req, res) => {
+  site.onGET("/api/stores/export_file_stores", (req, res) => {
     let response = {}
     response.done = false
 
@@ -413,7 +413,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/categories_items/import_file_categories_items", (req, res) => {
+  site.onPOST("/api/categories_items/import_file_categories_items", (req, res) => {
     let response = {}
     response.done = false
 
@@ -425,7 +425,7 @@ module.exports = function init(site) {
 
     $categories_items.import(__dirname + "/site_files/db/categories_items",(err , docs)=>{})
   })
-  site.get("/api/categories_items/export_file_categories_items", (req, res) => {
+  site.onGET("/api/categories_items/export_file_categories_items", (req, res) => {
     let response = {}
     response.done = false
 
@@ -438,7 +438,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/stores_in/import_file_stores_in", (req, res) => {
+  site.onPOST("/api/stores_in/import_file_stores_in", (req, res) => {
     let response = {}
     response.done = false
 
@@ -450,7 +450,7 @@ module.exports = function init(site) {
 
     $stores_in.import(__dirname + "/site_files/db/stores_in",(err , docs)=>{})
   })
-  site.get("/api/stores_in/export_file_stores_in", (req, res) => {
+  site.onGET("/api/stores_in/export_file_stores_in", (req, res) => {
     let response = {}
     response.done = false
 
@@ -463,7 +463,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/stores_out/import_file_stores_out", (req, res) => {
+  site.onPOST("/api/stores_out/import_file_stores_out", (req, res) => {
     let response = {}
     response.done = false
 
@@ -474,7 +474,7 @@ module.exports = function init(site) {
 
     $stores_out.import(__dirname + "/site_files/db/stores_out",(err , docs)=>{})
   })
-  site.get("/api/stores_out/export_file_stores_out", (req, res) => {
+  site.onGET("/api/stores_out/export_file_stores_out", (req, res) => {
     let response = {}
     response.done = false
 
@@ -487,7 +487,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/eng_item_list/import_file_eng_item_list", (req, res) => {
+  site.onPOST("/api/eng_item_list/import_file_eng_item_list", (req, res) => {
     let response = {}
     response.done = false
 
@@ -498,7 +498,7 @@ module.exports = function init(site) {
 
     $eng_item_list.import(__dirname + "/site_files/db/eng_item_list",(err , docs)=>{})
   })
-  site.get("/api/eng_item_list/export_file_eng_item_list", (req, res) => {
+  site.onGET("/api/eng_item_list/export_file_eng_item_list", (req, res) => {
     let response = {}
     response.done = false
 
@@ -511,7 +511,7 @@ module.exports = function init(site) {
      })
   })
   
-  site.post("/api/eng_item_debt/import_file_eng_item_debt", (req, res) => {
+  site.onPOST("/api/eng_item_debt/import_file_eng_item_debt", (req, res) => {
     let response = {}
     response.done = false
 
@@ -522,7 +522,7 @@ module.exports = function init(site) {
 
     $eng_item_debt.import(__dirname + "/site_files/db/eng_item_debt",(err , docs)=>{})
   })
-  site.get("/api/eng_item_debt/export_file_eng_item_debt", (req, res) => {
+  site.onGET("/api/eng_item_debt/export_file_eng_item_debt", (req, res) => {
     let response = {}
     response.done = false
 
@@ -535,7 +535,7 @@ module.exports = function init(site) {
      })
   })
   
-  site.post("/api/tax_types/import_file_tax_types", (req, res) => {
+  site.onPOST("/api/tax_types/import_file_tax_types", (req, res) => {
     let response = {}
     response.done = false
 
@@ -546,7 +546,7 @@ module.exports = function init(site) {
 
     $tax_types.import(__dirname + "/site_files/db/tax_types",(err , docs)=>{})
   })
-  site.get("/api/tax_types/export_file_tax_types", (req, res) => {
+  site.onGET("/api/tax_types/export_file_tax_types", (req, res) => {
     let response = {}
     response.done = false
 
@@ -559,7 +559,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/discount_types/import_file_discount_types", (req, res) => {
+  site.onPOST("/api/discount_types/import_file_discount_types", (req, res) => {
     let response = {}
     response.done = false
 
@@ -570,7 +570,7 @@ module.exports = function init(site) {
 
     $discount_types.import(__dirname + "/site_files/db/tax_types",(err , docs)=>{})
   })
-  site.get("/api/discount_types/export_file_discount_types", (req, res) => {
+  site.onGET("/api/discount_types/export_file_discount_types", (req, res) => {
     let response = {}
     response.done = false
 
@@ -585,7 +585,7 @@ module.exports = function init(site) {
   
  
 
-  site.post("/api/goves/import_file_goves", (req, res) => {
+  site.onPOST("/api/goves/import_file_goves", (req, res) => {
     let response = {}
     response.done = false
 
@@ -596,7 +596,7 @@ module.exports = function init(site) {
 
     $goves.import(__dirname + "/site_files/db/goves",(err , docs)=>{})
   })
-  site.get("/api/goves/export_file_goves", (req, res) => {
+  site.onGET("/api/goves/export_file_goves", (req, res) => {
     let response = {}
     response.done = false
 
@@ -609,7 +609,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/cities/import_file_cities", (req, res) => {
+  site.onPOST("/api/cities/import_file_cities", (req, res) => {
     let response = {}
     response.done = false
 
@@ -620,7 +620,7 @@ module.exports = function init(site) {
 
     $cities.import(__dirname + "/site_files/db/cities",(err , docs)=>{})
   })
-  site.get("/api/cities/export_file_cities", (req, res) => {
+  site.onGET("/api/cities/export_file_cities", (req, res) => {
     let response = {}
     response.done = false
 
@@ -633,7 +633,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/towns/import_file_towns", (req, res) => {
+  site.onPOST("/api/towns/import_file_towns", (req, res) => {
     let response = {}
     response.done = false
 
@@ -644,7 +644,7 @@ module.exports = function init(site) {
 
     $towns.import(__dirname + "/site_files/db/towns",(err , docs)=>{})
   })
-  site.get("/api/towns/export_file_towns", (req, res) => {
+  site.onGET("/api/towns/export_file_towns", (req, res) => {
     let response = {}
     response.done = false
 
@@ -657,7 +657,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/regions/import_file_regions", (req, res) => {
+  site.onPOST("/api/regions/import_file_regions", (req, res) => {
     let response = {}
     response.done = false
 
@@ -668,7 +668,7 @@ module.exports = function init(site) {
 
     $regions.import(__dirname + "/site_files/db/regions",(err , docs)=>{})
   })
-  site.get("/api/regions/export_file_regions", (req, res) => {
+  site.onGET("/api/regions/export_file_regions", (req, res) => {
     let response = {}
     response.done = false
 
@@ -681,7 +681,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/companies/import_file_companies", (req, res) => {
+  site.onPOST("/api/companies/import_file_companies", (req, res) => {
     let response = {}
     response.done = false
 
@@ -692,7 +692,7 @@ module.exports = function init(site) {
 
     $companies.import(__dirname + "/site_files/db/companies",(err , docs)=>{})
   })
-  site.get("/api/companies/export_file_companies", (req, res) => {
+  site.onGET("/api/companies/export_file_companies", (req, res) => {
     let response = {}
     response.done = false
 
@@ -705,7 +705,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/companies_employees/import_file_companies_employees", (req, res) => {
+  site.onPOST("/api/companies_employees/import_file_companies_employees", (req, res) => {
     let response = {}
     response.done = false
 
@@ -716,7 +716,7 @@ module.exports = function init(site) {
 
     $companies_employees.import(__dirname + "/site_files/db/companies_employees",(err , docs)=>{})
   })
-  site.get("/api/companies_employees/export_file_companies_employees", (req, res) => {
+  site.onGET("/api/companies_employees/export_file_companies_employees", (req, res) => {
     let response = {}
     response.done = false
 
@@ -729,7 +729,7 @@ module.exports = function init(site) {
      })
   })
   
-  site.post("/api/companies_categories/import_file_companies_categories", (req, res) => {
+  site.onPOST("/api/companies_categories/import_file_companies_categories", (req, res) => {
     let response = {}
     response.done = false
 
@@ -740,7 +740,7 @@ module.exports = function init(site) {
 
     $companies_categories.import(__dirname + "/site_files/db/companies_categories",(err , docs)=>{})
   })
-  site.get("/api/companies_categories/export_file_companies_categories", (req, res) => {
+  site.onGET("/api/companies_categories/export_file_companies_categories", (req, res) => {
     let response = {}
     response.done = false
 
@@ -753,7 +753,7 @@ module.exports = function init(site) {
      })
   })
   
-  site.post("/api/companies_devices/import_file_companies_devices", (req, res) => {
+  site.onPOST("/api/companies_devices/import_file_companies_devices", (req, res) => {
     let response = {}
     response.done = false
 
@@ -764,7 +764,7 @@ module.exports = function init(site) {
 
     $companies_devices.import(__dirname + "/site_files/db/companies_devices",(err , docs)=>{})
   })
-  site.get("/api/companies_devices/export_file_companies_devices", (req, res) => {
+  site.onGET("/api/companies_devices/export_file_companies_devices", (req, res) => {
     let response = {}
     response.done = false
 
@@ -777,7 +777,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/damages/import_file_damages", (req, res) => {
+  site.onPOST("/api/damages/import_file_damages", (req, res) => {
     let response = {}
     response.done = false
 
@@ -788,7 +788,7 @@ module.exports = function init(site) {
 
     $damages.import(__dirname + "/site_files/db/damages",(err , docs)=>{})
   })
-  site.get("/api/damages/export_file_damages", (req, res) => {
+  site.onGET("/api/damages/export_file_damages", (req, res) => {
     let response = {}
     response.done = false
 
@@ -801,7 +801,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/categories/import_file_categories", (req, res) => {
+  site.onPOST("/api/categories/import_file_categories", (req, res) => {
     let response = {}
     response.done = false
 
@@ -812,7 +812,7 @@ module.exports = function init(site) {
 
     $categories.import(__dirname + "/site_files/db/categories",(err , docs)=>{})
   })
-  site.get("/api/categories/export_file_categories", (req, res) => {
+  site.onGET("/api/categories/export_file_categories", (req, res) => {
     let response = {}
     response.done = false
 
@@ -824,7 +824,7 @@ module.exports = function init(site) {
       res.download(__dirname + "/site_files/db/categories")
      })
   })
-  site.post("/api/sub_categories/import_file_sub_categories", (req, res) => {
+  site.onPOST("/api/sub_categories/import_file_sub_categories", (req, res) => {
     let response = {}
     response.done = false
 
@@ -835,7 +835,7 @@ module.exports = function init(site) {
 
     $sub_categories.import(__dirname + "/site_files/db/sub_categories",(err , docs)=>{})
   })
-  site.get("/api/sub_categories/export_file_sub_categories", (req, res) => {
+  site.onGET("/api/sub_categories/export_file_sub_categories", (req, res) => {
     let response = {}
     response.done = false
 
@@ -848,7 +848,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/devices_names/import_file_devices_names", (req, res) => {
+  site.onPOST("/api/devices_names/import_file_devices_names", (req, res) => {
     let response = {}
     response.done = false
 
@@ -859,7 +859,7 @@ module.exports = function init(site) {
 
     $devices_names.import(__dirname + "/site_files/db/devices_names",(err , docs)=>{})
   })
-  site.get("/api/devices_names/export_file_devices_names", (req, res) => {
+  site.onGET("/api/devices_names/export_file_devices_names", (req, res) => {
     let response = {}
     response.done = false
 
@@ -873,7 +873,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/employees/import_file_employees", (req, res) => {
+  site.onPOST("/api/employees/import_file_employees", (req, res) => {
     let response = {}
     response.done = false
 
@@ -884,7 +884,7 @@ module.exports = function init(site) {
 
     $employees.import(__dirname + "/site_files/db/employees",(err , docs)=>{})
   })
-  site.get("/api/employees/export_file_employees", (req, res) => {
+  site.onGET("/api/employees/export_file_employees", (req, res) => {
     let response = {}
     response.done = false
 
@@ -897,7 +897,7 @@ module.exports = function init(site) {
      })
   })
   
-  site.post("/api/departments/import_file_departments", (req, res) => {
+  site.onPOST("/api/departments/import_file_departments", (req, res) => {
     let response = {}
     response.done = false
 
@@ -908,7 +908,7 @@ module.exports = function init(site) {
 
     $departments.import(__dirname + "/site_files/db/departments",(err , docs)=>{})
   })
-  site.get("/api/departments/export_file_departments", (req, res) => {
+  site.onGET("/api/departments/export_file_departments", (req, res) => {
     let response = {}
     response.done = false
 
@@ -921,7 +921,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/jobs/import_file_jobs", (req, res) => {
+  site.onPOST("/api/jobs/import_file_jobs", (req, res) => {
     let response = {}
     response.done = false
 
@@ -932,7 +932,7 @@ module.exports = function init(site) {
 
     $jobs.import(__dirname + "/site_files/db/jobs",(err , docs)=>{})
   })
-  site.get("/api/jobs/export_file_jobs", (req, res) => {
+  site.onGET("/api/jobs/export_file_jobs", (req, res) => {
     let response = {}
     response.done = false
 
@@ -945,7 +945,7 @@ module.exports = function init(site) {
      })
   })
   
-  site.post("/api/employees_degrees/import_file_employees_degrees", (req, res) => {
+  site.onPOST("/api/employees_degrees/import_file_employees_degrees", (req, res) => {
     let response = {}
     response.done = false
 
@@ -956,7 +956,7 @@ module.exports = function init(site) {
 
     $employees_degrees.import(__dirname + "/site_files/db/employees_degrees",(err , docs)=>{})
   })
-  site.get("/api/employees_degrees/export_file_employees_degrees", (req, res) => {
+  site.onGET("/api/employees_degrees/export_file_employees_degrees", (req, res) => {
     let response = {}
     response.done = false
 
@@ -970,7 +970,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/militaries_status/import_file_militaries_status", (req, res) => {
+  site.onPOST("/api/militaries_status/import_file_militaries_status", (req, res) => {
     let response = {}
     response.done = false
 
@@ -981,7 +981,7 @@ module.exports = function init(site) {
 
     $militaries_status.import(__dirname + "/site_files/db/militaries_status",(err , docs)=>{})
   })
-  site.get("/api/militaries_status/export_file_militaries_status", (req, res) => {
+  site.onGET("/api/militaries_status/export_file_militaries_status", (req, res) => {
     let response = {}
     response.done = false
 
@@ -994,7 +994,7 @@ module.exports = function init(site) {
      })
   })
 
-  site.post("/api/maritals_status/import_file_maritals_status", (req, res) => {
+  site.onPOST("/api/maritals_status/import_file_maritals_status", (req, res) => {
     let response = {}
     response.done = false
 
@@ -1005,7 +1005,7 @@ module.exports = function init(site) {
 
     $maritals_status.import(__dirname + "/site_files/db/maritals_status",(err , docs)=>{})
   })
-  site.get("/api/maritals_status/export_file_maritals_status", (req, res) => {
+  site.onGET("/api/maritals_status/export_file_maritals_status", (req, res) => {
     let response = {}
     response.done = false
 
@@ -1019,7 +1019,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/tickets/import_file_tickets", (req, res) => {
+  site.onPOST("/api/tickets/import_file_tickets", (req, res) => {
     let response = {}
     response.done = false
 
@@ -1030,7 +1030,7 @@ module.exports = function init(site) {
 
     $tickets.import(__dirname + "/site_files/db/tickets",(err , docs)=>{})
   })
-  site.get("/api/tickets/export_file_tickets", (req, res) => {
+  site.onGET("/api/tickets/export_file_tickets", (req, res) => {
     let response = {}
     response.done = false
 

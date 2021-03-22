@@ -8,7 +8,7 @@ module.exports = function init(site) {
 
 
 
-  site.get({
+  site.onGET({
     name: "unemployees_insurances",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -16,7 +16,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/unemployees_insurances/add", (req, res) => {
+  site.onPOST("/api/unemployees_insurances/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -35,7 +35,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/unemployees_insurances/update", (req, res) => {
+  site.onPOST("/api/unemployees_insurances/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -66,7 +66,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/unemployees_insurances/delete", (req, res) => {
+  site.onPOST("/api/unemployees_insurances/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -85,7 +85,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/unemployees_insurances/view", (req, res) => {
+  site.onPOST("/api/unemployees_insurances/view", (req, res) => {
     let response = {}
     response.done = false
     $unemployees_insurances.findOne({
@@ -103,7 +103,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/unemployees_insurances/all", (req, res) => {
+  site.onPOST("/api/unemployees_insurances/all", (req, res) => {
     let response = {}
     response.done = false
     $unemployees_insurances.findMany({
@@ -122,7 +122,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/unemployees_insurances/upload/image", (req, res) => {
+  site.onPOST("/api/unemployees_insurances/upload/image", (req, res) => {
     let response = {
       done: true
     }
@@ -138,11 +138,11 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.get("/unemployees_insurances/image/:name", (req, res) => {
+  site.onGET("/unemployees_insurances/image/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/crm/unemployees_insurances/images/" + req.params.name)
   })
 
-  site.post("/api/unemployees_insurances/upload/file", (req, res) => {
+  site.onPOST("/api/unemployees_insurances/upload/file", (req, res) => {
     let response = {
       done: true
     }
@@ -160,7 +160,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.get("/unemployees_insurances/file/:name", (req, res) => {
+  site.onGET("/unemployees_insurances/file/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/crm/unemployees_insurances/files/" + req.params.name)
   })
 }

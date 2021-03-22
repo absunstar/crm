@@ -5,7 +5,7 @@ module.exports = function (site) {
         name: 'منوفية'
     }
 
-    site.post('/api/import/devices', (req, res) => {
+    site.onPOST('/api/import/devices', (req, res) => {
 
       
         setTimeout(() => {

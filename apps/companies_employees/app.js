@@ -3,7 +3,7 @@ module.exports = function init(site) {
 
   const $companies_employees = site.connectCollection("companies_employees")
 
-  site.get({
+  site.onGET({
     name: "companies_employees",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -11,7 +11,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/companies_employees/add", (req, res) => {
+  site.onPOST("/api/companies_employees/add", (req, res) => {
     let response = {}
     response.done = false
 
@@ -40,7 +40,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/companies_employees/update", (req, res) => {
+  site.onPOST("/api/companies_employees/update", (req, res) => {
     let response = {}
     response.done = false
 
@@ -78,7 +78,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/companies_employees/delete", (req, res) => {
+  site.onPOST("/api/companies_employees/delete", (req, res) => {
     let response = {}
     response.done = false
 
@@ -109,7 +109,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/companies_employees/view", (req, res) => {
+  site.onPOST("/api/companies_employees/view", (req, res) => {
     let response = {}
     response.done = false
     $companies_employees.find({
@@ -127,7 +127,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/companies_employees/all", (req, res) => {
+  site.onPOST("/api/companies_employees/all", (req, res) => {
     let response = {}
     response.done = false
 

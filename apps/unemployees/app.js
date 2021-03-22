@@ -32,7 +32,7 @@ module.exports = function init(site) {
   
   
 
-  site.get({
+  site.onGET({
     name: "unemployees",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -40,7 +40,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/unemployees/add", (req, res) => {
+  site.onPOST("/api/unemployees/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -59,7 +59,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/unemployees/update", (req, res) => {
+  site.onPOST("/api/unemployees/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -89,7 +89,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/unemployees/delete", (req, res) => {
+  site.onPOST("/api/unemployees/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -108,7 +108,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/unemployees/view", (req, res) => {
+  site.onPOST("/api/unemployees/view", (req, res) => {
     let response = {}
     response.done = false
     $unemployees.findOne({
@@ -126,7 +126,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/unemployees/all", (req, res) => {
+  site.onPOST("/api/unemployees/all", (req, res) => {
     let response = {}
     response.done = false
     $unemployees.findMany({
@@ -144,7 +144,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/unemployees/upload/image", (req, res) => {
+  site.onPOST("/api/unemployees/upload/image", (req, res) => {
     let response = {
       done: true
     }
@@ -160,7 +160,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.get("/unemployees/image/:name", (req, res) => {
+  site.onGET("/unemployees/image/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/crm/unemployees/images/" + req.params.name)
   })
 }

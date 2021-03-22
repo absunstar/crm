@@ -3,7 +3,7 @@ module.exports = function init(site) {
 
   const $employee_offer = site.connectCollection("employee_offer")
   
-  site.get({
+  site.onGET({
     name: "employee_offer",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -11,7 +11,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/employee_offer/add", (req, res) => {
+  site.onPOST("/api/employee_offer/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -36,7 +36,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/employee_offer/update", (req, res) => {
+  site.onPOST("/api/employee_offer/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -65,7 +65,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/employee_offer/delete", (req, res) => {
+  site.onPOST("/api/employee_offer/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -101,7 +101,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/employee_offer/view", (req, res) => {
+  site.onPOST("/api/employee_offer/view", (req, res) => {
     let response = {}
     response.done = false
     $employee_offer.findOne({
@@ -119,7 +119,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/employee_offer/all", (req, res) => {
+  site.onPOST("/api/employee_offer/all", (req, res) => {
     let response = {}
     response.done = false
 

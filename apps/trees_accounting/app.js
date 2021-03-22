@@ -17,7 +17,7 @@ module.exports = function init(site) {
 
   const $trees_accounting = site.connectCollection("trees_accounting")
   site.words.addList(__dirname + '/site_files/json/words.json')
-  site.get({
+  site.onGET({
     name: "trees_accounting",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -25,7 +25,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/trees_accounting/add", (req, res) => {
+  site.onPOST("/api/trees_accounting/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -43,7 +43,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/trees_accounting/update", (req, res) => {
+  site.onPOST("/api/trees_accounting/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -74,7 +74,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/trees_accounting/delete", (req, res) => {
+  site.onPOST("/api/trees_accounting/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -95,7 +95,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/trees_accounting/view", (req, res) => {
+  site.onPOST("/api/trees_accounting/view", (req, res) => {
     let response = {}
     response.done = false
     $trees_accounting.findOne({
@@ -113,7 +113,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/trees_accounting/all", (req, res) => {
+  site.onPOST("/api/trees_accounting/all", (req, res) => {
 
     let response = {}
     response.done = false
@@ -131,7 +131,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/trees_accounting/upload/image", (req, res) => {
+  site.onPOST("/api/trees_accounting/upload/image", (req, res) => {
     let response = {
       done: true
     }
@@ -147,7 +147,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.get("/trees_accounting/image/:name", (req, res) => {
+  site.onGET("/trees_accounting/image/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/crm/trees_accounting/images/" + req.params.name)
   })
 }

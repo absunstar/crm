@@ -3,7 +3,7 @@ module.exports = function init(site) {
   const $maritals_status = site.connectCollection("maritals_status")
   site.words.addList(__dirname + '/site_files/json/words.json')
 
-  site.get({
+  site.onGET({
     name: "maritals_status",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -11,7 +11,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/maritals_status/add", (req, res) => {
+  site.onPOST("/api/maritals_status/add", (req, res) => {
     let response = {}
     response.done = false
 
@@ -36,7 +36,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/maritals_status/update", (req, res) => {
+  site.onPOST("/api/maritals_status/update", (req, res) => {
     let response = {}
     response.done = false
 
@@ -72,7 +72,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/maritals_status/delete", (req, res) => {
+  site.onPOST("/api/maritals_status/delete", (req, res) => {
     let response = {}
     response.done = false
 
@@ -98,7 +98,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/maritals_status/view", (req, res) => {
+  site.onPOST("/api/maritals_status/view", (req, res) => {
     let response = {}
     response.done = false
     $maritals_status.find({
@@ -116,7 +116,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/maritals_status/all", (req, res) => {
+  site.onPOST("/api/maritals_status/all", (req, res) => {
     let response = {}
     response.done = false
 

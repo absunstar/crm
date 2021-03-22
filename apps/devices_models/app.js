@@ -15,7 +15,7 @@ module.exports = function init(site) {
 
   const $devices_models = site.connectCollection("devices_models")
   site.words.addList(__dirname + '/site_files/json/words.json')
-  site.get({
+  site.onGET({
     name: "devices_models",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -23,7 +23,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/devices_models/add", (req, res) => {
+  site.onPOST("/api/devices_models/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -42,7 +42,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/devices_models/update", (req, res) => {
+  site.onPOST("/api/devices_models/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -72,7 +72,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/devices_models/delete", (req, res) => {
+  site.onPOST("/api/devices_models/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -91,7 +91,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/devices_models/view", (req, res) => {
+  site.onPOST("/api/devices_models/view", (req, res) => {
     let response = {}
     response.done = false
     $devices_models.findOne({
@@ -109,7 +109,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/devices_models/all", (req, res) => {
+  site.onPOST("/api/devices_models/all", (req, res) => {
     let response = {}
     response.done = false
     $devices_models.findMany({
@@ -126,7 +126,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/devices_models/upload/image", (req, res) => {
+  site.onPOST("/api/devices_models/upload/image", (req, res) => {
     let response = {
       done: true
     }
@@ -142,7 +142,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.get("/devices_models/image/:name", (req, res) => {
+  site.onGET("/devices_models/image/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/crm/devices_models/images/" + req.params.name)
   })
 }

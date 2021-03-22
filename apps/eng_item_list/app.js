@@ -19,7 +19,7 @@ module.exports = function init(site) {
   })
 
 
-  site.get({
+  site.onGET({
     name: "eng_item_list",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -27,7 +27,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/eng_item_list/add", (req, res) => {
+  site.onPOST("/api/eng_item_list/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -92,7 +92,7 @@ module.exports = function init(site) {
 
   })
 
-  site.post("/api/eng_item_list/update", (req, res) => {
+  site.onPOST("/api/eng_item_list/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -137,7 +137,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/eng_item_list/delete", (req, res) => {
+  site.onPOST("/api/eng_item_list/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -173,7 +173,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/eng_item_list/view", (req, res) => {
+  site.onPOST("/api/eng_item_list/view", (req, res) => {
     let response = {}
     response.done = false
     $eng_item_list.findOne({
@@ -191,7 +191,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/eng_item_list/all", (req, res) => {
+  site.onPOST("/api/eng_item_list/all", (req, res) => {
     let response = {}
     response.done = false
 

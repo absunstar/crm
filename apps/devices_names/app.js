@@ -2,14 +2,14 @@ module.exports = function init(site) {
 
   const $devices_names = site.connectCollection("devices_names")
 
-  site.get({
+  site.onGET({
     name: "devices_names",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
     compress: true
   })
 
-  site.post("/api/devices_names/add", (req, res) => {
+  site.onPOST("/api/devices_names/add", (req, res) => {
     let response = {}
     response.done = false
 
@@ -36,7 +36,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/devices_names/update", (req, res) => {
+  site.onPOST("/api/devices_names/update", (req, res) => {
     let response = {}
     response.done = false
 
@@ -74,7 +74,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/devices_names/delete", (req, res) => {
+  site.onPOST("/api/devices_names/delete", (req, res) => {
     let response = {}
     response.done = false
 
@@ -101,7 +101,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/devices_names/view", (req, res) => {
+  site.onPOST("/api/devices_names/view", (req, res) => {
     let response = {}
     response.done = false
     $devices_names.find({
@@ -119,7 +119,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/devices_names/all", (req, res) => {
+  site.onPOST("/api/devices_names/all", (req, res) => {
     let response = {}
     response.done = false
 

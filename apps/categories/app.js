@@ -3,7 +3,7 @@ module.exports = function init(site) {
 
   const $categories = site.connectCollection("categories")
 
-  site.get({
+  site.onGET({
     name: "categories",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -11,7 +11,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/categories/add", (req, res) => {
+  site.onPOST("/api/categories/add", (req, res) => {
     let response = {}
     response.done = false
 
@@ -37,7 +37,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/categories/update", (req, res) => {
+  site.onPOST("/api/categories/update", (req, res) => {
     let response = {}
     response.done = false
 
@@ -74,7 +74,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/categories/delete", (req, res) => {
+  site.onPOST("/api/categories/delete", (req, res) => {
     let response = {}
     response.done = false
 
@@ -103,7 +103,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/categories/view", (req, res) => {
+  site.onPOST("/api/categories/view", (req, res) => {
     let response = {}
     response.done = false
     $categories.find({
@@ -123,7 +123,7 @@ module.exports = function init(site) {
 
 
 
-  site.post("/api/categories/all", (req, res) => {
+  site.onPOST("/api/categories/all", (req, res) => {
     let response = {}
     response.done = false
 

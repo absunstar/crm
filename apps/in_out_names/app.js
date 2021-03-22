@@ -12,7 +12,7 @@ module.exports = function init(site) {
     })
   })
     
-  site.get({
+  site.onGET({
     name: "in_out_names",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -20,7 +20,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/in_out_names/add", (req, res) => {
+  site.onPOST("/api/in_out_names/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -39,7 +39,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/in_out_names/update", (req, res) => {
+  site.onPOST("/api/in_out_names/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -70,7 +70,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/in_out_names/delete", (req, res) => {
+  site.onPOST("/api/in_out_names/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -89,7 +89,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/in_out_names/view", (req, res) => {
+  site.onPOST("/api/in_out_names/view", (req, res) => {
     let response = {}
     response.done = false
     $in_out_names.findOne({
@@ -107,7 +107,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/in_out_names/all", (req, res) => {
+  site.onPOST("/api/in_out_names/all", (req, res) => {
     let response = {}
     let where = req.body.where || {};
     response.done = false
@@ -137,7 +137,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/in_out_names/upload/image", (req, res) => {
+  site.onPOST("/api/in_out_names/upload/image", (req, res) => {
     let response = {
       done: true
     }
@@ -153,7 +153,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.get("/in_out_names/image/:name", (req, res) => {
+  site.onGET("/in_out_names/image/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/crm/in_out_names/images/" + req.params.name)
   })
 }

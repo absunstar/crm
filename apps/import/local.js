@@ -3,7 +3,7 @@ module.exports = function(site){
     let collections_arr = ['customers', 'goves', 'cities', 'towns', 'regions', 'companies', 'employees', 'jobs', 'maritals_status', 'militaries_status', 'companies_devices', 'companies_categories', 'categories', 'sub_categories', 'devices_names']
 
 
-    site.get('ImportData/:name', (req, res) => {
+    site.onGET('ImportData/:name', (req, res) => {
 
         res.json({
             done: true
@@ -26,7 +26,7 @@ module.exports = function(site){
 
     })
 
-    site.get('ExportData', (req, res) => {
+    site.onGET('ExportData', (req, res) => {
 
         res.json({
             done: true

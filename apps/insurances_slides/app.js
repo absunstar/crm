@@ -8,7 +8,7 @@ module.exports = function init(site) {
   
 
 
-  site.get({
+  site.onGET({
     name: "insurances_slides",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -16,7 +16,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/insurances_slides/add", (req, res) => {
+  site.onPOST("/api/insurances_slides/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -35,7 +35,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/insurances_slides/update", (req, res) => {
+  site.onPOST("/api/insurances_slides/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -65,7 +65,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/insurances_slides/delete", (req, res) => {
+  site.onPOST("/api/insurances_slides/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -84,7 +84,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/insurances_slides/view", (req, res) => {
+  site.onPOST("/api/insurances_slides/view", (req, res) => {
     let response = {}
     response.done = false
     $insurances_slides.findOne({
@@ -102,7 +102,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/insurances_slides/all", (req, res) => {
+  site.onPOST("/api/insurances_slides/all", (req, res) => {
     let response = {}
     response.done = false
     let  where = req.data.where || {}
@@ -133,7 +133,7 @@ sort : {id:-1}
 
 
 
-  site.post("/api/insurances_slides/upload/image", (req, res) => {
+  site.onPOST("/api/insurances_slides/upload/image", (req, res) => {
     let response = {
       done: true
     }
@@ -149,7 +149,7 @@ sort : {id:-1}
       res.json(response)
     })
   })
-  site.get("/insurances_slides/image/:name", (req, res) => {
+  site.onGET("/insurances_slides/image/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/crm/insurances_slides/images/" + req.params.name)
   })
 }

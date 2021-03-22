@@ -2,14 +2,14 @@ module.exports = function init(site) {
 
   const $employees_report = site.connectCollection("employees_report")
 
-  site.get({
+  site.onGET({
     name: "employees_report",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
     compress: false
   })
   
-  site.post("/api/employees_report/add", (req, res) => {
+  site.onPOST("/api/employees_report/add", (req, res) => {
     let response = {}
     response.done = false
 
@@ -50,7 +50,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/employees_report/all", (req, res) => {
+  site.onPOST("/api/employees_report/all", (req, res) => {
     let response = {}
     response.done = false
     

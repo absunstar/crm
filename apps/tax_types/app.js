@@ -18,7 +18,7 @@ module.exports = function init(site) {
   })
 
 
-  site.get({
+  site.onGET({
     name: "tax_types",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -26,7 +26,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/tax_types/add", (req, res) => {
+  site.onPOST("/api/tax_types/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -48,7 +48,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/tax_types/update", (req, res) => {
+  site.onPOST("/api/tax_types/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -80,7 +80,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/tax_types/delete", (req, res) => {
+  site.onPOST("/api/tax_types/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -101,7 +101,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/tax_types/view", (req, res) => {
+  site.onPOST("/api/tax_types/view", (req, res) => {
     let response = {}
     response.done = false
     $tax_types.findOne({
@@ -119,7 +119,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/tax_types/all", (req, res) => {
+  site.onPOST("/api/tax_types/all", (req, res) => {
 
     let response = {}
     response.done = false

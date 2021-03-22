@@ -18,7 +18,7 @@ module.exports = function init(site) {
   })
 
 
-  site.get({
+  site.onGET({
     name: "companies",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -26,7 +26,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/companies/add", (req, res) => {
+  site.onPOST("/api/companies/add", (req, res) => {
     let response = {}
     response.done = false
 
@@ -52,7 +52,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/companies/update", (req, res) => {
+  site.onPOST("/api/companies/update", (req, res) => {
     let response = {}
     response.done = false
 
@@ -89,7 +89,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/companies/delete", (req, res) => {
+  site.onPOST("/api/companies/delete", (req, res) => {
     let response = {}
     response.done = false
 
@@ -117,7 +117,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/companies/view", (req, res) => {
+  site.onPOST("/api/companies/view", (req, res) => {
     let response = {}
     response.done = false
     $companies.find({
@@ -135,7 +135,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/companies/all", (req, res) => {
+  site.onPOST("/api/companies/all", (req, res) => {
     let response = {}
     response.done = false
 

@@ -5,7 +5,7 @@ module.exports = function init(site) {
   site.words.addList(__dirname + '/site_files/json/words.json')
 
 
-  site.get({
+  site.onGET({
     name: "employees_mobiles",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -13,7 +13,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/employees_mobiles/add", (req, res) => {
+  site.onPOST("/api/employees_mobiles/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -32,7 +32,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/employees_mobiles/update", (req, res) => {
+  site.onPOST("/api/employees_mobiles/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -62,7 +62,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/employees_mobiles/delete", (req, res) => {
+  site.onPOST("/api/employees_mobiles/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -81,7 +81,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/employees_mobiles/view", (req, res) => {
+  site.onPOST("/api/employees_mobiles/view", (req, res) => {
     let response = {}
     response.done = false
     $employees_mobiles.findOne({
@@ -99,7 +99,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/employees_mobiles/all", (req, res) => {
+  site.onPOST("/api/employees_mobiles/all", (req, res) => {
     let response = {}
     response.done = false
     let where = req.body.where || {}
@@ -125,7 +125,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/employees_mobiles/upload/image", (req, res) => {
+  site.onPOST("/api/employees_mobiles/upload/image", (req, res) => {
     let response = {
       done: true
     }
@@ -141,7 +141,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.get("/employees_mobiles/image/:name", (req, res) => {
+  site.onGET("/employees_mobiles/image/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/crm/employees_mobiles/images/" + req.params.name)
   })
 }

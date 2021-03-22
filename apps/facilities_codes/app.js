@@ -24,7 +24,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.get({
+  site.onGET({
     name: "facilities_codes",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
@@ -32,7 +32,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/facilities_codes/add", (req, res) => {
+  site.onPOST("/api/facilities_codes/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -51,7 +51,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/facilities_codes/update", (req, res) => {
+  site.onPOST("/api/facilities_codes/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -81,7 +81,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/facilities_codes/delete", (req, res) => {
+  site.onPOST("/api/facilities_codes/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -100,7 +100,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/facilities_codes/view", (req, res) => {
+  site.onPOST("/api/facilities_codes/view", (req, res) => {
     let response = {}
     response.done = false
     $facilities_codes.findOne({
@@ -118,7 +118,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/facilities_codes/all", (req, res) => {
+  site.onPOST("/api/facilities_codes/all", (req, res) => {
     let response = {}
     response.done = false
     $facilities_codes.findMany({
@@ -140,7 +140,7 @@ module.exports = function init(site) {
 
 
 
-  site.post("/api/facilities_codes/upload/image", (req, res) => {
+  site.onPOST("/api/facilities_codes/upload/image", (req, res) => {
     let response = {
       done: true
     }
@@ -156,7 +156,7 @@ module.exports = function init(site) {
       res.json(response)
     })
   })
-  site.get("/facilities_codes/image/:name", (req, res) => {
+  site.onGET("/facilities_codes/image/:name", (req, res) => {
     res.download(site.dir + "/../../uploads/crm/facilities_codes/images/" + req.params.name)
   })
 }

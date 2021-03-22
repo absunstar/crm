@@ -41,19 +41,19 @@ module.exports = function init(site) {
       })
   })
 
-  site.get({
+  site.onGET({
     name: "stores_out",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
     compress: false
   })
-  site.post({
+  site.onPOST({
     name: '/api/stores_out/types/all',
     path: __dirname + '/site_files/json/types.json'
   })
 
 
-  site.post("/api/stores_out/add", (req, res) => {
+  site.onPOST("/api/stores_out/add", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -140,7 +140,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/stores_out/update", (req, res) => {
+  site.onPOST("/api/stores_out/update", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -187,7 +187,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/stores_out/delete", (req, res) => {
+  site.onPOST("/api/stores_out/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -250,7 +250,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/stores_out/view", (req, res) => {
+  site.onPOST("/api/stores_out/view", (req, res) => {
     let response = {}
     response.done = false
     $stores_out.findOne({
@@ -268,7 +268,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/stores_out/all", (req, res) => {
+  site.onPOST("/api/stores_out/all", (req, res) => {
     let response = {}
     response.done = false
     let where = req.body.where

@@ -28,14 +28,14 @@ module.exports = function init(site) {
   })
 
 
-  site.get({
+  site.onGET({
     name: "employees_debt",
     path: __dirname + "/site_files/html/index.html",
     parser: "html",
     compress: false
   })
 
-  site.post("/api/employees_debt/add", (req, res) => {
+  site.onPOST("/api/employees_debt/add", (req, res) => {
     let response = {}
     response.done = false
     
@@ -62,7 +62,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/employees_debt/update", (req, res) => {
+  site.onPOST("/api/employees_debt/update", (req, res) => {
     let response = {}
     response.done = false
     
@@ -98,7 +98,7 @@ module.exports = function init(site) {
 
 
 
-  site.post("/api/employees_debt/approved", (req, res) => {
+  site.onPOST("/api/employees_debt/approved", (req, res) => {
 
     let response = {}
     response.done = false
@@ -146,7 +146,7 @@ module.exports = function init(site) {
 
 
 
-  site.post("/api/employees_debt/delete", (req, res) => {
+  site.onPOST("/api/employees_debt/delete", (req, res) => {
     let response = {}
     response.done = false
   
@@ -173,7 +173,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/employees_debt/view", (req, res) => {
+  site.onPOST("/api/employees_debt/view", (req, res) => {
     let response = {}
     response.done = false
     $employees_debt.find({
@@ -191,7 +191,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/employees_debt/all", (req, res) => {
+  site.onPOST("/api/employees_debt/all", (req, res) => {
     let response = {}
     response.done = false
  

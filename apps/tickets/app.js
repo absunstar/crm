@@ -38,14 +38,14 @@ module.exports = function init(site) {
     return y + lastMonth + addZero(d, 2) + addZero(lastCode, 4)
   }
 
-  site.get({
+  site.onGET({
     name: "tickets",
     path: __dirname + "/site_files/html/index.html",
     parser: "html js css"
   })
 
 
-  site.post("/api/tickets/add", (req, res) => {
+  site.onPOST("/api/tickets/add", (req, res) => {
     let response = {}
     response.done = false
 
@@ -134,7 +134,7 @@ module.exports = function init(site) {
     return tickets_doc
   }
 
-  site.post("/api/tickets/update", (req, res) => {
+  site.onPOST("/api/tickets/update", (req, res) => {
 
     let response = {}
     response.done = false
@@ -169,7 +169,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/tickets/updatePrint", (req, res) => {
+  site.onPOST("/api/tickets/updatePrint", (req, res) => {
 
     let response = {}
     response.done = false
@@ -209,7 +209,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/tickets/updateCloseEng", (req, res) => {
+  site.onPOST("/api/tickets/updateCloseEng", (req, res) => {
 
     let response = {}
     response.done = false
@@ -329,7 +329,7 @@ module.exports = function init(site) {
 
   })
 
-  site.post("/api/tickets/updateClose1", (req, res) => {
+  site.onPOST("/api/tickets/updateClose1", (req, res) => {
     let response = {}
     response.done = false
 
@@ -503,7 +503,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/tickets/updateClose2", (req, res) => {
+  site.onPOST("/api/tickets/updateClose2", (req, res) => {
     let response = {}
     response.done = false
 
@@ -671,7 +671,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/tickets/updateNotes", (req, res) => {
+  site.onPOST("/api/tickets/updateNotes", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -711,7 +711,7 @@ module.exports = function init(site) {
 
 
 
-  site.post("/api/tickets/updateReview", (req, res) => {
+  site.onPOST("/api/tickets/updateReview", (req, res) => {
     let response = {}
     response.done = false
 
@@ -755,7 +755,7 @@ module.exports = function init(site) {
 
 
 
-  site.post("/api/tickets/updateFiles", (req, res) => {
+  site.onPOST("/api/tickets/updateFiles", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -794,7 +794,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/tickets/BackToCloseEng", (req, res) => {
+  site.onPOST("/api/tickets/BackToCloseEng", (req, res) => {
     let response = {}
     response.done = false
 
@@ -877,7 +877,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/tickets/delete", (req, res) => {
+  site.onPOST("/api/tickets/delete", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -900,7 +900,7 @@ module.exports = function init(site) {
     }
   })
 
-  site.post("/api/tickets/view", (req, res) => {
+  site.onPOST("/api/tickets/view", (req, res) => {
     let response = {}
     response.done = false
     $tickets.findOne({
@@ -918,7 +918,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/tickets/view/open", (req, res) => {
+  site.onPOST("/api/tickets/view/open", (req, res) => {
     let response = {}
     response.done = false
     let doc = req.body
@@ -945,7 +945,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/tickets/all", (req, res) => {
+  site.onPOST("/api/tickets/all", (req, res) => {
 
     let response = {}
     response.done = false
@@ -1434,7 +1434,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/tickets/get_assigned", (req, res) => {
+  site.onPOST("/api/tickets/get_assigned", (req, res) => {
     let response = {}
 
     let data = req.data
@@ -1474,7 +1474,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/tickets/get_close1", (req, res) => {
+  site.onPOST("/api/tickets/get_close1", (req, res) => {
     let response = {}
 
     let data = req.data
@@ -1522,7 +1522,7 @@ module.exports = function init(site) {
     })
   })
 
-  site.post("/api/tickets/assignEng", (req, res) => {
+  site.onPOST("/api/tickets/assignEng", (req, res) => {
     let response = {}
     response.done = false
     if (!req.session.user) {
@@ -1599,7 +1599,7 @@ module.exports = function init(site) {
   })
 
 
-  site.post("/api/tickets/assignEngAll", (req, res) => {
+  site.onPOST("/api/tickets/assignEngAll", (req, res) => {
     let response = {}
     response.done = false
     if (req.session.user === undefined) {
@@ -1685,53 +1685,53 @@ module.exports = function init(site) {
   })
 
 
-  site.post({
+  site.onPOST({
     name: '/api/ticket/sources/all',
     path: __dirname + '/site_files/json/ticket_sources.json'
   })
 
-  site.post({
+  site.onPOST({
     name: '/api/ticket/services/all',
     path: __dirname + '/site_files/json/ticket_services.json'
   })
 
-  site.post({
+  site.onPOST({
     name: '/api/ticket/status/all',
     path: __dirname + '/site_files/json/ticket_status.json'
   })
 
-  site.post({
+  site.onPOST({
     name: '/api/ticket/status2/all',
     path: __dirname + '/site_files/json/ticket_status2.json'
   })
 
-  site.post({
+  site.onPOST({
     name: '/api/ticket/status3/all',
     path: __dirname + '/site_files/json/ticket_status3.json'
   })
 
-  site.post({
+  site.onPOST({
     name: '/api/ticket/review_status/all',
     path: __dirname + '/site_files/json/ticket_review_status.json'
   })
 
-  site.post({
+  site.onPOST({
     name: '/api/ticket/date_types/all',
     path: __dirname + '/site_files/json/ticket_date_types.json'
   })
 
-  site.post({
+  site.onPOST({
     name: '/api/ticket/user_types/all',
     path: __dirname + '/site_files/json/ticket_user_types.json'
   })
 
-  site.post({
+  site.onPOST({
     name: '/api/ticket/priorities/all',
     path: __dirname + '/site_files/json/ticket_priorities.json'
   })
 
 
-  site.post("/api/export_tickets/excel", (req, res) => {
+  site.onPOST("/api/export_tickets/excel", (req, res) => {
 
     let response = {}
     response.done = false
@@ -2027,7 +2027,7 @@ module.exports = function init(site) {
   })
 
 
-  site.get("/api/export_tickets/excel/download", (req, res) => {
+  site.onGET("/api/export_tickets/excel/download", (req, res) => {
     let response = {}
     response.done = false
 
