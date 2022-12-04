@@ -26,8 +26,6 @@ const site = isite({
 
 site.var('full-url', 'http://crm.egytag.com');
 
-//require(__dirname + '/lib/updating')
-
 site.require(__dirname + '/lib/routing');
 
 site.loadLocalApp('client-side');

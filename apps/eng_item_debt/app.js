@@ -1,6 +1,6 @@
 module.exports = function init(site) {
 
-  var xl = require('excel4node');
+  var xl = require('xlsx');
   const $eng_item_debt = site.connectCollection("eng_item_debt")
   site.on('[tickets][eng_item_debt]', doc => {
     

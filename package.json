@@ -14,11 +14,6 @@
   "license": "ISC",
   "dependencies": {
     "isite": "*",
-    "request": "*",
-    "mssql": "^4.1.0",
-    "excel4node": "*"
-  },
-  "devDependencies": {
-    "excel-as-json": "^2.0.2"
+    "mssql": "^4.1.0"
   }
 }

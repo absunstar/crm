@@ -1,5 +1,5 @@
 module.exports = function init(site) {
-  var xl = require('excel4node');
+  var xl = require('xlsx');
 
   const $tickets = site.connectCollection('tickets')
 
