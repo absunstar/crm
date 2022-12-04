@@ -1,11 +1,4 @@
 
-setTimeout(() => {
-  $('.loaded').css('visibility', 'visible');
-}, 1000);
-
-
-var app = app || angular.module('myApp', []);
-
 app.filter('dateX', function () {
   return function (_any) {
     return site.toDateX(_any);
